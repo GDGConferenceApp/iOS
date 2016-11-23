@@ -1,0 +1,66 @@
+//
+//  SessionsViewController.swift
+//  DevFest
+//
+//  Created by Brendon Justin on 11/23/16.
+//  Copyright © 2016 GDGConferenceApp. All rights reserved.
+//
+
+import UIKit
+
+class SessionsViewController: UICollectionViewController {
+    @IBOutlet private var flowLayout: UICollectionViewFlowLayout!
+    
+    var shouldShowStarredOnly = false {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            
+            collectionView?.reloadData()
+        }
+    }
+    
+    struct Fixture {
+        static let items: [SessionViewModel] = [
+            SessionViewModel(sessionID: "one", title: "First Session", subtitle: "auditorium", category: "android", color: .green, isStarred: false),
+            SessionViewModel(sessionID: "two", title:  "Session Two", subtitle: "classroom 1", category: "design", color: .blue, isStarred: true),
+            SessionViewModel(sessionID: "three", title: "Session the Third", subtitle: "lab", category: "", color: .black, isStarred: false),
+        ]
+        
+        static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let width = view.frame.width
+        
+        // Note: The item size in the storyboard is set to `320`, the narrowest width
+        // that we expect this view controller to ever be. If it is set higher,
+        // when the app is run on a narrow device such as the iPhone SE,
+        // our collection view cells start wider than the collection view.
+        // This is undefined behavior and results in poor behavior on iOS 10.
+        flowLayout.estimatedItemSize = CGSize(width: width, height: 100)
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
+        return items.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
+        
+        let cell = collectionView.dequeueCell(for: indexPath) as SessionCell
+        cell.viewModel = items[indexPath.item]
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueSupplementaryView(ofKind: kind, for: indexPath) as SessionHeaderCollectionReusableView
+        return view
+    }
+}
