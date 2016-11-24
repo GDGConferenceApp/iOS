@@ -21,8 +21,8 @@ class SessionsViewController: UICollectionViewController {
         }
     }
     
-    struct Fixture {
-        static let items: [SessionViewModel] = [
+    final class Fixture {
+        static var items: [SessionViewModel] = [
             SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [], tags: []),
             SessionViewModel(sessionID: "two", title: "Session Two", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
             SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
@@ -62,5 +62,22 @@ class SessionsViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueSupplementaryView(ofKind: kind, for: indexPath) as SessionHeaderCollectionReusableView
         return view
+    }
+    
+    // MARK: UIResponder
+    
+    override func dev_toggleStarred(forSessionID identifier: String) {
+        guard let sessionIndex = Fixture.items.index(where: { return $0.sessionID == identifier }) else {
+            return
+        }
+
+        let indexPath = IndexPath(item: sessionIndex, section: 0)
+        var updatedViewModel = Fixture.items[sessionIndex]
+        updatedViewModel.isStarred = !updatedViewModel.isStarred
+        if let cell = collectionView?.cellForItem(at: indexPath) as? SessionCell {
+            cell.viewModel?.isStarred = updatedViewModel.isStarred
+        }
+        
+        Fixture.items[sessionIndex] = updatedViewModel
     }
 }
