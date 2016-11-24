@@ -23,9 +23,9 @@ class SessionsViewController: UICollectionViewController {
     
     struct Fixture {
         static let items: [SessionViewModel] = [
-            SessionViewModel(sessionID: "one", title: "First Session", subtitle: "auditorium", category: "android", color: .green, isStarred: false),
-            SessionViewModel(sessionID: "two", title:  "Session Two", subtitle: "classroom 1", category: "design", color: .blue, isStarred: true),
-            SessionViewModel(sessionID: "three", title: "Session the Third", subtitle: "lab", category: "", color: .black, isStarred: false),
+            SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [], tags: []),
+            SessionViewModel(sessionID: "two", title: "Session Two", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
+            SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
         ]
         
         static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }

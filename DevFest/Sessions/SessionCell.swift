@@ -8,15 +8,6 @@
 
 import UIKit
 
-struct SessionViewModel {
-    let sessionID: String
-    let title: String
-    let subtitle: String
-    let category: String?
-    let color: UIColor
-    let isStarred: Bool
-}
-
 /**
  Display data from a `SessionViewModel`. Star toggle events are passed up the responder chain
  using `UIResponder.dev_toggleStarred(forSessionID:)`.
@@ -31,7 +22,7 @@ class SessionCell: UICollectionViewCell {
     var viewModel: SessionViewModel? {
         didSet {
             titleLabel.text = viewModel?.title
-            subtitleLabel.text = viewModel?.subtitle
+            subtitleLabel.text = viewModel?.room
             
             if let category = viewModel?.category {
                 categoryLabel.text = category

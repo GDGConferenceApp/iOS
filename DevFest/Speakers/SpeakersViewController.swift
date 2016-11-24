@@ -11,6 +11,12 @@ import UIKit
 class SpeakersViewController: UICollectionViewController {
     @IBOutlet private var flowLayout: UICollectionViewFlowLayout!
     
+    struct Fixture {
+        static let items: [SpeakerViewModel] = [
+            SpeakerViewModel(speakerID: "one", name: "Patrick Fuentes", association: "The Nerdery", imageURL: nil, image: nil, twitter: nil, website: nil),
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,9 +29,15 @@ class SpeakersViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDataSource
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Fixture.items.count
+    }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(for: indexPath) as SpeakerCell
+        let item = Fixture.items[indexPath.item]
+        cell.viewModel = item
         return cell
     }
 

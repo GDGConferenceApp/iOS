@@ -8,12 +8,6 @@
 
 import UIKit
 
-struct SpeakerViewModel {
-    let title: String
-    let subtitle: String
-    let image: UIImage?
-}
-
 class SpeakerCell: UICollectionViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subtitleLabel: UILabel!
@@ -21,8 +15,8 @@ class SpeakerCell: UICollectionViewCell {
     
     var viewModel: SpeakerViewModel? {
         didSet {
-            titleLabel?.text = viewModel?.title
-            titleLabel?.text = viewModel?.subtitle
+            titleLabel?.text = viewModel?.name
+            subtitleLabel?.text = viewModel?.association
             
             if let image = viewModel?.image {
                 imageView.image = image
