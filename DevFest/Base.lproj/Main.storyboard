@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,6 +25,7 @@
                         <segue destination="YHR-sl-PBL" kind="relationship" relationship="viewControllers" id="Gvi-LZ-IE0"/>
                         <segue destination="g9H-Vn-GPL" kind="relationship" relationship="viewControllers" id="kDw-FP-wag"/>
                         <segue destination="d1j-lq-Xwv" kind="relationship" relationship="viewControllers" id="olW-OW-v1V"/>
+                        <segue destination="dQk-2b-xYZ" kind="relationship" relationship="viewControllers" id="z2l-d4-zgL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -81,7 +82,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpeakerCell" id="AAi-EU-1j4" customClass="SpeakerCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="28" y="0.0" width="320" height="104"/>
+                                <rect key="frame" x="27.5" y="0.0" width="320" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
@@ -145,6 +146,39 @@
             </objects>
             <point key="canvasLocation" x="1461.5999999999999" y="1010.6446776611695"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="zW1-BM-nYP">
+            <objects>
+                <viewController id="dQk-2b-xYZ" customClass="MapViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sfz-VI-LYf"/>
+                        <viewControllerLayoutGuide type="bottom" id="TNb-Ub-DEZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HDH-B0-EXr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-H9-9rW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Fpz-H9-9rW" secondAttribute="bottom" id="5Bl-SA-KVD"/>
+                            <constraint firstAttribute="trailing" secondItem="Fpz-H9-9rW" secondAttribute="trailing" id="7VH-iL-4Nz"/>
+                            <constraint firstItem="Fpz-H9-9rW" firstAttribute="leading" secondItem="HDH-B0-EXr" secondAttribute="leading" id="VKS-ED-QUL"/>
+                            <constraint firstItem="Fpz-H9-9rW" firstAttribute="top" secondItem="HDH-B0-EXr" secondAttribute="top" id="bGL-RN-7r2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="yGS-Sk-Qsr"/>
+                    <connections>
+                        <outlet property="mapView" destination="Fpz-H9-9rW" id="p5g-aK-dC7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9G-Ra-2R4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693.60000000000002" y="1703.2983508245879"/>
+        </scene>
         <!--Speakers-->
         <scene sceneID="ArW-Na-58f">
             <objects>
@@ -178,7 +212,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionCell" id="lDa-kF-u3c" customClass="SessionCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="28" y="50" width="320" height="96"/>
+                                <rect key="frame" x="27.5" y="50" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14F8811DE9ED7A0092F899 /* MapViewController.swift */; };
 		DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */; };
 		DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */; };
 		DA2F3B501DE6219E00B2F8D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4F1DE6219E00B2F8D2 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA14F8811DE9ED7A0092F899 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA2F3B431DE6219E00B2F8D2 /* DevFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2F3B4D1DE6219E00B2F8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				DA2F3B811DE631BC00B2F8D2 /* Speakers */,
 				DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */,
 				DA2F3B781DE622C900B2F8D2 /* AppCoordinator.swift */,
+				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
 				DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */,
 				DA2F3B4F1DE6219E00B2F8D2 /* Assets.xcassets */,
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */,
 				DAE039441DE74B05009C859B /* SpeakerViewModel.swift in Sources */,
 				DA2F3B7E1DE6249E00B2F8D2 /* SessionCell.swift in Sources */,
 				DAE039421DE7451D009C859B /* SessionViewModel.swift in Sources */,
