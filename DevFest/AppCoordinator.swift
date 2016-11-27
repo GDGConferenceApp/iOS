@@ -26,6 +26,9 @@ class AppCoordinator: NSObject {
     }
     
     func start() {
+        // Make sure the AppearanceNotifier singleton has been created by now.
+        _ = AppearanceNotifier.shared
+        
         sessionsViewController.title = NSLocalizedString("Sessions", comment: "tab title")
         starredSessionsViewController.title = NSLocalizedString("Your Schedule", comment: "tab title")
         starredSessionsViewController.shouldShowStarredOnly = true
