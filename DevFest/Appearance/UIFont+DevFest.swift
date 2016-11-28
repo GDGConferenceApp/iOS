@@ -18,4 +18,8 @@ extension UIFont {
     static var dev_reusableItemSubtitleFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .body)
     }
+    
+    static var dev_categoryFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .footnote)
+    }
 }

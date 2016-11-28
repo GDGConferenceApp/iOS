@@ -8,35 +8,31 @@
 
 import UIKit
 
-class SpeakersViewController: UICollectionViewController {
-    @IBOutlet private var flowLayout: UICollectionViewFlowLayout!
+class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
+    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
     struct Fixture {
-        static let items: [SpeakerViewModel] = [
-            SpeakerViewModel(speakerID: "one", name: "Patrick Fuentes", association: "The Nerdery", imageURL: nil, image: nil, twitter: nil, website: nil),
-        ]
+        static let speakers: [SpeakerViewModel] = [
+            SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
+            SpeakerViewModel(speakerID: "swei", name: "Patrick Star", association: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
+            SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
+            ]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Note: The item size in the storyboard is set to `320`, the narrowest width
-        // that we expect this view controller to ever be. If it is set higher,
-        // when the app is run on a narrow device such as the iPhone SE,
-        // our collection view cells start wider than the collection view.
-        // This is undefined behavior and results in poor behavior on iOS 10.
-        flowLayout.estimatedItemSize = CGSize(width: view.frame.width, height: 100)
+        updateFlowLayoutItemWidth()
     }
 
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Fixture.items.count
+        return Fixture.speakers.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(for: indexPath) as SpeakerCell
-        let item = Fixture.items[indexPath.item]
+        let item = Fixture.speakers[indexPath.item]
         cell.viewModel = item
         return cell
     }

@@ -27,13 +27,19 @@ extension SpeakerCell: ReusableItem {
 
 @IBDesignable
 class SpeakerCellView: UIView {
-    private let titleLabel = UILabel()
-    private let subtitleLabel = UILabel()
-    private let imageView = UIImageView()
-    private lazy var titleSubtitleStackView: UIStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel,])
-    private lazy var horizontalStackView: UIStackView = UIStackView(arrangedSubviews: [self.imageView, self.titleSubtitleStackView,])
+    static fileprivate let ImageSideLength: CGFloat = 40
     
-    private var addedConstraints: [NSLayoutConstraint] = []
+    fileprivate let titleLabel = UILabel()
+    fileprivate let subtitleLabel = UILabel()
+    fileprivate let imageView = UIImageView()
+    fileprivate lazy var titleSubtitleStackView: UIStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel,])
+    fileprivate lazy var horizontalStackView: UIStackView = UIStackView(arrangedSubviews: [self.imageView, self.titleSubtitleStackView,])
+    
+    /**
+     Constraints between subviews and `self`. Track these so we only add them once when
+     this class is used in interface builder.
+     */
+    fileprivate var addedConstraints: [NSLayoutConstraint] = []
     
     @IBInspectable var titleSubtitleSpacing: CGFloat = 4 {
         didSet {
@@ -58,6 +64,16 @@ class SpeakerCellView: UIView {
                 imageView.isHidden = true
             }
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let maxSize = CGSize(width: .max, height: .max)
+        let horizontalStackViewSize = horizontalStackView.systemLayoutSizeFitting(maxSize)
+        
+        let width = horizontalStackViewSize.width + layoutMargins.left + layoutMargins.right
+        let height = horizontalStackViewSize.height + layoutMargins.top + layoutMargins.bottom
+        
+        return CGSize(width: width, height: height)
     }
     
     override init(frame: CGRect) {
@@ -87,14 +103,30 @@ class SpeakerCellView: UIView {
         subviewsInit()
     }
     
-    private func subviewsInit() {
-        titleSubtitleStackView.axis = .vertical
+    override func dev_updateAppearance() {
+        super.dev_updateAppearance()
+        
+        titleLabel.font = .dev_reusableItemTitleFont
+        subtitleLabel.font = .dev_reusableItemSubtitleFont
+    }
+}
 
+fileprivate extension SpeakerCellView {
+    func subviewsInit() {
+        titleSubtitleStackView.axis = .vertical
+        
         updateSpacing()
         dev_addSubview(horizontalStackView)
         
         removeConstraints(addedConstraints)
+        
+        let imageViewWidth = imageView.widthAnchor.constraint(equalToConstant: SpeakerCellView.ImageSideLength)
+        imageViewWidth.priority = UILayoutPriorityRequired - 1
         addedConstraints = [
+            // Make the image view fixed-size and square
+            imageViewWidth,
+            imageView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1),
+            
             // Constrain to our margins
             horizontalStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             horizontalStackView.trailingAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor),
@@ -107,16 +139,9 @@ class SpeakerCellView: UIView {
         dev_updateAppearance()
     }
     
-    private func updateSpacing() {
+    func updateSpacing() {
         layoutMargins.left = .dev_standardMargin * 1.5
         titleSubtitleStackView.spacing = titleSubtitleSpacing
         horizontalStackView.spacing = imageTitleSpacing
-    }
-    
-    override func dev_updateAppearance() {
-        super.dev_updateAppearance()
-        
-        titleLabel.font = .dev_reusableItemTitleFont
-        subtitleLabel.font = .dev_reusableItemSubtitleFont
     }
 }

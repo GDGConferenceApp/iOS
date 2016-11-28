@@ -49,10 +49,16 @@ class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelCons
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         dev_updateAppearance()
+        
+        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", color: .green, isStarred: true, category: "android", room: "auditorium", start: nil, end: nil, speakers: [], tags: [])
     }
     
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
+        
+        titleLabel.font = .dev_reusableItemTitleFont
+        locationLabel.font = .dev_reusableItemSubtitleFont
+        categoryLabel.font = .dev_categoryFont
         
         categoryLeadingConstraint?.constant = .dev_standardMargin
         categoryTopConstraint?.constant = floor(CGFloat.dev_standardMargin / 4)
@@ -67,10 +73,10 @@ class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelCons
         timeLocationStackView.addArrangedSubview(timeLabel)
         timeLocationStackView.addArrangedSubview(locationLabel)
         
-        dev_addSubview(colorView)
-        dev_addSubview(categoryLabel)
-        dev_addSubview(titleLabel)
-        dev_addSubview(timeLocationStackView)
+        contentView.dev_addSubview(colorView)
+        contentView.dev_addSubview(categoryLabel)
+        contentView.dev_addSubview(titleLabel)
+        contentView.dev_addSubview(timeLocationStackView)
         
         let colorViewConstraints: [NSLayoutConstraint] = [
             colorView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -84,6 +90,11 @@ class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelCons
         titleTopConstraint = titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
         timeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
         timeLocationBottomConstraint = timeLocationStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+        
+        let otherLeftConstraints: [NSLayoutConstraint] = [
+            titleLabel.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+            timeLocationStackView.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+        ]
 
         // not activated by default
         noTimeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
@@ -95,6 +106,7 @@ class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelCons
         titleTopConstraint?.isActive = true
         timeLocationTopConstraint?.isActive = true
         timeLocationBottomConstraint?.isActive = true
+        NSLayoutConstraint.activate(otherLeftConstraints)
         
         dev_updateAppearance()
     }

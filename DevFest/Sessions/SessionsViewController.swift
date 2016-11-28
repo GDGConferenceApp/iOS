@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SessionsViewController: UICollectionViewController {
-    @IBOutlet private var flowLayout: UICollectionViewFlowLayout!
+class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
+    @IBInspectable private var detailSegueIdentifier: String = "sessionDetail"
+    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
     var shouldShowStarredOnly = false {
         didSet {
@@ -28,26 +29,31 @@ class SessionsViewController: UICollectionViewController {
             SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
         ]
         
-        static var speakers: [SpeakerViewModel] = [
-            SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
-            SpeakerViewModel(speakerID: "swei", name: "Patrick Star", association: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
-            SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
-        ]
+        static var speakers: [SpeakerViewModel] { return SpeakersViewController.Fixture.speakers }
         
         static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let width = view.frame.width
-        
-        // Note: The item size in the storyboard is set to `320`, the narrowest width
-        // that we expect this view controller to ever be. If it is set higher,
-        // when the app is run on a narrow device such as the iPhone SE,
-        // our collection view cells start wider than the collection view.
-        // This is undefined behavior and results in poor behavior on iOS 10.
-        flowLayout.estimatedItemSize = CGSize(width: width, height: 100)
+        updateFlowLayoutItemWidth()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.identifier, sender, segue.destination) {
+        case (detailSegueIdentifier?, let cell as SessionCell, let destination as SessionDetailViewController):
+            let indexPath = collectionView?.indexPath(for: cell)
+            let viewModel = indexPath.map { return self.viewModel(at: $0) }
+            destination.viewModel = viewModel
+        default:
+            break
+        }
+    }
+    
+    private func viewModel(at indexPath: IndexPath) -> SessionViewModel {
+        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
+        let viewModel = items[indexPath.item]
+        return viewModel
     }
     
     // MARK: UICollectionViewDataSource
@@ -58,10 +64,8 @@ class SessionsViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
-        
         let cell = collectionView.dequeueCell(for: indexPath) as SessionCell
-        cell.viewModel = items[indexPath.item]
+        cell.viewModel = viewModel(at: indexPath)
         return cell
     }
     

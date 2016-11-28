@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */; };
 		DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14F8811DE9ED7A0092F899 /* MapViewController.swift */; };
 		DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */; };
 		DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayoutContaining.swift; sourceTree = "<group>"; };
 		DA14F8811DE9ED7A0092F899 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA2F3B431DE6219E00B2F8D2 /* DevFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				DA2F3B811DE631BC00B2F8D2 /* Speakers */,
 				DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */,
 				DA2F3B781DE622C900B2F8D2 /* AppCoordinator.swift */,
+				DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */,
 				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
 				DA6358371DEB50A100728D01 /* UIView+DevFest.swift */,
@@ -343,6 +346,7 @@
 				DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */,
 				DAB0C22B1DEBD12A006C97F1 /* SessionTitleCell.swift in Sources */,
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
+				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* CGFloat+DevFest.swift in Sources */,

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SessionDetailViewController: UICollectionViewController {
+class SessionDetailViewController: UICollectionViewController, FlowLayoutContaining {
+    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
+    
     var viewModel: SessionViewModel? {
         didSet {
             guard isViewLoaded else {
@@ -21,6 +23,7 @@ class SessionDetailViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateFlowLayoutItemWidth()
         updateFromViewModel()
     }
     
