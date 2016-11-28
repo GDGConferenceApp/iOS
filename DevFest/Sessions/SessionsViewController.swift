@@ -23,9 +23,15 @@ class SessionsViewController: UICollectionViewController {
     
     final class Fixture {
         static var items: [SessionViewModel] = [
-            SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [], tags: []),
+            SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [Fixture.speakers[0]], tags: []),
             SessionViewModel(sessionID: "two", title: "Session Two", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
             SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
+        ]
+        
+        static var speakers: [SpeakerViewModel] = [
+            SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
+            SpeakerViewModel(speakerID: "swei", name: "Patrick Star", association: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
+            SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
         ]
         
         static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }

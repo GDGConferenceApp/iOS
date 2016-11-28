@@ -34,4 +34,27 @@ struct SessionViewModel {
         let hasEnded = Date() > end
         return hasEnded
     }
+    
+    func durationString(using dateFormatter: DateFormatter) -> String? {
+        switch (start, end) {
+        case let (start?, end?):
+            let format = NSLocalizedString("%@ - %@", comment: "Time range, e.g. for session start and end")
+            let stringStart = dateFormatter.string(from: start)
+            let stringEnd = dateFormatter.string(from: end)
+            let formatted = String(format: format, stringStart, stringEnd)
+            return formatted
+        case let (start?, nil):
+            let format = NSLocalizedString("Starts %@", comment: "Start time, e.g. for session start")
+            let stringDate = dateFormatter.string(from: start)
+            let formatted = String(format: format, stringDate)
+            return formatted
+        case let (nil, end?):
+            let format = NSLocalizedString("Ends %@", comment: "Start time, e.g. for session start")
+            let stringDate = dateFormatter.string(from: end)
+            let formatted = String(format: format, stringDate)
+            return formatted
+        case (nil, nil):
+            return nil
+        }
+    }
 }

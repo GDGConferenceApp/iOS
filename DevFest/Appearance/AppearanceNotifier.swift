@@ -33,3 +33,27 @@ final class AppearanceNotifier: NSObject {
         NotificationCenter.default.removeObserver(observerToken)
     }
 }
+
+extension UIView {
+    @objc private func dev_apperanceNeedsUpdate(notification: Notification) {
+        dev_updateAppearance()
+    }
+    
+    /**
+     Register to be informed when appearance settings, such as fonts and colors, are updated.
+     
+     `dev_updateAppearance()` will be called when such an event occurs.
+     */
+    final func dev_registerForAppearanceUpdates() {
+        NotificationCenter.default.addObserver(self, selector: #selector(dev_apperanceNeedsUpdate(notification:)), name: .DEVAppearanceDidChange, object: nil)
+    }
+    
+    /**
+     One of the convenience methods for responding to appearance updates.
+     
+     - SeeAlso: `dev_registerForAppearanceUpdates()`
+     */
+    func dev_updateAppearance() {
+        // empty by default
+    }
+}
