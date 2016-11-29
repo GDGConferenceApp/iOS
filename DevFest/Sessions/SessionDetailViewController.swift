@@ -8,8 +8,12 @@
 
 import UIKit
 
-class SessionDetailViewController: UICollectionViewController, FlowLayoutContaining {
-    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
+class SessionDetailViewController: UIViewController {
+    @IBOutlet var sessionTitleView: SessionTitleView!
+    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var speakersStackView: UIStackView!
+    
+    @IBOutlet var speakersSectionLabel: UILabel!
     
     var viewModel: SessionViewModel? {
         didSet {
@@ -23,98 +27,51 @@ class SessionDetailViewController: UICollectionViewController, FlowLayoutContain
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateFlowLayoutItemWidth()
         updateFromViewModel()
+        
+        // We have to set both `isLayoutMarginsRelativeArrangement` and the `layoutMargins`,
+        // even if we want the standard `layoutMargins`, to get a stack view to respect the margins.
+        speakersStackView.isLayoutMarginsRelativeArrangement = true
+        
+        dev_updateAppearance()
+        dev_registerForAppearanceUpdates()
+        
+        speakersSectionLabel.text = NSLocalizedString("Speakers:", comment: "Speakers section delineator in the session detail view")
     }
     
-    // MARK: - UICollectionViewDataSource
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell
-        // Use a separate variable since we can't declare variables that subclass a class plus implement a protocol
-        let vmConsumer: SessionViewModelConsumer?
+    override func dev_updateAppearance() {
+        super.dev_updateAppearance()
         
-        switch CellType(at: indexPath) {
-        case .title:
-            let title = collectionView.dequeueCell(for: indexPath) as SessionTitleCell
-            vmConsumer = title
-            cell = title
-        case .description:
-            let description = collectionView.dequeueCell(for: indexPath) as SessionDescriptionCell
-            vmConsumer = description
-            cell = description
-        case let .speaker(index: speakerIndex):
-            let speaker = collectionView.dequeueCell(for: indexPath) as SessionSpeakerCell
-            let speakerViewModel = viewModel?.speakers[speakerIndex]
-            speaker.viewModel = speakerViewModel
-            vmConsumer = nil
-            cell = speaker
-        }
-        
-        vmConsumer?.viewModel = viewModel
-        
-        return cell
+        speakersSectionLabel.font = .dev_sectionHeaderFont
+        speakersStackView.layoutMargins = .dev_standardMargins
     }
     
     private func updateFromViewModel() {
-        guard let _ = viewModel, let collectionView = collectionView else {
-            NSLog("Tried to update displayed information from view model, but either no view model or no collection view.")
+        guard let viewModel = viewModel else {
+            NSLog("Tried to update displayed information from view model, but no view model set.")
             return
         }
         
-        // TODO: Fine-grained updates
-        collectionView.reloadData()
-    }
-
-}
-
-private enum CellType {
-    case title
-    case description
-    case speaker(index: Int)
-    
-    init(at indexPath: IndexPath) {
-        switch indexPath.item {
-        case 0:
-            self = .title
-        case 1:
-            self = .description
-        case let value where value > 0:
-            self = .speaker(index: value - 2)
-        default:
-            fatalError()
+        sessionTitleView.viewModel = viewModel
+        
+        descriptionTextView.text = "Placeholder bio."
+        
+        let speakerSubviews = speakersStackView.arrangedSubviews
+        for speakerView in speakerSubviews {
+            speakersStackView.removeArrangedSubview(speakerView)
+        }
+        
+        guard case let speakers = viewModel.speakers, !speakers.isEmpty else {
+            return
+        }
+        
+        speakersStackView.addArrangedSubview(speakersSectionLabel)
+        
+        for speaker in viewModel.speakers {
+            let speakerView = SpeakerTitleView()
+            speakerView.viewModel = speaker
+            speakersStackView.addArrangedSubview(speakerView)
         }
     }
-}
 
-protocol SessionViewModelConsumer {
-    var viewModel: SessionViewModel? { get set }
-}
-
-private class SessionDescriptionCell: UICollectionViewCell, ReusableItem, SessionViewModelConsumer {
-    static let reuseID = String(describing: SessionDescriptionCell.self)
-    
-    var viewModel: SessionViewModel?
-}
-
-private class SessionSpeakerCell: UICollectionViewCell, ReusableItem {
-    static let reuseID = String(describing: SessionSpeakerCell.self)
-    
-    @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var speakerCellView: SpeakerCellView!
-    
-    var viewModel: SpeakerViewModel? {
-        didSet {
-            speakerCellView.viewModel = viewModel
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        titleLabel.text = NSLocalizedString("Speaker:", comment: "")
-    }
 }

@@ -1,5 +1,5 @@
 //
-//  SessionTitleCell.swift
+//  SessionTitleView.swift
 //  DevFest
 //
 //  Created by Brendon Justin on 11/27/16.
@@ -12,9 +12,7 @@ import UIKit
  Show a session's title and other metadata.
  */
 @IBDesignable
-class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelConsumer {
-    static let reuseID = String(describing: SessionTitleCell.self)
-    
+class SessionTitleView: UIView {
     private let colorView = UIView()
     private let categoryLabel = UILabel()
     private let titleLabel = UILabel()
@@ -73,10 +71,10 @@ class SessionTitleCell: UICollectionViewCell, ReusableItem, SessionViewModelCons
         timeLocationStackView.addArrangedSubview(timeLabel)
         timeLocationStackView.addArrangedSubview(locationLabel)
         
-        contentView.dev_addSubview(colorView)
-        contentView.dev_addSubview(categoryLabel)
-        contentView.dev_addSubview(titleLabel)
-        contentView.dev_addSubview(timeLocationStackView)
+        dev_addSubview(colorView)
+        dev_addSubview(categoryLabel)
+        dev_addSubview(titleLabel)
+        dev_addSubview(timeLocationStackView)
         
         let colorViewConstraints: [NSLayoutConstraint] = [
             colorView.leadingAnchor.constraint(equalTo: leadingAnchor),

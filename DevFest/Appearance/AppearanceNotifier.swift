@@ -34,7 +34,7 @@ final class AppearanceNotifier: NSObject {
     }
 }
 
-extension UIView {
+extension NSObject {
     @objc private func dev_apperanceNeedsUpdate(notification: Notification) {
         dev_updateAppearance()
     }

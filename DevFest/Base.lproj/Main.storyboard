@@ -88,7 +88,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lf-Qn-D1L" customClass="SpeakerCellView" customModule="DevFest" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lf-Qn-D1L" customClass="SpeakerTitleView" customModule="DevFest" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="21.5" width="156.5" height="61"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
@@ -102,7 +102,7 @@
                                     <constraint firstItem="2lf-Qn-D1L" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AAi-EU-1j4" secondAttribute="top" id="fBK-BO-m4q"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="speakerCellView" destination="2lf-Qn-D1L" id="O3V-f1-nSO"/>
+                                    <outlet property="speakerTitleView" destination="2lf-Qn-D1L" id="O3V-f1-nSO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -250,9 +250,9 @@
                                     <outlet property="starButton" destination="DNJ-Me-If6" id="43C-tT-yu1"/>
                                     <outlet property="subtitleLabel" destination="k5H-Qd-pQ9" id="ceH-XI-3rs"/>
                                     <outlet property="titleLabel" destination="TTT-e9-Z3d" id="jah-no-zm4"/>
-                                    <segue destination="l70-Tc-F2E" kind="showDetail" identifier="sessionDetail" action="showViewController:sender:" id="Klb-Eq-fys">
-                                        <segue key="commit" inheritsFrom="parent" id="MEM-yu-zpZ"/>
-                                        <segue key="preview" inheritsFrom="commit" id="x9a-S3-Rr0"/>
+                                    <segue destination="Gbw-G4-ZX8" kind="show" identifier="sessionDetail" id="zFX-ur-O9B">
+                                        <segue key="commit" inheritsFrom="parent" id="OjC-fj-vrU"/>
+                                        <segue key="preview" inheritsFrom="commit" id="DGd-bW-6fj"/>
                                     </segue>
                                 </connections>
                             </collectionViewCell>
@@ -293,81 +293,82 @@
             <point key="canvasLocation" x="1463" y="-413"/>
         </scene>
         <!--Session Detail View Controller-->
-        <scene sceneID="Zq0-Gb-nXN">
+        <scene sceneID="B0g-BO-Tfb">
             <objects>
-                <collectionViewController id="l70-Tc-F2E" customClass="SessionDetailViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mbb-nz-fQP">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LPJ-pj-1yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Gbw-G4-ZX8" customClass="SessionDetailViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KpT-oA-duL"/>
+                        <viewControllerLayoutGuide type="bottom" id="BK0-dH-Eit"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WaF-Ok-OpZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="IIy-du-ysA">
-                            <size key="itemSize" width="320" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionTitleCell" id="ffs-Kf-on9" customClass="SessionTitleCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionDescriptionCell" id="oo3-oy-Hdm" customClass="SessionDescriptionCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="100" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionSpeakerCell" id="mWv-T1-Wcw" customClass="SessionSpeakerCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="200" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4o-M8-4yZ" customClass="SpeakerCellView" customModule="DevFest" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="39" width="320" height="61"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yll-9u-Dsd">
-                                            <rect key="frame" x="8" y="8" width="67.5" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5T-Jo-1EX" userLabel="Side Constraining View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F23-lm-gfv">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-lW-c7K">
+                                                <rect key="frame" x="0.0" y="128" width="320" height="216.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-hM-K31">
+                                                <rect key="frame" x="0.0" y="344.5" width="320" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speakers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-Vs-NeA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Q4o-M8-4yZ" secondAttribute="trailing" id="7ic-vi-IwP"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Q4o-M8-4yZ" secondAttribute="bottom" id="CU0-Nf-G6O"/>
-                                    <constraint firstItem="yll-9u-Dsd" firstAttribute="top" secondItem="mWv-T1-Wcw" secondAttribute="topMargin" id="Iva-Xw-k8v"/>
-                                    <constraint firstItem="Q4o-M8-4yZ" firstAttribute="top" secondItem="yll-9u-Dsd" secondAttribute="bottom" constant="11" id="VSN-87-rRr"/>
-                                    <constraint firstItem="Q4o-M8-4yZ" firstAttribute="leading" secondItem="mWv-T1-Wcw" secondAttribute="leading" id="XlN-v1-qpI"/>
-                                    <constraint firstItem="yll-9u-Dsd" firstAttribute="leading" secondItem="mWv-T1-Wcw" secondAttribute="leadingMargin" id="few-IQ-qew"/>
+                                    <constraint firstItem="9La-lj-KFc" firstAttribute="top" secondItem="F23-lm-gfv" secondAttribute="top" id="49U-ZF-X7x"/>
+                                    <constraint firstAttribute="bottom" secondItem="9La-lj-KFc" secondAttribute="bottom" id="8cR-wF-kCI"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="speakerCellView" destination="Q4o-M8-4yZ" id="0CM-qH-5Bo"/>
-                                    <outlet property="titleLabel" destination="yll-9u-Dsd" id="ptA-Ed-5AK"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="l70-Tc-F2E" id="2Sh-8X-hrx"/>
-                            <outlet property="delegate" destination="l70-Tc-F2E" id="fRn-xc-Fj6"/>
-                        </connections>
-                    </collectionView>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BK0-dH-Eit" firstAttribute="top" secondItem="E5T-Jo-1EX" secondAttribute="bottom" id="29K-5R-89L"/>
+                            <constraint firstItem="E5T-Jo-1EX" firstAttribute="leading" secondItem="WaF-Ok-OpZ" secondAttribute="leading" id="2JG-OD-rbT"/>
+                            <constraint firstAttribute="trailing" secondItem="E5T-Jo-1EX" secondAttribute="trailing" id="6f6-sr-Ehu"/>
+                            <constraint firstAttribute="trailing" secondItem="F23-lm-gfv" secondAttribute="trailing" id="Fuj-ul-eer"/>
+                            <constraint firstItem="BK0-dH-Eit" firstAttribute="top" secondItem="F23-lm-gfv" secondAttribute="bottom" id="L3a-yY-1Hw"/>
+                            <constraint firstItem="E5T-Jo-1EX" firstAttribute="leading" secondItem="9La-lj-KFc" secondAttribute="leading" id="Mbo-Ta-1SI"/>
+                            <constraint firstItem="E5T-Jo-1EX" firstAttribute="trailing" secondItem="9La-lj-KFc" secondAttribute="trailing" id="exm-IH-hOj"/>
+                            <constraint firstItem="F23-lm-gfv" firstAttribute="leading" secondItem="WaF-Ok-OpZ" secondAttribute="leading" id="iLr-Bf-bPW"/>
+                            <constraint firstItem="E5T-Jo-1EX" firstAttribute="top" secondItem="KpT-oA-duL" secondAttribute="bottom" id="kau-ze-djt"/>
+                            <constraint firstItem="F23-lm-gfv" firstAttribute="top" secondItem="KpT-oA-duL" secondAttribute="bottom" id="sbb-4S-nC0"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="flowLayout" destination="IIy-du-ysA" id="FR4-hn-jP8"/>
+                        <outlet property="descriptionTextView" destination="C1i-lW-c7K" id="g6s-vg-e6l"/>
+                        <outlet property="sessionTitleView" destination="3OL-DF-VYv" id="j5x-Ow-k6W"/>
+                        <outlet property="speakersSectionLabel" destination="9Lw-Vs-NeA" id="4t7-oZ-9xc"/>
+                        <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>
                     </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3ag-sC-Ddu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="2318" y="-413"/>
+            <point key="canvasLocation" x="2336.25" y="-413.02816901408454"/>
         </scene>
     </scenes>
     <resources>
@@ -375,6 +376,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zEa-fF-g2e"/>
-        <segue reference="Klb-Eq-fys"/>
+        <segue reference="zFX-ur-O9B"/>
     </inferredMetricsTieBreakers>
 </document>
