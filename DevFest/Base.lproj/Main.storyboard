@@ -36,7 +36,7 @@
         <scene sceneID="Uju-sr-bYk">
             <objects>
                 <navigationController id="YHR-sl-PBL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sessions" id="HyL-71-rXe"/>
+                    <tabBarItem key="tabBarItem" title="Sessions" image="list-icons8" selectedImage="list-filled-icons8" id="HyL-71-rXe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TKV-De-Jg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -53,7 +53,7 @@
         <scene sceneID="TQr-bZ-DEJ">
             <objects>
                 <navigationController id="g9H-Vn-GPL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Starred" id="fR1-ga-isy"/>
+                    <tabBarItem key="tabBarItem" title="Starred" image="star-icons8" selectedImage="star-filled-icons8" id="fR1-ga-isy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8MD-Om-e1A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -144,7 +144,7 @@
                             <constraint firstItem="Fpz-H9-9rW" firstAttribute="top" secondItem="HDH-B0-EXr" secondAttribute="top" id="bGL-RN-7r2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="yGS-Sk-Qsr"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map-icons8" selectedImage="map-filled-icons8" id="yGS-Sk-Qsr"/>
                     <connections>
                         <outlet property="mapView" destination="Fpz-H9-9rW" id="p5g-aK-dC7"/>
                     </connections>
@@ -157,7 +157,7 @@
         <scene sceneID="ArW-Na-58f">
             <objects>
                 <navigationController id="d1j-lq-Xwv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Speakers" id="Ls3-ft-5wB"/>
+                    <tabBarItem key="tabBarItem" title="Speakers" image="mic-icons8" selectedImage="mic-filled-icons8" id="Ls3-ft-5wB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5t8-7l-pmo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -224,8 +224,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNJ-Me-If6">
-                                            <rect key="frame" x="276" y="24" width="24" height="24"/>
-                                            <state key="normal" image="star-empty"/>
+                                            <rect key="frame" x="275" y="24" width="25" height="25"/>
+                                            <state key="normal" image="star-icons8"/>
                                             <connections>
                                                 <action selector="toggleStarredWithSender:" destination="lDa-kF-u3c" eventType="touchUpInside" id="hFy-mz-UQN"/>
                                             </connections>
@@ -295,7 +295,6 @@
         <!--Session Detail View Controller-->
         <scene sceneID="B0g-BO-Tfb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LPJ-pj-1yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Gbw-G4-ZX8" customClass="SessionDetailViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KpT-oA-duL"/>
@@ -367,15 +366,23 @@
                         <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LPJ-pj-1yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2336.25" y="-413.02816901408454"/>
         </scene>
     </scenes>
     <resources>
-        <image name="star-empty" width="24" height="24"/>
+        <image name="list-filled-icons8" width="25" height="25"/>
+        <image name="list-icons8" width="25" height="25"/>
+        <image name="map-filled-icons8" width="25" height="25"/>
+        <image name="map-icons8" width="25" height="25"/>
+        <image name="mic-filled-icons8" width="25" height="25"/>
+        <image name="mic-icons8" width="25" height="25"/>
+        <image name="star-filled-icons8" width="25" height="25"/>
+        <image name="star-icons8" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zEa-fF-g2e"/>
+        <segue reference="DDo-CF-dcv"/>
         <segue reference="zFX-ur-O9B"/>
     </inferredMetricsTieBreakers>
 </document>
