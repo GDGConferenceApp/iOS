@@ -8,15 +8,29 @@
 
 import UIKit
 
+/**
+ A view for showing some basic info about a speaker, including an image, their name,
+ and an organization with which they are associated.
+ */
 @IBDesignable
-class SpeakerTitleView: UIView {
+final class SpeakerTitleView: UIView {
     fileprivate let titleLabel = UILabel()
     fileprivate let subtitleLabel = UILabel()
+    /**
+     A container for the image view. We round the image view using its layer,
+     and set a shadow on the container view's layer. We can't set a shadow on the
+     image view, because then we'd have to turn off `masksToBounds`, but we need
+     to mask it for the rounding to work.
+     */
+    fileprivate let imageContainerView = UIView()
     fileprivate let imageView = UIImageView()
     fileprivate lazy var titleSubtitleStackView: UIStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel,])
-    fileprivate lazy var horizontalStackView: UIStackView = UIStackView(arrangedSubviews: [self.imageView, self.titleSubtitleStackView,])
+    fileprivate lazy var horizontalStackView: UIStackView = UIStackView(arrangedSubviews: [self.imageContainerView, self.titleSubtitleStackView,])
     
-    fileprivate var imageViewWidthConstraint: NSLayoutConstraint?
+    /**
+     Constrain the width of the image view.
+     */
+    fileprivate var imageContainerViewWidthConstraint: NSLayoutConstraint?
     
     /**
      Constraints between subviews and `self`. Track these so we only add them once when
@@ -24,16 +38,14 @@ class SpeakerTitleView: UIView {
      */
     fileprivate var addedConstraints: [NSLayoutConstraint] = []
     
-    @IBInspectable var titleSubtitleSpacing: CGFloat = 4 {
-        didSet {
-            updateSpacing()
-        }
-    }
-    @IBInspectable var imageTitleSpacing: CGFloat = 4 {
-        didSet {
-            updateSpacing()
-        }
-    }
+    /**
+     The spacing in the stack view that contains the title and subtitle labels.
+     */
+    fileprivate var titleSubtitleSpacing: CGFloat { return .dev_standardMargin / 2 }
+    /**
+     The spacing in the stack view that contains the image container and the title/subtitle stack view.
+     */
+    fileprivate var imageTitleSpacing: CGFloat { return .dev_standardMargin }
     
     var viewModel: SpeakerViewModel? {
         didSet {
@@ -42,9 +54,9 @@ class SpeakerTitleView: UIView {
             
             if let image = viewModel?.image {
                 imageView.image = image
-                imageView.isHidden = false
+                imageContainerView.isHidden = false
             } else {
-                imageView.isHidden = true
+                imageContainerView.isHidden = true
             }
             
             invalidateIntrinsicContentSize()
@@ -94,7 +106,12 @@ class SpeakerTitleView: UIView {
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", association: "Organization, LLC", imageURL: nil, image: nil, twitter: nil, website: nil)
+        
+        // We can't use UIImage(named:) or image literals when previewing a view in IB,
+        // so manually find the image in our bundle.
+        let bundleForImage = Bundle(for: SpeakerTitleView.self)
+        let speakerImage = UIImage(named: "podium-icons8", in: bundleForImage, compatibleWith: nil)
+        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", association: "Organization, LLC", imageURL: nil, image: speakerImage, twitter: nil, website: nil)
         subviewsInit()
     }
     
@@ -104,7 +121,25 @@ class SpeakerTitleView: UIView {
         titleLabel.font = .dev_reusableItemTitleFont
         subtitleLabel.font = .dev_reusableItemSubtitleFont
         
-        imageViewWidthConstraint?.constant = .dev_authorPhotoSideLength
+        let imageLayer = imageView.layer
+        imageLayer.cornerRadius = .dev_authorPhotoSideLength / 2
+        imageLayer.masksToBounds = true
+        
+        let shadowSize = CGSize(width: .dev_authorPhotoSideLength, height: .dev_authorPhotoSideLength)
+        let imageContainerLayer = imageContainerView.layer
+        imageContainerLayer.shadowColor = UIColor.dev_shadowColor.cgColor
+        imageContainerLayer.shadowOffset = .dev_shadowOffset
+        imageContainerLayer.shadowOpacity = .dev_shadowOpacity
+        imageContainerLayer.shadowRadius = .dev_shadowRadius
+        imageContainerLayer.shadowPath = CGPath(roundedRect: CGRect(origin: .zero, size: shadowSize), cornerWidth: .dev_authorPhotoSideLength / 2, cornerHeight: .dev_authorPhotoSideLength / 2, transform: nil)
+        
+        imageContainerViewWidthConstraint?.constant = .dev_authorPhotoSideLength
+        layoutMargins.left = .dev_standardMargin * 1.5
+        titleSubtitleStackView.spacing = titleSubtitleSpacing
+        horizontalStackView.spacing = imageTitleSpacing
+        
+        // Assume that something influencing our size has changed if `dev_updateAppearance` is called.
+        invalidateIntrinsicContentSize()
     }
 }
 
@@ -113,18 +148,22 @@ fileprivate extension SpeakerTitleView {
         titleSubtitleStackView.axis = .vertical
         horizontalStackView.alignment = .top
         
-        updateSpacing()
         dev_addSubview(horizontalStackView)
+        
+        imageContainerView.dev_addSubview(imageView)
+        // don't include `imageView`'s constraints in `addedConstriants`
+        imageView.dev_constrainToSuperEdges()
         
         removeConstraints(addedConstraints)
         
-        let imageViewWidth = imageView.widthAnchor.constraint(equalToConstant: .dev_authorPhotoSideLength)
-        imageViewWidthConstraint = imageViewWidth
-        imageViewWidth.priority = UILayoutPriorityRequired - 1
+        imageView.contentMode = .scaleAspectFill
+        let imageContainerViewWidth = imageContainerView.widthAnchor.constraint(equalToConstant: .dev_authorPhotoSideLength)
+        imageContainerViewWidthConstraint = imageContainerViewWidth
+        imageContainerViewWidth.priority = UILayoutPriorityRequired - 1
         let imageConstraints: [NSLayoutConstraint] = [
-            // Make the image view fixed-size and square
-            imageViewWidth,
-            imageView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1),
+            // Make the image container view fixed-size and square
+            imageContainerViewWidth,
+            imageContainerView.heightAnchor.constraint(equalTo: imageContainerView.widthAnchor, multiplier: 1),
             ]
         
         let stackConstraints = horizontalStackView.dev_constrainToSuperMargins(shouldActivate: false)
@@ -135,13 +174,5 @@ fileprivate extension SpeakerTitleView {
         NSLayoutConstraint.activate(addedConstraints)
         
         dev_updateAppearance()
-    }
-    
-    func updateSpacing() {
-        layoutMargins.left = .dev_standardMargin * 1.5
-        titleSubtitleStackView.spacing = titleSubtitleSpacing
-        horizontalStackView.spacing = imageTitleSpacing
-        
-        invalidateIntrinsicContentSize()
     }
 }

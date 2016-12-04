@@ -1,5 +1,5 @@
 //
-//  CGFloat+DevFest.swift
+//  Appearance.swift
 //  DevFest
 //
 //  Created by Brendon Justin on 11/27/16.
@@ -9,13 +9,29 @@
 import CoreGraphics
 import UIKit
 
-// All things layout margins
+// All things appearance, e.g. colors, margins, sizes
 
 extension CGFloat {
     static var dev_standardMargin: CGFloat = 8
     
     static var dev_authorPhotoSideLength: CGFloat {
         return .dev_standardMargin * 5
+    }
+    
+    static var dev_shadowRadius: CGFloat = 5
+}
+
+extension CGSize {
+    static var dev_shadowOffset: CGSize = .zero
+}
+
+extension Float {
+    static var dev_shadowOpacity: Float = 0.5
+}
+
+extension UIColor {
+    static var dev_shadowColor: UIColor {
+        return .gray
     }
 }
 
