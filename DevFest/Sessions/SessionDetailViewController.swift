@@ -27,6 +27,11 @@ class SessionDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // The speakers section label is initially in our view hierarchy thanks to the storyboard.
+        // We don't want to show it by default, so remove it now.
+        speakersSectionLabel.removeFromSuperview()
+        
         updateFromViewModel()
         
         // We have to set both `isLayoutMarginsRelativeArrangement` and the `layoutMargins`,
