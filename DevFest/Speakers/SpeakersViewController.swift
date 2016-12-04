@@ -23,6 +23,12 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
         super.viewDidLoad()
         updateFlowLayoutItemWidth()
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        coordinator.animate(alongsideTransition: { context in self.updateFlowLayoutItemWidth() }
+            , completion: nil)
+    }
 
     // MARK: UICollectionViewDataSource
     
