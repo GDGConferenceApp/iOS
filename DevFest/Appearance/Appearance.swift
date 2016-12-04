@@ -22,7 +22,7 @@ extension CGFloat {
 }
 
 extension CGSize {
-    static var dev_shadowOffset: CGSize = .zero
+    static var dev_shadowOffset: CGSize = CGSize(width: 0, height: 2)
 }
 
 extension Float {

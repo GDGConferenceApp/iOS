@@ -23,6 +23,7 @@
 		DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */; };
 		DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */; };
 		DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */; };
+		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
 		DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */; };
 		DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2281DEBA264006C97F1 /* Appearance.swift */; };
@@ -73,6 +74,7 @@
 		DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewController.swift; sourceTree = "<group>"; };
 		DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCell.swift; sourceTree = "<group>"; };
 		DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceNotifier.swift; sourceTree = "<group>"; };
+		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
 		DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		DAB0C2281DEBA264006C97F1 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */,
 				DA2F3B781DE622C900B2F8D2 /* AppCoordinator.swift */,
 				DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */,
+				DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */,
 				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
 				DA6358371DEB50A100728D01 /* UIView+DevFest.swift */,
@@ -347,6 +350,7 @@
 				DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */,
 				DAB0C22B1DEBD12A006C97F1 /* SessionTitleView.swift in Sources */,
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
+				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
 				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
