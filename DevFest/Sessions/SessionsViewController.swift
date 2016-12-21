@@ -39,10 +39,9 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
         updateFlowLayoutItemWidth()
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        coordinator.animate(alongsideTransition: { context in self.updateFlowLayoutItemWidth() }
-            , completion: nil)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        updateLayoutOnTransition(toViewSize: size, with: coordinator)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

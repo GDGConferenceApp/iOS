@@ -19,12 +19,32 @@ protocol FlowLayoutContaining {
     var flowLayout: UICollectionViewFlowLayout! { get }
     var view: UIView! { get }
     
-    func updateFlowLayoutItemWidth()
+    func updateFlowLayoutItemWidth(viewSize size: CGSize?)
 }
 
 extension FlowLayoutContaining where Self: UIViewController {
-    func updateFlowLayoutItemWidth() {
-        let width = view.frame.width
+    // MARK: - Default implementations
+    
+    func updateFlowLayoutItemWidth(viewSize size: CGSize? = nil) {
+        let width = size?.width ?? view.frame.width
         flowLayout?.itemSize.width = width
+    }
+    
+    // MARK: - Statically dispatched methods
+    
+    func updateLayoutOnTransition(toViewSize size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        updateFlowLayoutItemWidth(viewSize: size)
+        
+        coordinator.animate(alongsideTransition: { context in
+            // Having just updated our item sizes, our collection view layout object's layout is now invalid.
+            // Let it know that this is the case.
+            self.flowLayout?.invalidateLayout()
+            
+            // Ask for a layout. If we don't ask for a layout, and we transition to a different size while
+            // we're not visible, the size transition will animate the next time we become visible.
+            // Asking for a layout now ensures that the animation happens alongside the size transition,
+            // or not at all.
+            self.view.layoutIfNeeded()
+        } , completion: nil)
     }
 }
