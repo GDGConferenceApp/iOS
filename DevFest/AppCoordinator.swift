@@ -9,6 +9,8 @@
 import UIKit
 
 class AppCoordinator: NSObject {
+    let firebaseCoordinator = FirebaseCoordinator()
+    
     let tabBarController: UITabBarController
     
     let sessionsViewController: SessionsViewController
@@ -26,6 +28,8 @@ class AppCoordinator: NSObject {
     }
     
     func start() {
+        firebaseCoordinator.start()
+        
         // Make sure the AppearanceNotifier singleton has been created by now.
         _ = AppearanceNotifier.shared
         
