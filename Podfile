@@ -9,6 +9,7 @@ target 'DevFest' do
 
   # Pods for DevFest
   pod "Firebase/Core"
+  pod "Firebase/Database"
 
   target 'DevFestTests' do
     inherit! :search_paths

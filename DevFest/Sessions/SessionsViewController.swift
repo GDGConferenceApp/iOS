@@ -12,26 +12,22 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     @IBInspectable private var detailSegueIdentifier: String = "sessionDetail"
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
+    var dataSource: SessionDataSource? {
+        didSet {
+            dataSource?.shouldIncludeOnlyStarred = shouldShowStarredOnly
+        }
+    }
+    
     var shouldShowStarredOnly = false {
         didSet {
             guard isViewLoaded else {
                 return
             }
             
+            dataSource?.shouldIncludeOnlyStarred = shouldShowStarredOnly
+            
             collectionView?.reloadData()
         }
-    }
-    
-    final class Fixture {
-        static var items: [SessionViewModel] = [
-            SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [Fixture.speakers[0]], tags: []),
-            SessionViewModel(sessionID: "two", title: "Session Two", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
-            SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
-        ]
-        
-        static var speakers: [SpeakerViewModel] { return SpeakersViewController.Fixture.speakers }
-        
-        static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
     }
     
     override func viewDidLoad() {
@@ -56,16 +52,15 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     }
     
     private func viewModel(at indexPath: IndexPath) -> SessionViewModel {
-        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
-        let viewModel = items[indexPath.item]
+        let viewModel = dataSource!.viewModel(atIndex: indexPath.item)
         return viewModel
     }
     
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let items = shouldShowStarredOnly ? Fixture.starredItems : Fixture.items
-        return items.count
+        let numberOfItems = dataSource?.numberOfItems(inSection: section) ?? 0
+        return numberOfItems
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,17 +77,21 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     // MARK: UIResponder
     
     override func dev_toggleStarred(forSessionID identifier: String) {
-        guard let sessionIndex = Fixture.items.index(where: { return $0.sessionID == identifier }) else {
+        guard let dataSource = dataSource, let sessionIndex = dataSource.indexOfSession(withSessionID: identifier) else {
             return
         }
 
-        let indexPath = IndexPath(item: sessionIndex, section: 0)
-        var updatedViewModel = Fixture.items[sessionIndex]
-        updatedViewModel.isStarred = !updatedViewModel.isStarred
-        if let cell = collectionView?.cellForItem(at: indexPath) as? SessionCell {
-            cell.viewModel?.isStarred = updatedViewModel.isStarred
+        let existingViewModel = dataSource.viewModel(atIndex: sessionIndex)
+        let updatedViewModel: SessionViewModel
+        if existingViewModel.isStarred {
+            updatedViewModel = dataSource.unstarSession(for: existingViewModel)
+        } else {
+            updatedViewModel = dataSource.starSession(for: existingViewModel)
         }
         
-        Fixture.items[sessionIndex] = updatedViewModel
+        let indexPath = IndexPath(item: sessionIndex, section: 0)
+        if let cell = collectionView?.cellForItem(at: indexPath) as? SessionCell {
+            cell.viewModel = updatedViewModel
+        }
     }
 }

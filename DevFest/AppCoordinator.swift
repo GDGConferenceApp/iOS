@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCoordinator: NSObject {
+class AppCoordinator {
     let firebaseCoordinator = FirebaseCoordinator()
     
     let tabBarController: UITabBarController
@@ -38,6 +38,13 @@ class AppCoordinator: NSObject {
         starredSessionsViewController.shouldShowStarredOnly = true
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
+        
+        let sessionsDataSource = SessionFixture()
+        sessionsViewController.dataSource = sessionsDataSource
+        
+        let starredSessionsDataSource = FirebaseSessionDataSource()
+        starredSessionsDataSource.shouldIncludeOnlyStarred = true
+        starredSessionsViewController.dataSource = starredSessionsDataSource
     }
 }
 
