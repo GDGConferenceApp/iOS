@@ -14,19 +14,7 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     
     var dataSource: SessionDataSource? {
         didSet {
-            dataSource?.shouldIncludeOnlyStarred = shouldShowStarredOnly
-        }
-    }
-    
-    var shouldShowStarredOnly = false {
-        didSet {
-            guard isViewLoaded else {
-                return
-            }
-            
-            dataSource?.shouldIncludeOnlyStarred = shouldShowStarredOnly
-            
-            collectionView?.reloadData()
+            dataSource?.sessionDataSourceDelegate = self
         }
     }
     
@@ -93,5 +81,12 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
         if let cell = collectionView?.cellForItem(at: indexPath) as? SessionCell {
             cell.viewModel = updatedViewModel
         }
+    }
+}
+
+extension SessionsViewController: SessionDataSourceDelegate {
+    func sessionDataSourceDidUpdate() {
+        // TODO: animate updates
+        collectionView?.reloadData()
     }
 }

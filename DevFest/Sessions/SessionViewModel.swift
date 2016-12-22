@@ -11,6 +11,7 @@ import UIKit
 struct SessionViewModel {
     let sessionID: String
     let title: String
+    let description: String?
     
     let color: UIColor
     var isStarred: Bool

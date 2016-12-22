@@ -9,7 +9,8 @@
 import Foundation
 
 protocol SessionDataSource: DataSource {
-    var shouldIncludeOnlyStarred: Bool { get set }
+    var sessionDataSourceDelegate: SessionDataSourceDelegate? { get set }
+    var shouldIncludeOnlyStarred: Bool { get }
     
     func viewModel(atIndex index: Int) -> SessionViewModel
     func indexOfSession(withSessionID sessionID: String) -> Int?
@@ -17,16 +18,22 @@ protocol SessionDataSource: DataSource {
     func unstarSession(for viewModel: SessionViewModel) -> SessionViewModel
 }
 
+protocol SessionDataSourceDelegate: class {
+    func sessionDataSourceDidUpdate()
+}
+
 final class SessionFixture: SessionDataSource {
     static var items: [SessionViewModel] = [
-        SessionViewModel(sessionID: "one", title: "First Session", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [speakers[0]], tags: []),
-        SessionViewModel(sessionID: "two", title: "Session Two", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
-        SessionViewModel(sessionID: "three", title: "Session the Third", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
+        SessionViewModel(sessionID: "one", title: "First Session", description: "First Session Description", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [speakers[0]], tags: []),
+        SessionViewModel(sessionID: "two", title: "Session Two", description: "Session Two Description", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
+        SessionViewModel(sessionID: "three", title: "Session the Third", description: "Session the Third Description", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
         ]
     
     static var speakers: [SpeakerViewModel] { return SpeakersViewController.Fixture.speakers }
     
     static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
+    
+    weak var sessionDataSourceDelegate: SessionDataSourceDelegate?
     
     let sections: Int = 1
     var shouldIncludeOnlyStarred: Bool = false

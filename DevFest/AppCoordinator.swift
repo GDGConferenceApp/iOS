@@ -35,15 +35,13 @@ class AppCoordinator {
         
         sessionsViewController.title = NSLocalizedString("Sessions", comment: "tab title")
         starredSessionsViewController.title = NSLocalizedString("Your Schedule", comment: "tab title")
-        starredSessionsViewController.shouldShowStarredOnly = true
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
         
-        let sessionsDataSource = SessionFixture()
+        let sessionsDataSource = FirebaseSessionDataSource()
         sessionsViewController.dataSource = sessionsDataSource
         
-        let starredSessionsDataSource = FirebaseSessionDataSource()
-        starredSessionsDataSource.shouldIncludeOnlyStarred = true
+        let starredSessionsDataSource = FirebaseSessionDataSource(shouldIncludeOnlyStarred: true)
         starredSessionsViewController.dataSource = starredSessionsDataSource
     }
 }
