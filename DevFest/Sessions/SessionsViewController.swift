@@ -40,11 +40,15 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     }
     
     private func viewModel(at indexPath: IndexPath) -> SessionViewModel {
-        let viewModel = dataSource!.viewModel(atIndex: indexPath.item)
+        let viewModel = dataSource!.viewModel(at: indexPath)
         return viewModel
     }
     
     // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return dataSource?.numberOfSections ?? 0
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItems = dataSource?.numberOfItems(inSection: section) ?? 0
@@ -59,17 +63,18 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueSupplementaryView(ofKind: kind, for: indexPath) as SessionHeaderCollectionReusableView
+        view.timeLabel.text = dataSource!.title(forSection: indexPath.section)
         return view
     }
     
     // MARK: UIResponder
     
     override func dev_toggleStarred(forSessionID identifier: String) {
-        guard let dataSource = dataSource, let sessionIndex = dataSource.indexOfSession(withSessionID: identifier) else {
+        guard let dataSource = dataSource, let sessionIndexPath = dataSource.indexPathOfSession(withSessionID: identifier) else {
             return
         }
 
-        let existingViewModel = dataSource.viewModel(atIndex: sessionIndex)
+        let existingViewModel = dataSource.viewModel(at: sessionIndexPath)
         let updatedViewModel: SessionViewModel
         if existingViewModel.isStarred {
             updatedViewModel = dataSource.unstarSession(for: existingViewModel)
@@ -77,8 +82,7 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
             updatedViewModel = dataSource.starSession(for: existingViewModel)
         }
         
-        let indexPath = IndexPath(item: sessionIndex, section: 0)
-        if let cell = collectionView?.cellForItem(at: indexPath) as? SessionCell {
+        if let cell = collectionView?.cellForItem(at: sessionIndexPath) as? SessionCell {
             cell.viewModel = updatedViewModel
         }
     }

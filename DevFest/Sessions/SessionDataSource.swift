@@ -12,8 +12,8 @@ protocol SessionDataSource: DataSource {
     var sessionDataSourceDelegate: SessionDataSourceDelegate? { get set }
     var shouldIncludeOnlyStarred: Bool { get }
     
-    func viewModel(atIndex index: Int) -> SessionViewModel
-    func indexOfSession(withSessionID sessionID: String) -> Int?
+    func viewModel(at indexPath: IndexPath) -> SessionViewModel
+    func indexPathOfSession(withSessionID sessionID: String) -> IndexPath?
     func starSession(for viewModel: SessionViewModel) -> SessionViewModel
     func unstarSession(for viewModel: SessionViewModel) -> SessionViewModel
 }
@@ -35,39 +35,45 @@ final class SessionFixture: SessionDataSource {
     
     weak var sessionDataSourceDelegate: SessionDataSourceDelegate?
     
-    let sections: Int = 1
+    let numberOfSections: Int = 1
     var shouldIncludeOnlyStarred: Bool = false
+    
+    func title(forSection section: Int) -> String? {
+        return "Fixture Section Title"
+    }
     
     func numberOfItems(inSection section: Int) -> Int {
         return SessionFixture.items.count
     }
     
-    func viewModel(atIndex index: Int) -> SessionViewModel {
-        return SessionFixture.items[index]
+    func viewModel(at indexPath: IndexPath) -> SessionViewModel {
+        return SessionFixture.items[indexPath.item]
     }
     
-    func indexOfSession(withSessionID sessionID: String) -> Int? {
-        return SessionFixture.items.index(where: { return $0.sessionID == sessionID })
+    func indexPathOfSession(withSessionID sessionID: String) -> IndexPath? {
+        let idx = SessionFixture.items.index(where: { return $0.sessionID == sessionID })
+        let indexPath = idx.map { return IndexPath(item: $0, section: 0) }
+        return indexPath
     }
     
     func starSession(for viewModel: SessionViewModel) -> SessionViewModel {
-        let sessionIndex = indexOfSession(withSessionID: viewModel.sessionID)!
+        let sessionIndexPath = indexPathOfSession(withSessionID: viewModel.sessionID)!
         
-        var updatedViewModel = SessionFixture.items[sessionIndex]
+        var updatedViewModel = SessionFixture.items[sessionIndexPath.item]
         updatedViewModel.isStarred = !updatedViewModel.isStarred
         
-        SessionFixture.items[sessionIndex] = updatedViewModel
+        SessionFixture.items[sessionIndexPath.item] = updatedViewModel
         
         return updatedViewModel
     }
     
     func unstarSession(for viewModel: SessionViewModel) -> SessionViewModel {
-        let sessionIndex = indexOfSession(withSessionID: viewModel.sessionID)!
+        let sessionIndexPath = indexPathOfSession(withSessionID: viewModel.sessionID)!
         
-        var updatedViewModel = SessionFixture.items[sessionIndex]
+        var updatedViewModel = SessionFixture.items[sessionIndexPath.item]
         updatedViewModel.isStarred = !updatedViewModel.isStarred
         
-        SessionFixture.items[sessionIndex] = updatedViewModel
+        SessionFixture.items[sessionIndexPath.item] = updatedViewModel
         
         return updatedViewModel
     }

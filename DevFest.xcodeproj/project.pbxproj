@@ -40,6 +40,7 @@
 		DAE039401DE63531009C859B /* ReusableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE0393F1DE63531009C859B /* ReusableItem.swift */; };
 		DAE039421DE7451D009C859B /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE039411DE7451D009C859B /* SessionViewModel.swift */; };
 		DAE039441DE74B05009C859B /* SpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE039431DE74B05009C859B /* SpeakerViewModel.swift */; };
+		DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		DAE0393F1DE63531009C859B /* ReusableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableItem.swift; sourceTree = "<group>"; };
 		DAE039411DE7451D009C859B /* SessionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		DAE039431DE74B05009C859B /* SpeakerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerViewModel.swift; sourceTree = "<group>"; };
+		DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+DevFest.swift"; sourceTree = "<group>"; };
 		E8FD5882F63F51F7CACE41A8 /* Pods_DevFestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevFestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 				DA118EE41E0B182A00DA2D8E /* Firebase */,
 				DA2F3B7A1DE6246200B2F8D2 /* Sessions */,
 				DA2F3B811DE631BC00B2F8D2 /* Speakers */,
+				DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */,
 				DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */,
 				DA2F3B781DE622C900B2F8D2 /* AppCoordinator.swift */,
 				DAB47D6C1E0C274D0000A127 /* DataSource.swift */,
@@ -555,6 +558,7 @@
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */,
 				DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */,
+				DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */,
 				DAE039401DE63531009C859B /* ReusableItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol DataSource {
-    var sections: Int { get }
+    var numberOfSections: Int { get }
+    func title(forSection section: Int) -> String?
     func numberOfItems(inSection section: Int) -> Int
 }

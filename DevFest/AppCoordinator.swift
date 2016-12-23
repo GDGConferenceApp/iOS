@@ -18,6 +18,10 @@ class AppCoordinator {
     let speakersViewController: SpeakersViewController
     let mapViewController: MapViewController
     
+    let firebaseDateFormatter = DateFormatter()
+    let firebaseDate: Date
+    let sectionHeaderDateFormatter = DateFormatter()
+    
     init(tabBarController: UITabBarController) {
         sessionsViewController = tabBarController.tabInNavigationController(atIndex: 0) as SessionsViewController
         starredSessionsViewController = tabBarController.tabInNavigationController(atIndex: 1) as SessionsViewController
@@ -25,6 +29,18 @@ class AppCoordinator {
         mapViewController = tabBarController.tab(atIndex: 3) as MapViewController
         
         self.tabBarController = tabBarController
+        
+        // Assume the user conference follows the same time zone/DST rules as Chicago
+        let timeZone = TimeZone(identifier: "America/Chicago")!
+        firebaseDate = { () -> Date in
+            let calendar = Calendar(identifier: .iso8601)
+            let components = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: 2017, month: 2, day: 4, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
+            return calendar.date(from: components)!
+        }()
+        
+        firebaseDateFormatter.dateFormat = "HHmm"
+        firebaseDateFormatter.timeZone = timeZone
+        sectionHeaderDateFormatter.dateFormat = "hh:mm a"
     }
     
     func start() {
@@ -38,10 +54,12 @@ class AppCoordinator {
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
         
-        let sessionsDataSource = FirebaseSessionDataSource()
+        
+        let sessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
         sessionsViewController.dataSource = sessionsDataSource
         
-        let starredSessionsDataSource = FirebaseSessionDataSource(shouldIncludeOnlyStarred: true)
+        let starredSessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
+        starredSessionsDataSource.shouldIncludeOnlyStarred = true
         starredSessionsViewController.dataSource = starredSessionsDataSource
     }
 }

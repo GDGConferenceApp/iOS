@@ -9,7 +9,7 @@
 import UIKit
 
 class SessionHeaderCollectionReusableView: UICollectionReusableView {
-    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
 }
 
 extension SessionHeaderCollectionReusableView: ReusableItem {
