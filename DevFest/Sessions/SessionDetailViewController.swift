@@ -58,8 +58,7 @@ class SessionDetailViewController: UIViewController {
         }
         
         sessionTitleView.viewModel = viewModel
-        
-        descriptionTextView.text = "Placeholder bio."
+        descriptionTextView.text = viewModel.description
         
         let speakerSubviews = speakersStackView.arrangedSubviews
         for speakerView in speakerSubviews {
