@@ -12,9 +12,10 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     @IBInspectable private var detailSegueIdentifier: String = "sessionDetail"
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
-    var dataSource: SessionDataSource? {
+    var dataSource: protocol<SessionDataSource, SessionStarsDataSource>? {
         didSet {
             dataSource?.sessionDataSourceDelegate = self
+            dataSource?.sessionStarsDataSourceDelegate = self
         }
     }
     
@@ -90,6 +91,13 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
 
 extension SessionsViewController: SessionDataSourceDelegate {
     func sessionDataSourceDidUpdate() {
+        // TODO: animate updates
+        collectionView?.reloadData()
+    }
+}
+
+extension SessionsViewController: SessionStarsDataSourceDelegate {
+    func sessionStarsDidUpdate() {
         // TODO: animate updates
         collectionView?.reloadData()
     }

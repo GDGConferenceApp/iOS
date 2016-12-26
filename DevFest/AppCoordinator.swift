@@ -54,13 +54,29 @@ class AppCoordinator {
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
         
+        // introduce new scopes to avoid similar-sounding variables being available to cause confusion later
+        do {
+            let firebaseSessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
+            
+            let firebaseStarsDataSource = FirebaseStarsDataSource()
+            
+            let sessionsDataSource = CombinedSessionDataSource(dataSource: firebaseSessionsDataSource, starsDataSource: firebaseStarsDataSource)
+            firebaseSessionsDataSource.sessionDataSourceDelegate = sessionsDataSource
+            
+            sessionsViewController.dataSource = sessionsDataSource
+        }
         
-        let sessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
-        sessionsViewController.dataSource = sessionsDataSource
-        
-        let starredSessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
-        starredSessionsDataSource.shouldIncludeOnlyStarred = true
-        starredSessionsViewController.dataSource = starredSessionsDataSource
+        do {
+            let starredSessionsFirebaseDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
+            starredSessionsFirebaseDataSource.shouldIncludeOnlyStarred = true
+            
+            let firebaseStarsDataSource = FirebaseStarsDataSource()
+            
+            let starredSessionsDataSource = CombinedSessionDataSource(dataSource: starredSessionsFirebaseDataSource, starsDataSource: firebaseStarsDataSource)
+            starredSessionsFirebaseDataSource.sessionDataSourceDelegate = starredSessionsDataSource
+            
+            starredSessionsViewController.dataSource = starredSessionsDataSource
+        }
     }
 }
 

@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Protocol for table- or collection-view style data sources.
+ */
 protocol DataSource {
     var numberOfSections: Int { get }
     func title(forSection section: Int) -> String?

@@ -9,6 +9,11 @@
 import UIKit
 import FirebaseDatabase
 
+/**
+ Provides sessions from Firebase. Does not ever change session starred status.
+ 
+ The `star`/`unstar` methods do nothing.
+ */
 class FirebaseSessionDataSource: SessionDataSource {
     private let databaseReference: FIRDatabaseReference
     private let firebaseDateFormatter: DateFormatter
@@ -118,28 +123,18 @@ class FirebaseSessionDataSource: SessionDataSource {
     }
     
     func starSession(for viewModel: SessionViewModel) -> SessionViewModel {
-        // Update the session, create a new view model, and return the new view model
-        
-        // For now, just update the view model
-        var vm = viewModel
-        vm.isStarred = true
-        return vm
+        return viewModel
     }
     
     func unstarSession(for viewModel: SessionViewModel) -> SessionViewModel {
-        // Update the session, create a new view model, and return the new view model
-        
-        // For now, just update the view model
-        var vm = viewModel
-        vm.isStarred = false
-        return vm
+        return viewModel
     }
 }
 
 extension SessionViewModel {
     init?(id: String, firebaseData dict: [String:Any], firebaseDateFormatter: DateFormatter, firebaseDate: Date) {
         guard let title = dict["title"] as? String else {
-                return nil
+            return nil
         }
         
         let color: UIColor = .black

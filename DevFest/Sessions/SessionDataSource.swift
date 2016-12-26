@@ -14,15 +14,13 @@ protocol SessionDataSource: DataSource {
     
     func viewModel(at indexPath: IndexPath) -> SessionViewModel
     func indexPathOfSession(withSessionID sessionID: String) -> IndexPath?
-    func starSession(for viewModel: SessionViewModel) -> SessionViewModel
-    func unstarSession(for viewModel: SessionViewModel) -> SessionViewModel
 }
 
 protocol SessionDataSourceDelegate: class {
     func sessionDataSourceDidUpdate()
 }
 
-final class SessionFixture: SessionDataSource {
+final class SessionFixture: SessionDataSource, SessionStarsDataSource {
     static var items: [SessionViewModel] = [
         SessionViewModel(sessionID: "one", title: "First Session", description: "First Session Description", color: .green, isStarred: false, category: "android", room: "auditorium", start: nil, end: nil, speakers: [speakers[0]], tags: []),
         SessionViewModel(sessionID: "two", title: "Session Two", description: "Session Two Description", color: .blue, isStarred: true, category: "design", room: "classroom 1", start: nil, end: nil, speakers: [], tags: []),
@@ -34,6 +32,7 @@ final class SessionFixture: SessionDataSource {
     static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
     
     weak var sessionDataSourceDelegate: SessionDataSourceDelegate?
+    weak var sessionStarsDataSourceDelegate: SessionStarsDataSourceDelegate?
     
     let numberOfSections: Int = 1
     var shouldIncludeOnlyStarred: Bool = false
@@ -54,6 +53,12 @@ final class SessionFixture: SessionDataSource {
         let idx = SessionFixture.items.index(where: { return $0.sessionID == sessionID })
         let indexPath = idx.map { return IndexPath(item: $0, section: 0) }
         return indexPath
+    }
+    
+    func isStarred(viewModel: SessionViewModel) -> Bool {
+        let sessionIndexPath = indexPathOfSession(withSessionID: viewModel.sessionID)!
+        let storedViewModel = SessionFixture.items[sessionIndexPath.item]
+        return storedViewModel.isStarred
     }
     
     func starSession(for viewModel: SessionViewModel) -> SessionViewModel {
