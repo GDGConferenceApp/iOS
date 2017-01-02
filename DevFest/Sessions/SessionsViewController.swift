@@ -12,7 +12,7 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     @IBInspectable private var detailSegueIdentifier: String = "sessionDetail"
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
-    var dataSource: protocol<SessionDataSource, SessionStarsDataSource>? {
+    var dataSource: (SessionDataSource & SessionStarsDataSource)? {
         didSet {
             dataSource?.sessionDataSourceDelegate = self
             dataSource?.sessionStarsDataSourceDelegate = self
