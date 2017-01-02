@@ -27,7 +27,7 @@ final class SessionFixture: SessionDataSource, SessionStarsDataSource {
         SessionViewModel(sessionID: "three", title: "Session the Third", description: "Session the Third Description", color: .black, isStarred: false, category: nil, room: "lab", start: nil, end: nil, speakers: [], tags: []),
         ]
     
-    static var speakers: [SpeakerViewModel] { return SpeakersViewController.Fixture.speakers }
+    static var speakers: [SpeakerViewModel] { return SpeakerFixture.speakers }
     
     static let starredItems: [SessionViewModel] = items.filter { $0.isStarred }
     

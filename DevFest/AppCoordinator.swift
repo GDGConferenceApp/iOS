@@ -77,6 +77,13 @@ class AppCoordinator {
             
             starredSessionsViewController.dataSource = starredSessionsDataSource
         }
+        
+        do {
+            let speakersDataSource = SpeakerFixture()
+            speakersDataSource.speakerDataSourceDelegate = speakersViewController
+            
+            speakersViewController.speakerDataSource = speakersDataSource
+        }
     }
 }
 

@@ -11,13 +11,7 @@ import UIKit
 class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
-    struct Fixture {
-        static let speakers: [SpeakerViewModel] = [
-            SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", association: "Krusty Krab", imageURL: nil, image: #imageLiteral(resourceName: "podium-icons8"), twitter: nil, website: nil),
-            SpeakerViewModel(speakerID: "swei", name: "Patrick Star", association: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
-            SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
-            ]
-    }
+    var speakerDataSource: SpeakerDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +26,20 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Fixture.speakers.count
+        return speakerDataSource?.numberOfItems(inSection: section) ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(for: indexPath) as SpeakerCell
-        let item = Fixture.speakers[indexPath.item]
-        cell.viewModel = item
+        let viewModel = speakerDataSource!.viewModel(at: indexPath)
+        cell.viewModel = viewModel
         return cell
     }
 
+}
+
+extension SpeakersViewController: SpeakerDataSourceDelegate {
+    func speakerDataSourceDidUpdate() {
+        collectionView?.reloadData()
+    }
 }
