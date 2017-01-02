@@ -79,7 +79,7 @@ class AppCoordinator {
         }
         
         do {
-            let speakersDataSource = SpeakerFixture()
+            let speakersDataSource = FirebaseSpeakerDataSource()
             speakersDataSource.speakerDataSourceDelegate = speakersViewController
             
             speakersViewController.speakerDataSource = speakersDataSource

@@ -50,7 +50,7 @@ final class SpeakerTitleView: UIView {
     var viewModel: SpeakerViewModel? {
         didSet {
             titleLabel.text = viewModel?.name
-            subtitleLabel.text = viewModel?.association
+            subtitleLabel.text = viewModel?.company
             
             if let image = viewModel?.image {
                 imageView.image = image
@@ -111,7 +111,7 @@ final class SpeakerTitleView: UIView {
         // so manually find the image in our bundle.
         let bundleForImage = Bundle(for: SpeakerTitleView.self)
         let speakerImage = UIImage(named: "podium-icons8", in: bundleForImage, compatibleWith: nil)
-        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", association: "Organization, LLC", imageURL: nil, image: speakerImage, twitter: nil, website: nil)
+        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", bio: "Sample bio here.", company: "Organization, LLC", imageURL: nil, image: speakerImage, twitter: nil, website: nil)
         subviewsInit()
     }
     

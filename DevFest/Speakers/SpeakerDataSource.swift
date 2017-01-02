@@ -21,9 +21,9 @@ protocol SpeakerDataSourceDelegate: class {
 
 final class SpeakerFixture: SpeakerDataSource {
     static let speakers: [SpeakerViewModel] = [
-        SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", association: "Krusty Krab", imageURL: nil, image: #imageLiteral(resourceName: "podium-icons8"), twitter: nil, website: nil),
-        SpeakerViewModel(speakerID: "swei", name: "Patrick Star", association: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
-        SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", association: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
+        SpeakerViewModel(speakerID: "eins", name: "Spongebob Squarepants", bio: "Lives in a pineapple under the sea.", company: "Krusty Krab", imageURL: nil, image: #imageLiteral(resourceName: "podium-icons8"), twitter: nil, website: nil),
+        SpeakerViewModel(speakerID: "swei", name: "Patrick Star", bio: "No, this is Patrick!", company: "n/a", imageURL: nil, image: nil, twitter: nil, website: nil),
+        SpeakerViewModel(speakerID: "drei", name: "Squidward Tentacles", bio: "Insufferable clarinet player.", company: "Krusty Krab", imageURL: nil, image: nil, twitter: nil, website: nil),
         ]
     
     let numberOfSections: Int = 1

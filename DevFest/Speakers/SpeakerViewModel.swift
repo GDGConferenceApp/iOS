@@ -11,9 +11,10 @@ import UIKit
 struct SpeakerViewModel {
     let speakerID: String
     let name: String
-    let association: String
+    let bio: String
     
     // optionals
+    let company: String?
     let imageURL: URL?
     var image: UIImage?
     let twitter: String?

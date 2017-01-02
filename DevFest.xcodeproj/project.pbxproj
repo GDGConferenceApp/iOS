@@ -38,6 +38,7 @@
 		DAB47D6B1E0C27200000A127 /* SessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB47D6A1E0C27200000A127 /* SessionDataSource.swift */; };
 		DAB47D6D1E0C274D0000A127 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB47D6C1E0C274D0000A127 /* DataSource.swift */; };
 		DAC5E3E01E1AC66C009ADAE5 /* SpeakerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5E3DF1E1AC66C009ADAE5 /* SpeakerDataSource.swift */; };
+		DAC5E3E21E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5E3E11E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift */; };
 		DAD449761E116D9500D37B14 /* CombinedSessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD449751E116D9500D37B14 /* CombinedSessionDataSource.swift */; };
 		DAD449781E11729500D37B14 /* FirebaseStarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD449771E11729500D37B14 /* FirebaseStarsDataSource.swift */; };
 		DAD4497A1E11736200D37B14 /* SessionStarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD449791E11736200D37B14 /* SessionStarsDataSource.swift */; };
@@ -107,6 +108,7 @@
 		DAB47D6A1E0C27200000A127 /* SessionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDataSource.swift; sourceTree = "<group>"; };
 		DAB47D6C1E0C274D0000A127 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		DAC5E3DF1E1AC66C009ADAE5 /* SpeakerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDataSource.swift; sourceTree = "<group>"; };
+		DAC5E3E11E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseSpeakerDataSource.swift; sourceTree = "<group>"; };
 		DAD449751E116D9500D37B14 /* CombinedSessionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedSessionDataSource.swift; sourceTree = "<group>"; };
 		DAD449771E11729500D37B14 /* FirebaseStarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStarsDataSource.swift; sourceTree = "<group>"; };
 		DAD449791E11736200D37B14 /* SessionStarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStarsDataSource.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				DA118EE51E0B185600DA2D8E /* FirebaseCoordinator.swift */,
 				DA118EE71E0B18F700DA2D8E /* FirebaseSessionDataSource.swift */,
+				DAC5E3E11E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift */,
 				DAD449771E11729500D37B14 /* FirebaseStarsDataSource.swift */,
 			);
 			path = Firebase;
@@ -566,6 +569,7 @@
 				DAC5E3E01E1AC66C009ADAE5 /* SpeakerDataSource.swift in Sources */,
 				DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */,
 				DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */,
+				DAC5E3E21E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift in Sources */,
 				DAB0C22B1DEBD12A006C97F1 /* SessionTitleView.swift in Sources */,
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
 				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
