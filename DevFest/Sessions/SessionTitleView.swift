@@ -34,6 +34,12 @@ class SessionTitleView: UIView {
         }
     }
     
+    @IBInspectable var multilineTitle: Bool = false {
+        didSet {
+            titleLabel.numberOfLines = multilineTitle ? 0 : 1
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -89,9 +95,11 @@ class SessionTitleView: UIView {
         timeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
         timeLocationBottomConstraint = timeLocationStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         
-        let otherLeftConstraints: [NSLayoutConstraint] = [
+        let otherSideConstraints: [NSLayoutConstraint] = [
             titleLabel.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             timeLocationStackView.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+            timeLocationStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ]
 
         // not activated by default
@@ -104,7 +112,7 @@ class SessionTitleView: UIView {
         titleTopConstraint?.isActive = true
         timeLocationTopConstraint?.isActive = true
         timeLocationBottomConstraint?.isActive = true
-        NSLayoutConstraint.activate(otherLeftConstraints)
+        NSLayoutConstraint.activate(otherSideConstraints)
         
         dev_updateAppearance()
     }
