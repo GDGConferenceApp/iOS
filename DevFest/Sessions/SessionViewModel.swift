@@ -21,7 +21,7 @@ struct SessionViewModel {
     let room: String?
     let start: Date?
     let end: Date?
-    let speakers: [SpeakerViewModel]
+    let speakerIDs: [String]
     let tags: [String]
     
     var hasEnded: Bool {

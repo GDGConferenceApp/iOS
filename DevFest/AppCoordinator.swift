@@ -64,6 +64,9 @@ class AppCoordinator {
             firebaseSessionsDataSource.sessionDataSourceDelegate = sessionsDataSource
             
             sessionsViewController.dataSource = sessionsDataSource
+            
+            let speakerDataSource = FirebaseSpeakerDataSource()
+            sessionsViewController.speakerDataSource = speakerDataSource
         }
         
         do {
@@ -79,10 +82,10 @@ class AppCoordinator {
         }
         
         do {
-            let speakersDataSource = FirebaseSpeakerDataSource()
-            speakersDataSource.speakerDataSourceDelegate = speakersViewController
+            let speakerDataSource = FirebaseSpeakerDataSource()
+            speakerDataSource.speakerDataSourceDelegate = speakersViewController
             
-            speakersViewController.speakerDataSource = speakersDataSource
+            speakersViewController.speakerDataSource = speakerDataSource
         }
     }
 }

@@ -12,7 +12,19 @@ protocol SpeakerDataSource: DataSource {
     var speakerDataSourceDelegate: SpeakerDataSourceDelegate? { get set }
     
     func viewModel(at indexPath: IndexPath) -> SpeakerViewModel
+    func viewModel(forSpeakerID speakerID: String) -> SpeakerViewModel?
     func indexPathOfSpeaker(withSpeakerID speakerID: String) -> IndexPath?
+}
+
+// Default implementations
+extension SpeakerDataSource {
+    func viewModel(forSpeakerID speakerID: String) -> SpeakerViewModel? {
+        guard let indexPath = indexPathOfSpeaker(withSpeakerID: speakerID) else {
+            return nil
+        }
+        
+        return viewModel(at: indexPath)
+    }
 }
 
 protocol SpeakerDataSourceDelegate: class {

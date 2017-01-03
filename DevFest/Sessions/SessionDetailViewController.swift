@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Display the full details for a session.
+ */
 class SessionDetailViewController: UIViewController {
     @IBOutlet var sessionTitleView: SessionTitleView!
     @IBOutlet var descriptionTextView: UITextView!
@@ -15,7 +18,20 @@ class SessionDetailViewController: UIViewController {
     
     @IBOutlet var speakersSectionLabel: UILabel!
     
+    /// Most of the session details. The `speakerIDs` are not used.
     var viewModel: SessionViewModel? {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            
+            updateFromViewModel()
+        }
+    }
+    
+    /// The speakers to display with the session details.
+    /// Used instead of `viewModel.speakerIDs`.
+    var speakers: [SpeakerViewModel]? {
         didSet {
             guard isViewLoaded else {
                 return
@@ -65,13 +81,13 @@ class SessionDetailViewController: UIViewController {
             speakersStackView.removeArrangedSubview(speakerView)
         }
         
-        guard case let speakers = viewModel.speakers, !speakers.isEmpty else {
+        guard let speakers = self.speakers, !speakers.isEmpty else {
             return
         }
         
         speakersStackView.addArrangedSubview(speakersSectionLabel)
         
-        for speaker in viewModel.speakers {
+        for speaker in speakers {
             let speakerView = SpeakerTitleView()
             speakerView.viewModel = speaker
             speakersStackView.addArrangedSubview(speakerView)

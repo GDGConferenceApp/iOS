@@ -54,7 +54,7 @@ class SessionTitleView: UIView {
         super.prepareForInterfaceBuilder()
         dev_updateAppearance()
         
-        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", color: .green, isStarred: true, category: "android", room: "auditorium", start: nil, end: nil, speakers: [], tags: [])
+        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", color: .green, isStarred: true, category: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [], tags: [])
     }
     
     override func dev_updateAppearance() {

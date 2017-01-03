@@ -19,6 +19,8 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
         }
     }
     
+    var speakerDataSource: SpeakerDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFlowLayoutItemWidth()
@@ -34,7 +36,15 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
         case (detailSegueIdentifier?, let cell as SessionCell, let destination as SessionDetailViewController):
             let indexPath = collectionView?.indexPath(for: cell)
             let viewModel = indexPath.map { return self.viewModel(at: $0) }
+            let speakers: [SpeakerViewModel]
+            if let viewModel = viewModel, let speakerDataSource = speakerDataSource {
+                let speakerViewModels: [SpeakerViewModel] = viewModel.speakerIDs.flatMap { return speakerDataSource.viewModel(forSpeakerID: $0) }
+                speakers = speakerViewModels
+            } else {
+                speakers = []
+            }
             destination.viewModel = viewModel
+            destination.speakers = speakers
         default:
             break
         }

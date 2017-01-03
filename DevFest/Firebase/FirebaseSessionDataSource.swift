@@ -150,6 +150,8 @@ extension SessionViewModel {
         
         let tags = dict["tags"] as? [String]
         
+        let speakerIDs = dict["speakers"] as? [String]
+        
         let isStarred = false
         
         let calendar = Calendar(identifier: .iso8601)
@@ -179,6 +181,6 @@ extension SessionViewModel {
             end = nil
         }
         
-        self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, category: category, room: room, start: start, end: end, speakers: [], tags: tags ?? [])
+        self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, category: category, room: room, start: start, end: end, speakerIDs: speakerIDs ?? [], tags: tags ?? [])
     }
 }
