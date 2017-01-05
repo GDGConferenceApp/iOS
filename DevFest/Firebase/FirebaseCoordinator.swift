@@ -8,9 +8,21 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
+/**
+ Coordinator that sets up Firebase when `start` is called.
+ */
 class FirebaseCoordinator {
+    /**
+     The firebase database we're using.
+     */
+    private(set) var firebaseDatabase: FIRDatabase?
+    
     func start() {
         FIRApp.configure()
+        
+        firebaseDatabase = FIRDatabase.database()
+        firebaseDatabase?.persistenceEnabled = true
     }
 }
