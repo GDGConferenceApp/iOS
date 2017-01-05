@@ -49,10 +49,7 @@ class FirebaseSessionDataSource: SessionDataSource {
     private var sessionsByStart: [Date:[SessionViewModel]] {
         var collected: [Date:[SessionViewModel]] = [:]
         for session in workingSessions {
-            guard let startTime = session.start else {
-                // Don't make sections for sessions without a start time
-                continue
-            }
+            let startTime = session.start ?? .distantPast
             
             collected[startTime, defaulting: []].append(session)
         }
@@ -91,9 +88,12 @@ class FirebaseSessionDataSource: SessionDataSource {
     }
     
     func title(forSection section: Int) -> String? {
-        let dateForSection = date(forSection: section)
-        let title = sectionHeaderDateFormatter.string(from: dateForSection)
-        return title
+        if case let dateForSection = date(forSection: section), dateForSection != .distantPast {
+            let title = sectionHeaderDateFormatter.string(from: dateForSection)
+            return title
+        } else {
+            return NSLocalizedString("Start time not listed", comment: "Section header for Sessions without a start time")
+        }
     }
     
     func numberOfItems(inSection section: Int) -> Int {
@@ -144,9 +144,9 @@ extension SessionViewModel {
         
         // start/end times
         let startString = dict["startTime"] as? String
-        let startWithoutDate = startString.flatMap(firebaseDateFormatter.date)
+        let startWithoutDate = startString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
         let endString = dict["endTime"] as? String
-        let endWithoutDate = endString.flatMap(firebaseDateFormatter.date)
+        let endWithoutDate = endString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
         
         let tags = dict["tags"] as? [String]
         
@@ -182,5 +182,15 @@ extension SessionViewModel {
         }
         
         self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, category: category, room: room, start: start, end: end, speakerIDs: speakerIDs ?? [], tags: tags ?? [])
+    }
+}
+
+private extension String {
+    var nonEmptyString: String? {
+        if self == "" {
+            return nil
+        } else {
+            return self
+        }
     }
 }
