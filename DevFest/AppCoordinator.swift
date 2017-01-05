@@ -19,7 +19,6 @@ class AppCoordinator {
     let mapViewController: MapViewController
     
     let firebaseDateFormatter = DateFormatter()
-    let firebaseDate: Date
     let sectionHeaderDateFormatter = DateFormatter()
     
     let multiSessionStarsDataSourceDelegate = MultiSessionStarsDataSourceDelegate()
@@ -32,16 +31,7 @@ class AppCoordinator {
         
         self.tabBarController = tabBarController
         
-        // Assume the user conference follows the same time zone/DST rules as Chicago
-        let timeZone = TimeZone(identifier: "America/Chicago")!
-        firebaseDate = { () -> Date in
-            let calendar = Calendar(identifier: .iso8601)
-            let components = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: 2017, month: 2, day: 4, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
-            return calendar.date(from: components)!
-        }()
-        
-        firebaseDateFormatter.dateFormat = "HHmm"
-        firebaseDateFormatter.timeZone = timeZone
+        firebaseDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
         sectionHeaderDateFormatter.dateFormat = "hh:mm a"
     }
     
@@ -61,7 +51,7 @@ class AppCoordinator {
         
         // introduce new scopes to avoid similar-sounding variables being available to cause confusion later
         do {
-            let firebaseSessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
+            let firebaseSessionsDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
             
             let sessionDataSource = CombinedSessionDataSource(dataSource: firebaseSessionsDataSource, starsDataSource: firebaseStarsDataSource)
             firebaseSessionsDataSource.sessionDataSourceDelegate = sessionDataSource
@@ -74,7 +64,7 @@ class AppCoordinator {
         }
         
         do {
-            let starredSessionsFirebaseDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
+            let starredSessionsFirebaseDataSource = FirebaseSessionDataSource(firebaseDateFormatter: firebaseDateFormatter, sectionHeaderDateFormatter: sectionHeaderDateFormatter)
             
             let starredSessionsDataSource = CombinedSessionDataSource(dataSource: starredSessionsFirebaseDataSource, starsDataSource: firebaseStarsDataSource)
             starredSessionsDataSource.shouldIncludeOnlyStarred = true

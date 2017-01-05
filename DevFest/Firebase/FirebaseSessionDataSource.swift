@@ -17,8 +17,6 @@ import FirebaseDatabase
 class FirebaseSessionDataSource: SessionDataSource {
     private let databaseReference: FIRDatabaseReference
     private let firebaseDateFormatter: DateFormatter
-    /// The date on which all firebase sessions are assumed to take place
-    private let firebaseDate: Date
     private let sectionHeaderDateFormatter: DateFormatter
     
     weak var sessionDataSourceDelegate: SessionDataSourceDelegate?
@@ -41,10 +39,9 @@ class FirebaseSessionDataSource: SessionDataSource {
         return collected
     }
     
-    init(databaseReference: FIRDatabaseReference = FIRDatabase.database().reference(), firebaseDateFormatter: DateFormatter, firebaseDate: Date, sectionHeaderDateFormatter: DateFormatter) {
+    init(databaseReference: FIRDatabaseReference = FIRDatabase.database().reference(), firebaseDateFormatter: DateFormatter, sectionHeaderDateFormatter: DateFormatter) {
         self.databaseReference = databaseReference
         self.firebaseDateFormatter = firebaseDateFormatter
-        self.firebaseDate = firebaseDate
         self.sectionHeaderDateFormatter = sectionHeaderDateFormatter
         
         databaseReference.child("devfest2017").child("schedule").observe(.value) { [weak self] (snapshot: FIRDataSnapshot) in
@@ -56,7 +53,7 @@ class FirebaseSessionDataSource: SessionDataSource {
             
             for (key, value) in dict {
                 if let dictValue = value as? [String:Any],
-                    let viewModel = SessionViewModel(id: key, firebaseData: dictValue, firebaseDateFormatter: firebaseDateFormatter, firebaseDate: firebaseDate) {
+                    let viewModel = SessionViewModel(id: key, firebaseData: dictValue, firebaseDateFormatter: firebaseDateFormatter) {
                     newSessions.append(viewModel)
                 }
             }
@@ -116,7 +113,7 @@ class FirebaseSessionDataSource: SessionDataSource {
 }
 
 extension SessionViewModel {
-    init?(id: String, firebaseData dict: [String:Any], firebaseDateFormatter: DateFormatter, firebaseDate: Date) {
+    init?(id: String, firebaseData dict: [String:Any], firebaseDateFormatter: DateFormatter) {
         guard let title = dict["title"] as? String else {
             return nil
         }
@@ -128,42 +125,15 @@ extension SessionViewModel {
         
         // start/end times
         let startString = dict["startTime"] as? String
-        let startWithoutDate = startString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
+        let start: Date? = startString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
         let endString = dict["endTime"] as? String
-        let endWithoutDate = endString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
+        let end: Date? = endString.flatMap { $0.nonEmptyString }.flatMap(firebaseDateFormatter.date)
         
         let tags = dict["tags"] as? [String]
         
         let speakerIDs = dict["speakers"] as? [String]
         
         let isStarred = false
-        
-        let calendar = Calendar(identifier: .iso8601)
-        let firebaseDateComponents = calendar.dateComponents(in: firebaseDateFormatter.timeZone, from: firebaseDate)
-        
-        func update(_ components: DateComponents, withHourAndMinuteFrom date: Date) -> DateComponents {
-            let withoutDateHourAndMinute = calendar.dateComponents([.hour, .minute], from: date)
-            var components = components
-            components.hour = withoutDateHourAndMinute.hour
-            components.minute = withoutDateHourAndMinute.minute
-            return components
-        }
-        
-        let start: Date?
-        if let startWithoutDate = startWithoutDate {
-            let startComponents = update(firebaseDateComponents, withHourAndMinuteFrom: startWithoutDate)
-            start = calendar.date(from: startComponents)
-        } else {
-            start = nil
-        }
-        
-        let end: Date?
-        if let endWithoutDate = endWithoutDate {
-            let endComponents = update(firebaseDateComponents, withHourAndMinuteFrom: endWithoutDate)
-            end = calendar.date(from: endComponents)
-        } else {
-            end = nil
-        }
         
         self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, category: category, room: room, start: start, end: end, speakerIDs: speakerIDs ?? [], tags: tags ?? [])
     }
