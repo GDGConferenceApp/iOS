@@ -18,5 +18,15 @@ protocol SessionStarsDataSource {
 }
 
 protocol SessionStarsDataSourceDelegate: class {
-    func sessionStarsDidUpdate()
+    func sessionStarsDidUpdate(dataSource: SessionStarsDataSource)
+}
+
+final class MultiSessionStarsDataSourceDelegate: SessionStarsDataSourceDelegate {
+    var broadcastDelegates: [SessionStarsDataSourceDelegate] = []
+    
+    func sessionStarsDidUpdate(dataSource: SessionStarsDataSource) {
+        for delegate in broadcastDelegates {
+            delegate.sessionStarsDidUpdate(dataSource: dataSource)
+        }
+    }
 }

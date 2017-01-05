@@ -10,7 +10,6 @@ import Foundation
 
 protocol SessionDataSource: DataSource {
     var sessionDataSourceDelegate: SessionDataSourceDelegate? { get set }
-    var shouldIncludeOnlyStarred: Bool { get }
     
     func viewModel(at indexPath: IndexPath) -> SessionViewModel
     func indexPathOfSession(withSessionID sessionID: String) -> IndexPath?
@@ -35,7 +34,6 @@ final class SessionFixture: SessionDataSource, SessionStarsDataSource {
     weak var sessionStarsDataSourceDelegate: SessionStarsDataSourceDelegate?
     
     let numberOfSections: Int = 1
-    var shouldIncludeOnlyStarred: Bool = false
     
     func title(forSection section: Int) -> String? {
         return "Fixture Section Title"

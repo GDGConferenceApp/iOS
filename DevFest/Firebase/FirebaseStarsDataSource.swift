@@ -16,7 +16,11 @@ final class FirebaseStarsDataSource: SessionStarsDataSource {
 
     /// The IDs of sessions that have been starred.
     /// TODO: persistence
-    fileprivate(set) var starredSessionIDs: Set<String> = []
+    fileprivate(set) var starredSessionIDs: Set<String> = [] {
+        didSet {
+            sessionStarsDataSourceDelegate?.sessionStarsDidUpdate(dataSource: self)
+        }
+    }
     
     var firebaseObservingUserID: String? {
         didSet {
@@ -37,6 +41,12 @@ final class FirebaseStarsDataSource: SessionStarsDataSource {
     
     init(databaseReference: FIRDatabaseReference = FIRDatabase.database().reference()) {
         self.databaseReference = databaseReference
+    }
+    
+    deinit {
+        if let observingHandle = firebaseObservingHandle {
+            databaseReference.removeObserver(withHandle: observingHandle)
+        }
     }
     
     // MARK: - SessionStarsDataSource

@@ -20,10 +20,6 @@ class FirebaseSessionDataSource: SessionDataSource {
     /// The date on which all firebase sessions are assumed to take place
     private let firebaseDate: Date
     private let sectionHeaderDateFormatter: DateFormatter
-    /// `false` by default.
-    /// Changing this value requires that any users of this class throw out and completely
-    /// reload the data they have gotten from this class.
-    var shouldIncludeOnlyStarred: Bool = false
     
     weak var sessionDataSourceDelegate: SessionDataSourceDelegate?
     
@@ -32,23 +28,11 @@ class FirebaseSessionDataSource: SessionDataSource {
     }
     
     private var sessions: [SessionViewModel] = []
-    private var starredSessions: [SessionViewModel] {
-        return sessions.filter { vm in vm.isStarred }
-    }
-    
-    /// The working set of sessions we're using, i.e. all sessions or only starred sessions.
-    private var workingSessions: [SessionViewModel] {
-        if shouldIncludeOnlyStarred {
-            return starredSessions
-        } else {
-            return sessions
-        }
-    }
     
     /// `workingSessions` grouped by each session's startTime
     private var sessionsByStart: [Date:[SessionViewModel]] {
         var collected: [Date:[SessionViewModel]] = [:]
-        for session in workingSessions {
+        for session in sessions {
             let startTime = session.start ?? .distantPast
             
             collected[startTime, defaulting: []].append(session)

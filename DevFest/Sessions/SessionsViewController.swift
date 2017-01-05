@@ -107,7 +107,7 @@ extension SessionsViewController: SessionDataSourceDelegate {
 }
 
 extension SessionsViewController: SessionStarsDataSourceDelegate {
-    func sessionStarsDidUpdate() {
+    func sessionStarsDidUpdate(dataSource: SessionStarsDataSource) {
         // TODO: animate updates
         collectionView?.reloadData()
     }
