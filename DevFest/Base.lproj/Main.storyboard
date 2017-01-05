@@ -70,7 +70,7 @@
         <scene sceneID="JzN-SD-HdB">
             <objects>
                 <collectionViewController id="wZ2-vO-ga2" customClass="SpeakersViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h7p-mr-sbK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="h7p-mr-sbK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,7 +200,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-oT-CdC">
-                                            <rect key="frame" x="40" y="28" width="59" height="40"/>
+                                            <rect key="frame" x="40" y="28" width="59" height="42.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTT-e9-Z3d">
                                                     <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
@@ -209,7 +209,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5H-Qd-pQ9">
-                                                    <rect key="frame" x="0.0" y="24.5" width="59" height="15.5"/>
+                                                    <rect key="frame" x="0.0" y="24.5" width="59" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -247,7 +247,7 @@
                                     <constraint firstItem="yqz-oT-CdC" firstAttribute="top" secondItem="lDa-kF-u3c" secondAttribute="topMargin" constant="20" id="Tcr-gx-RaM"/>
                                     <constraint firstItem="DNJ-Me-If6" firstAttribute="top" secondItem="lDa-kF-u3c" secondAttribute="topMargin" constant="16" id="XoL-s1-Fhx"/>
                                     <constraint firstItem="DNJ-Me-If6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqz-oT-CdC" secondAttribute="trailing" constant="8" id="fgJ-Vf-N3m"/>
-                                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yqz-oT-CdC" secondAttribute="bottom" constant="20" id="kqW-Rx-EhY"/>
+                                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yqz-oT-CdC" secondAttribute="bottom" constant="16" id="kqW-Rx-EhY"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="DNJ-Me-If6" secondAttribute="trailing" constant="12" id="vUa-VI-wsI"/>
                                     <constraint firstItem="P4f-sG-ztW" firstAttribute="leading" secondItem="kuR-zs-oP1" secondAttribute="trailing" constant="6" id="wYJ-7W-LoT"/>
                                 </constraints>
