@@ -32,6 +32,7 @@
 		DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */; };
 		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
+		DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */; };
 		DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */; };
 		DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2281DEBA264006C97F1 /* Appearance.swift */; };
 		DAB0C22B1DEBD12A006C97F1 /* SessionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C22A1DEBD12A006C97F1 /* SessionTitleView.swift */; };
@@ -103,6 +104,7 @@
 		DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceNotifier.swift; sourceTree = "<group>"; };
 		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
+		DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		DAB0C2281DEBA264006C97F1 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		DAB0C22A1DEBD12A006C97F1 /* SessionTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTitleView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		DA1340CB1E22E802006912B4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */,
 				DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -302,12 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA2F3B6D1DE6219E00B2F8D2 /* Build configuration list for PBXNativeTarget "DevFest" */;
 			buildPhases = (
-				C085DEFE0C8FA81739AF005D /* 📦 Check Pods Manifest.lock */,
+				C085DEFE0C8FA81739AF005D /* [CP] Check Pods Manifest.lock */,
 				DA2F3B3F1DE6219E00B2F8D2 /* Sources */,
 				DA2F3B401DE6219E00B2F8D2 /* Frameworks */,
 				DA2F3B411DE6219E00B2F8D2 /* Resources */,
-				40E22652B4ED9892F994E98B /* 📦 Embed Pods Frameworks */,
-				DE51443FB83C4683D130C06E /* 📦 Copy Pods Resources */,
+				40E22652B4ED9892F994E98B /* [CP] Embed Pods Frameworks */,
+				DE51443FB83C4683D130C06E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,12 +325,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA2F3B701DE6219E00B2F8D2 /* Build configuration list for PBXNativeTarget "DevFestTests" */;
 			buildPhases = (
-				230F563A3005973B686E4550 /* 📦 Check Pods Manifest.lock */,
+				230F563A3005973B686E4550 /* [CP] Check Pods Manifest.lock */,
 				DA2F3B551DE6219E00B2F8D2 /* Sources */,
 				DA2F3B561DE6219E00B2F8D2 /* Frameworks */,
 				DA2F3B571DE6219E00B2F8D2 /* Resources */,
-				CFF62119E583301431E490F6 /* 📦 Embed Pods Frameworks */,
-				0F46EABE3DD77614FB8CAB02 /* 📦 Copy Pods Resources */,
+				CFF62119E583301431E490F6 /* [CP] Embed Pods Frameworks */,
+				0F46EABE3DD77614FB8CAB02 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,11 +346,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA2F3B731DE6219E00B2F8D2 /* Build configuration list for PBXNativeTarget "DevFestUITests" */;
 			buildPhases = (
-				4A050DF8ADFB2CE3C8449CDB /* 📦 Check Pods Manifest.lock */,
+				4A050DF8ADFB2CE3C8449CDB /* [CP] Check Pods Manifest.lock */,
 				DA2F3B601DE6219E00B2F8D2 /* Sources */,
 				DA2F3B611DE6219E00B2F8D2 /* Frameworks */,
 				DA2F3B621DE6219E00B2F8D2 /* Resources */,
-				7C81D85534AC00798A94898D /* 📦 Copy Pods Resources */,
+				7C81D85534AC00798A94898D /* [CP] Copy Pods Resources */,
+				81CC5E17DE5CBF8C28A2D126 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -434,14 +438,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F46EABE3DD77614FB8CAB02 /* 📦 Copy Pods Resources */ = {
+		0F46EABE3DD77614FB8CAB02 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,29 +453,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevFestTests/Pods-DevFestTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		230F563A3005973B686E4550 /* 📦 Check Pods Manifest.lock */ = {
+		230F563A3005973B686E4550 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		40E22652B4ED9892F994E98B /* 📦 Embed Pods Frameworks */ = {
+		40E22652B4ED9892F994E98B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,29 +483,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevFest/Pods-DevFest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4A050DF8ADFB2CE3C8449CDB /* 📦 Check Pods Manifest.lock */ = {
+		4A050DF8ADFB2CE3C8449CDB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7C81D85534AC00798A94898D /* 📦 Copy Pods Resources */ = {
+		7C81D85534AC00798A94898D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,29 +513,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevFestUITests/Pods-DevFestUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C085DEFE0C8FA81739AF005D /* 📦 Check Pods Manifest.lock */ = {
+		81CC5E17DE5CBF8C28A2D126 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevFestUITests/Pods-DevFestUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CFF62119E583301431E490F6 /* 📦 Embed Pods Frameworks */ = {
+		C085DEFE0C8FA81739AF005D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CFF62119E583301431E490F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,14 +558,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevFestTests/Pods-DevFestTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DE51443FB83C4683D130C06E /* 📦 Copy Pods Resources */ = {
+		DE51443FB83C4683D130C06E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +605,7 @@
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
 				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
 				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,
+				DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */,
