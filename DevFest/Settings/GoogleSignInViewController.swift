@@ -11,6 +11,8 @@ import UIKit
 import GoogleSignIn
 
 class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
+    // The top constraint of our top-most subview
+    @IBOutlet var topConstraint: NSLayoutConstraint!
     @IBOutlet var signInButton: GIDSignInButton!
     @IBOutlet var signOutButton: UIButton!
     
@@ -24,5 +26,14 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         // Signing in silently seems to just push a white view with no way to exit, so don't try.
         // GIDSignIn.sharedInstance().signIn()
+        
+        dev_registerForAppearanceUpdates()
+        dev_updateAppearance()
+    }
+    
+    override func dev_updateAppearance() {
+        super.dev_updateAppearance()
+        
+        topConstraint.constant = .dev_standardMargin
     }
 }

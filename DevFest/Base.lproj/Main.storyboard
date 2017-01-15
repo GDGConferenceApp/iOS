@@ -71,7 +71,7 @@
         <scene sceneID="JzN-SD-HdB">
             <objects>
                 <collectionViewController id="wZ2-vO-ga2" customClass="SpeakersViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h7p-mr-sbK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="h7p-mr-sbK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -189,15 +189,15 @@
                         <sections>
                             <tableViewSection id="n0u-mR-V41">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ftK-Yx-nAh" style="IBUITableViewCellStyleDefault" id="oFy-pF-hrQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ftK-Yx-nAh" style="IBUITableViewCellStyleDefault" id="oFy-pF-hrQ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFy-pF-hrQ" id="TnT-U4-bxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftK-Yx-nAh">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -258,13 +258,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="iqi-1G-svm" secondAttribute="trailing" id="Cow-mA-9Vf"/>
-                            <constraint firstItem="iqi-1G-svm" firstAttribute="top" secondItem="LzL-a9-Rtl" secondAttribute="bottom" id="Zwm-Z5-rAI"/>
+                            <constraint firstItem="iqi-1G-svm" firstAttribute="top" secondItem="LzL-a9-Rtl" secondAttribute="bottom" id="eH0-YE-QcK"/>
                             <constraint firstItem="iqi-1G-svm" firstAttribute="leading" secondItem="HaJ-Jb-TQK" secondAttribute="leadingMargin" id="f5k-Fe-EXk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="signInButton" destination="tLa-vg-UdK" id="Wca-io-XkC"/>
                         <outlet property="signOutButton" destination="Dif-7Q-Qs9" id="GfP-ac-2jO"/>
+                        <outlet property="topConstraint" destination="eH0-YE-QcK" id="DiS-3e-NsG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrt-P3-FUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,7 +293,7 @@
         <scene sceneID="4Wd-CL-mf9">
             <objects>
                 <collectionViewController id="07Z-Wh-z82" customClass="SessionsViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jeC-6g-rdz">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="jeC-6g-rdz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
