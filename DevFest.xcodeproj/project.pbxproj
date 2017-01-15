@@ -29,6 +29,10 @@
 		DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B7F1DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift */; };
 		DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */; };
 		DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */; };
+		DA4029A71E2BFE85005E1861 /* SpeakerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4029A61E2BFE85005E1861 /* SpeakerDetailViewController.swift */; };
+		DA4029A91E2C10F0005E1861 /* Sessions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029A81E2C10F0005E1861 /* Sessions.storyboard */; };
+		DA4029AC1E2C1111005E1861 /* Speakers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029AA1E2C1111005E1861 /* Speakers.storyboard */; };
+		DA4029AF1E2C1179005E1861 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029AD1E2C1179005E1861 /* Settings.storyboard */; };
 		DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */; };
 		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
@@ -101,6 +105,10 @@
 		DA2F3B7F1DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewController.swift; sourceTree = "<group>"; };
 		DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCell.swift; sourceTree = "<group>"; };
+		DA4029A61E2BFE85005E1861 /* SpeakerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewController.swift; sourceTree = "<group>"; };
+		DA4029A81E2C10F0005E1861 /* Sessions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sessions.storyboard; path = Base.lproj/Sessions.storyboard; sourceTree = "<group>"; };
+		DA4029AB1E2C1111005E1861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Speakers.storyboard; sourceTree = "<group>"; };
+		DA4029AE1E2C1179005E1861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceNotifier.swift; sourceTree = "<group>"; };
 		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
@@ -224,6 +232,9 @@
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
 				DA6358371DEB50A100728D01 /* UIView+DevFest.swift */,
 				DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */,
+				DA4029A81E2C10F0005E1861 /* Sessions.storyboard */,
+				DA4029AD1E2C1179005E1861 /* Settings.storyboard */,
+				DA4029AA1E2C1111005E1861 /* Speakers.storyboard */,
 				DA2F3B4F1DE6219E00B2F8D2 /* Assets.xcassets */,
 				DA2F3B511DE6219E00B2F8D2 /* LaunchScreen.storyboard */,
 				DA2F3B541DE6219E00B2F8D2 /* Info.plist */,
@@ -271,6 +282,7 @@
 			children = (
 				DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */,
 				DAC5E3DF1E1AC66C009ADAE5 /* SpeakerDataSource.swift */,
+				DA4029A61E2BFE85005E1861 /* SpeakerDetailViewController.swift */,
 				DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */,
 				DA0D74311DEE3581005F71B3 /* SpeakerTitleView.swift */,
 				DAE039431DE74B05009C859B /* SpeakerViewModel.swift */,
@@ -414,10 +426,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4029AC1E2C1111005E1861 /* Speakers.storyboard in Resources */,
 				DA2F3B531DE6219E00B2F8D2 /* LaunchScreen.storyboard in Resources */,
 				DA118EE31E0B159B00DA2D8E /* GoogleService-Info.plist in Resources */,
 				DA2F3B501DE6219E00B2F8D2 /* Assets.xcassets in Resources */,
 				DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */,
+				DA4029A91E2C10F0005E1861 /* Sessions.storyboard in Resources */,
+				DA4029AF1E2C1179005E1861 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +611,7 @@
 				DA2F3B791DE622C900B2F8D2 /* AppCoordinator.swift in Sources */,
 				DA2F3B7C1DE6247A00B2F8D2 /* SessionsViewController.swift in Sources */,
 				DA118EE61E0B185600DA2D8E /* FirebaseCoordinator.swift in Sources */,
+				DA4029A71E2BFE85005E1861 /* SpeakerDetailViewController.swift in Sources */,
 				DAC5E3E01E1AC66C009ADAE5 /* SpeakerDataSource.swift in Sources */,
 				DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */,
 				DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */,
@@ -661,6 +677,22 @@
 				DA2F3B521DE6219E00B2F8D2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DA4029AA1E2C1111005E1861 /* Speakers.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA4029AB1E2C1111005E1861 /* Base */,
+			);
+			name = Speakers.storyboard;
+			sourceTree = "<group>";
+		};
+		DA4029AD1E2C1179005E1861 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA4029AE1E2C1179005E1861 /* Base */,
+			);
+			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

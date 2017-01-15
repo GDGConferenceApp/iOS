@@ -48,6 +48,13 @@ extension UIFont {
         return UIFont.preferredFont(forTextStyle: .footnote)
     }
     
+    /**
+     Meant for use on body copy, i.e. longer text.
+     */
+    static var dev_contentFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .body)
+    }
+    
     static var dev_reusableItemTitleFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .headline)
     }

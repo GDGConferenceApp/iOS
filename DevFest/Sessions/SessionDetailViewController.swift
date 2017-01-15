@@ -15,7 +15,6 @@ class SessionDetailViewController: UIViewController {
     @IBOutlet var sessionTitleView: SessionTitleView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var speakersStackView: UIStackView!
-    
     @IBOutlet var speakersSectionLabel: UILabel!
     
     /// Most of the session details. The `speakerIDs` are not used.
@@ -63,6 +62,7 @@ class SessionDetailViewController: UIViewController {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
+        descriptionTextView.font = .dev_contentFont
         speakersSectionLabel.font = .dev_sectionHeaderFont
         speakersStackView.layoutMargins = .dev_standardMargins
     }

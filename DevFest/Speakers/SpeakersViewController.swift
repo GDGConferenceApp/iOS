@@ -36,6 +36,25 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
         return cell
     }
 
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.destination, sender) {
+        case (let detailVC as SpeakerDetailViewController, let cell as SpeakerCell):
+            guard let viewModel = cell.viewModel else {
+                assertionFailure("No view model found on cell that triggered a detail segue. Was the cell set up correctly?")
+                return
+            }
+            
+            detailVC.viewModel = viewModel
+            break
+        default:
+            print("Unexpected segue: \(segue)")
+            break
+        }
+    }
 }
 
 extension SpeakersViewController: SpeakerDataSourceDelegate {

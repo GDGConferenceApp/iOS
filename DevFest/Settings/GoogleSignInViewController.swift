@@ -27,8 +27,8 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
         // Signing in silently seems to just push a white view with no way to exit, so don't try.
         // GIDSignIn.sharedInstance().signIn()
         
-        dev_registerForAppearanceUpdates()
         dev_updateAppearance()
+        dev_registerForAppearanceUpdates()
     }
     
     override func dev_updateAppearance() {
