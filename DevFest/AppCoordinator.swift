@@ -17,6 +17,7 @@ class AppCoordinator {
     let starredSessionsViewController: SessionsViewController
     let speakersViewController: SpeakersViewController
     let mapViewController: MapViewController
+    let settingsViewController: SettingsViewController
     
     let firebaseDateFormatter = DateFormatter()
     let sectionHeaderDateFormatter = DateFormatter()
@@ -28,6 +29,7 @@ class AppCoordinator {
         starredSessionsViewController = tabBarController.tabInNavigationController(atIndex: 1) as SessionsViewController
         speakersViewController = tabBarController.tabInNavigationController(atIndex: 2) as SpeakersViewController
         mapViewController = tabBarController.tab(atIndex: 3) as MapViewController
+        settingsViewController = tabBarController.tabInNavigationController(atIndex: 4) as SettingsViewController
         
         self.tabBarController = tabBarController
         
@@ -45,6 +47,7 @@ class AppCoordinator {
         starredSessionsViewController.title = NSLocalizedString("Your Schedule", comment: "tab title")
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
+        settingsViewController.title = NSLocalizedString("Settings", comment: "tab title")
         
         let firebaseStarsDataSource = FirebaseStarsDataSource()
         firebaseStarsDataSource.sessionStarsDataSourceDelegate = multiSessionStarsDataSourceDelegate
