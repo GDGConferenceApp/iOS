@@ -16,6 +16,8 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet var signInButton: GIDSignInButton!
     @IBOutlet var signOutButton: UIButton!
     
+    var shouldAutoSignIn = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,11 +26,19 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
         signOutButton.isEnabled = false
         
         GIDSignIn.sharedInstance().uiDelegate = self
-        // Signing in silently seems to just push a white view with no way to exit, so don't try.
-        // GIDSignIn.sharedInstance().signIn()
         
         dev_updateAppearance()
         dev_registerForAppearanceUpdates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if shouldAutoSignIn {
+            shouldAutoSignIn = false
+            // Signing in silently doesn't work from viewDidLoad, so try in viewDidAppear.
+            GIDSignIn.sharedInstance().signIn()
+        }
     }
     
     override func dev_updateAppearance() {
