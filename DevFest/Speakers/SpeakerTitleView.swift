@@ -108,7 +108,10 @@ final class SpeakerTitleView: UIView {
         super.layoutSubviews()
         
         let layer = imageView.layer
-        layer.cornerRadius = imageView.frame.width / 2
+        let width = imageView.frame.width
+        if width > 0 {
+            layer.cornerRadius = width / 2
+        }
     }
     
     override func prepareForInterfaceBuilder() {
