@@ -21,9 +21,9 @@ protocol SessionDataSourceDelegate: class {
 
 final class SessionFixture: SessionDataSource, SessionStarsDataSource {
     static var items: [SessionViewModel] = [
-        SessionViewModel(sessionID: "one", title: "First Session", description: "First Session Description", color: .green, isStarred: false, track: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [speakers[0].speakerID], tags: []),
-        SessionViewModel(sessionID: "two", title: "Session Two", description: "Session Two Description", color: .blue, isStarred: true, track: "design", room: "classroom 1", start: nil, end: nil, speakerIDs: [], tags: []),
-        SessionViewModel(sessionID: "three", title: "Session the Third", description: "Session the Third Description", color: .black, isStarred: false, track: nil, room: "lab", start: nil, end: nil, speakerIDs: [], tags: []),
+        SessionViewModel(sessionID: "one", title: "First Session", description: "First Session Description", isStarred: false, track: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [speakers[0].speakerID], tags: []),
+        SessionViewModel(sessionID: "two", title: "Session Two", description: "Session Two Description", isStarred: true, track: "design", room: "classroom 1", start: nil, end: nil, speakerIDs: [], tags: []),
+        SessionViewModel(sessionID: "three", title: "Session the Third", description: "Session the Third Description", isStarred: false, track: nil, room: "lab", start: nil, end: nil, speakerIDs: [], tags: []),
         ]
     
     static var speakers: [SpeakerViewModel] { return SpeakerFixture.speakers }

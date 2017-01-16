@@ -13,7 +13,31 @@ struct SessionViewModel {
     let title: String
     let description: String?
     
-    let color: UIColor
+    var color: UIColor {
+        let defaultColor = UIColor.black
+        guard let track = track else {
+            return defaultColor
+        }
+        
+        switch track.localizedLowercase {
+        case "all":
+            return defaultColor
+        case "android":
+            return .green
+        case "cloud":
+            return .lightGray
+        case "design":
+            return .yellow
+        case "iot":
+            return .red
+        case "keynote":
+            return .blue
+        case "web":
+            return .purple
+        default:
+            return defaultColor
+        }
+    }
     var isStarred: Bool
     
     // Optional items
