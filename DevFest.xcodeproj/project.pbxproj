@@ -17,6 +17,7 @@
 		DA118EE81E0B18F700DA2D8E /* FirebaseSessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA118EE71E0B18F700DA2D8E /* FirebaseSessionDataSource.swift */; };
 		DA1340CD1E22E81D006912B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */; };
 		DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14F8811DE9ED7A0092F899 /* MapViewController.swift */; };
+		DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */; };
 		DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */; };
 		DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */; };
 		DA2F3B501DE6219E00B2F8D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4F1DE6219E00B2F8D2 /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		DA118EE71E0B18F700DA2D8E /* FirebaseSessionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseSessionDataSource.swift; sourceTree = "<group>"; };
 		DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA14F8811DE9ED7A0092F899 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		DA2F3B431DE6219E00B2F8D2 /* DevFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2F3B4D1DE6219E00B2F8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */,
+				DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */,
 				DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -624,6 +627,7 @@
 				DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
+				DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */,
 				DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */,
 				DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */,

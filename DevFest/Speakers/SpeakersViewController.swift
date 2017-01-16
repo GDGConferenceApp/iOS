@@ -51,7 +51,7 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
             detailVC.viewModel = viewModel
             break
         default:
-            print("Unexpected segue: \(segue)")
+            NSLog("Unexpected segue: \(segue)")
             break
         }
     }
