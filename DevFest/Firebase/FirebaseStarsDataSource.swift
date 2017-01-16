@@ -9,13 +9,22 @@
 import Foundation
 import FirebaseDatabase
 
+/**
+ Provides the IDs of Sessions that have been starred in Firebase.
+ Requires the user to authenticate with Firebase, and that the method
+ `setFirebaseUserID(_:, shouldMergeLocalAndRemoteStarsOnce:)` be called
+ to sync starred IDs with Firebase.
+ 
+ Also persists the IDs of Sessions which it has been told are starred to disk,
+ so they can be available even when not authenticated with Firebase.
+ */
 final class FirebaseStarsDataSource: SessionStarsDataSource {
     fileprivate let databaseReference: FIRDatabaseReference
+    private let defaultsPersister = UserDefaultsPersister()
     
     weak var sessionStarsDataSourceDelegate: SessionStarsDataSourceDelegate?
 
     /// The IDs of sessions that have been starred.
-    /// TODO: persistence aside from Firebase
     fileprivate(set) var starredSessionIDs: Set<String> = [] {
         didSet {
             // Take no action if the value hasn't actually changed.
@@ -27,15 +36,25 @@ final class FirebaseStarsDataSource: SessionStarsDataSource {
             if let firebaseUserID = firebaseUserID {
                 updateStarsInFirebase(userID: firebaseUserID)
             }
+            
+            // Also persist starred IDs to disk.
+            defaultsPersister.starredSessionIDs = starredSessionIDs
         }
     }
     
+    /**
+     - seealso: `setFirebaseUserID(_:, shouldMergeLocalAndRemoteStarsOnce:)`
+     */
     fileprivate var firebaseUserID: String?
     
+    /**
+     - seealso: `setFirebaseUserID(_:, shouldMergeLocalAndRemoteStarsOnce:)`
+     */
     fileprivate var firebaseObservingHandle: UInt?
     
     init(databaseReference: FIRDatabaseReference = FIRDatabase.database().reference()) {
         self.databaseReference = databaseReference
+        starredSessionIDs = defaultsPersister.starredSessionIDs
     }
     
     deinit {
@@ -91,15 +110,13 @@ private extension FirebaseStarsDataSource {
             starsDict[sessionID] = ["value":true]
         }
         
-        let agendasChild = "\(userID)"
-        databaseReference.child("devfest2017").child("agendas").child(agendasChild).setValue(starsDict)
+        databaseReference.child("devfest2017").child("agendas").child(userID).setValue(starsDict)
     }
     
     func registerForObservingAgenda(forUserWithID userID: String, shouldMergeLocalAndRemoteStartsOnce: Bool) {
         var shouldMerge = shouldMergeLocalAndRemoteStartsOnce
         
-        let agendasChild = "\(userID)"
-        firebaseObservingHandle = databaseReference.child("devfest2017").child("agendas").child(agendasChild).observe(.value) { [weak self] (snapshot: FIRDataSnapshot) in
+        firebaseObservingHandle = databaseReference.child("devfest2017").child("agendas").child(userID).observe(.value) { [weak self] (snapshot: FIRDataSnapshot) in
             // Assume a format like [{ "sessionIDGoesHere" : { "value" : true} }, { "anotherSessionID" : { "value" : true } }]
             guard let strongSelf = self, let sessionIDsDicts = snapshot.value as? [String:[String:Any]] else {
                 return
@@ -115,6 +132,25 @@ private extension FirebaseStarsDataSource {
                 starredSessionIDs = firebaseStarredSessionIDs
             }
             strongSelf.starredSessionIDs = starredSessionIDs
+        }
+    }
+}
+
+
+/**
+ This is terrible. Don't copy this. Make something better instead of being lazy.
+ */
+private class UserDefaultsPersister {
+    static let StarredSessionIDsKey = "FirebaseStarsDataSource.StarredSessionIDs"
+    
+    var starredSessionIDs: Set<String> {
+        get {
+            let ids = UserDefaults.standard.array(forKey: UserDefaultsPersister.StarredSessionIDsKey) as? [String]
+            return Set(ids ?? [])
+        }
+        set {
+            let ids = Array(newValue)
+            UserDefaults.standard.setValue(ids as NSArray, forKey: UserDefaultsPersister.StarredSessionIDsKey)
         }
     }
 }
