@@ -120,7 +120,7 @@ extension SessionViewModel {
         
         let color: UIColor = .black
         let description = dict["description"] as? String
-        let category = dict["category"] as? String
+        let track = dict["track"] as? String
         let room = dict["room"] as? String
         
         // start/end times
@@ -135,7 +135,7 @@ extension SessionViewModel {
         
         let isStarred = false
         
-        self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, category: category, room: room, start: start, end: end, speakerIDs: speakerIDs ?? [], tags: tags ?? [])
+        self.init(sessionID: id, title: title, description: description, color: color, isStarred: isStarred, track: track, room: room, start: start, end: end, speakerIDs: speakerIDs ?? [], tags: tags ?? [])
     }
 }
 

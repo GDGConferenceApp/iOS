@@ -17,7 +17,7 @@ struct SessionViewModel {
     var isStarred: Bool
     
     // Optional items
-    let category: String?
+    let track: String?
     let room: String?
     let start: Date?
     let end: Date?

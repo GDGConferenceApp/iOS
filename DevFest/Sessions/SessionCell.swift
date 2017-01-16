@@ -15,7 +15,7 @@ import UIKit
 class SessionCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var trackLabel: UILabel!
     @IBOutlet var colorView: UIView!
     @IBOutlet var starButton: UIButton!
     
@@ -24,14 +24,14 @@ class SessionCell: UICollectionViewCell {
             titleLabel.text = viewModel?.title
             subtitleLabel.text = viewModel?.room
             
-            if let category = viewModel?.category {
-                categoryLabel.text = category
-                categoryLabel.isHidden = false
+            if let track = viewModel?.track {
+                trackLabel.text = track
+                trackLabel.isHidden = false
             } else {
-                categoryLabel.isHidden = true
+                trackLabel.isHidden = true
             }
             
-            categoryLabel.textColor = viewModel?.color ?? .black
+            trackLabel.textColor = viewModel?.color ?? .black
             colorView.backgroundColor = viewModel?.color
             
             let image: UIImage

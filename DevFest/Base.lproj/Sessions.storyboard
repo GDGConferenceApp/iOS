@@ -34,16 +34,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-oT-CdC">
-                                            <rect key="frame" x="40" y="28" width="59" height="43"/>
+                                            <rect key="frame" x="40" y="28" width="59" height="42.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTT-e9-Z3d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5H-Qd-pQ9">
-                                                    <rect key="frame" x="0.0" y="25" width="59" height="18"/>
+                                                    <rect key="frame" x="0.0" y="24.5" width="59" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -58,8 +58,8 @@
                                                 <constraint firstAttribute="height" constant="40" id="yQf-iz-DYu"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4f-sG-ztW">
-                                            <rect key="frame" x="12" y="2" width="54" height="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="track" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4f-sG-ztW">
+                                            <rect key="frame" x="12" y="2" width="31" height="16"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -86,11 +86,11 @@
                                     <constraint firstItem="P4f-sG-ztW" firstAttribute="leading" secondItem="kuR-zs-oP1" secondAttribute="trailing" constant="6" id="wYJ-7W-LoT"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="categoryLabel" destination="P4f-sG-ztW" id="WhZ-yd-BQD"/>
                                     <outlet property="colorView" destination="kuR-zs-oP1" id="mQs-XO-IxN"/>
                                     <outlet property="starButton" destination="DNJ-Me-If6" id="43C-tT-yu1"/>
                                     <outlet property="subtitleLabel" destination="k5H-Qd-pQ9" id="ceH-XI-3rs"/>
                                     <outlet property="titleLabel" destination="TTT-e9-Z3d" id="jah-no-zm4"/>
+                                    <outlet property="trackLabel" destination="P4f-sG-ztW" id="KJw-MJ-ai2"/>
                                     <segue destination="Gbw-G4-ZX8" kind="show" identifier="sessionDetail" id="zFX-ur-O9B">
                                         <segue key="commit" inheritsFrom="parent" id="OjC-fj-vrU"/>
                                         <segue key="preview" inheritsFrom="commit" id="DGd-bW-6fj"/>
@@ -154,27 +154,27 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F23-lm-gfv">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="multilineTitle" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-lW-c7K">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-lW-c7K">
                                                 <rect key="frame" x="0.0" y="128" width="375" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-hM-K31">
-                                                <rect key="frame" x="0.0" y="161" width="375" height="21"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-hM-K31">
+                                                <rect key="frame" x="0.0" y="161" width="375" height="20.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Speakers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-Vs-NeA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speakers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-Vs-NeA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

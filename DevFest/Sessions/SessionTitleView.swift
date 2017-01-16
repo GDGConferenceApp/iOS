@@ -14,7 +14,7 @@ import UIKit
 @IBDesignable
 class SessionTitleView: UIView {
     private let colorView = UIView()
-    private let categoryLabel = UILabel()
+    private let trackLabel = UILabel()
     private let titleLabel = UILabel()
     private let timeLabel = UILabel()
     private let locationLabel = UILabel()
@@ -54,7 +54,7 @@ class SessionTitleView: UIView {
         super.prepareForInterfaceBuilder()
         dev_updateAppearance()
         
-        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", color: .green, isStarred: true, category: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [], tags: [])
+        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", color: .green, isStarred: true, track: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [], tags: [])
     }
     
     override func dev_updateAppearance() {
@@ -62,7 +62,7 @@ class SessionTitleView: UIView {
         
         titleLabel.font = .dev_reusableItemTitleFont
         locationLabel.font = .dev_reusableItemSubtitleFont
-        categoryLabel.font = .dev_categoryFont
+        trackLabel.font = .dev_categoryFont
         
         categoryLeadingConstraint?.constant = .dev_standardMargin
         categoryTopConstraint?.constant = floor(CGFloat.dev_standardMargin / 4)
@@ -78,7 +78,7 @@ class SessionTitleView: UIView {
         timeLocationStackView.addArrangedSubview(locationLabel)
         
         dev_addSubview(colorView)
-        dev_addSubview(categoryLabel)
+        dev_addSubview(trackLabel)
         dev_addSubview(titleLabel)
         dev_addSubview(timeLocationStackView)
         
@@ -89,16 +89,16 @@ class SessionTitleView: UIView {
             colorView.widthAnchor.constraint(equalToConstant: 12),
             ]
         
-        categoryLeadingConstraint = categoryLabel.leadingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: .dev_standardMargin)
-        categoryTopConstraint = categoryLabel.topAnchor.constraint(equalTo: topAnchor, constant: floor(CGFloat.dev_standardMargin / 4))
-        titleTopConstraint = titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
+        categoryLeadingConstraint = trackLabel.leadingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: .dev_standardMargin)
+        categoryTopConstraint = trackLabel.topAnchor.constraint(equalTo: topAnchor, constant: floor(CGFloat.dev_standardMargin / 4))
+        titleTopConstraint = titleLabel.topAnchor.constraint(equalTo: trackLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
         timeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
         timeLocationBottomConstraint = timeLocationStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         
         let otherSideConstraints: [NSLayoutConstraint] = [
-            titleLabel.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: trackLabel.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            timeLocationStackView.leadingAnchor.constraint(equalTo: categoryLabel.leadingAnchor),
+            timeLocationStackView.leadingAnchor.constraint(equalTo: trackLabel.leadingAnchor),
             timeLocationStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ]
 
@@ -124,9 +124,9 @@ class SessionTitleView: UIView {
         
         let categoryColor = viewModel.color
         colorView.backgroundColor = categoryColor
-        categoryLabel.textColor = categoryColor
+        trackLabel.textColor = categoryColor
         
-        categoryLabel.text = viewModel.category
+        trackLabel.text = viewModel.track
         titleLabel.text = viewModel.title
         if let duration = viewModel.durationString(using: .dev_startAndEndFormatter) {
             timeLabel.text = duration
