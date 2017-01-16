@@ -26,6 +26,8 @@ class AppCoordinator {
     private let speakersViewController: SpeakersViewController
     private let mapViewController: MapViewController
     // Rely on the `settingsCoordinator` to manage the settings view controller.
+    // We do need a reference to the settings view controller's nav controller though.
+    fileprivate let settingsNavigationController: UINavigationController
     
     private let firebaseDateFormatter = DateFormatter()
     private let sectionHeaderDateFormatter = DateFormatter()
@@ -70,6 +72,7 @@ class AppCoordinator {
         starredSessionsViewController = tabBarController.tabInNavigationController(atIndex: 1) as SessionsViewController
         speakersViewController = tabBarController.tabInNavigationController(atIndex: 2) as SpeakersViewController
         mapViewController = tabBarController.tab(atIndex: 3) as MapViewController
+        settingsNavigationController = tabBarController.tab(atIndex: 4) as UINavigationController
         
         let settingsViewController = tabBarController.tabInNavigationController(atIndex: 4) as SettingsViewController
         settingsCoordinator = SettingsCoordinator(viewController: settingsViewController)
@@ -134,6 +137,7 @@ class AppCoordinator {
             if let user = user {
                 self.firebaseCoordinator.disconnectSignIn(forGoogleUser: user)
             }
+            self.didDisconnectSignIn()
         }
 
         
@@ -211,11 +215,19 @@ private extension AppCoordinator {
         let shouldMerge = !isSigningInSilently
         firebaseStarsDataSource.setFirebaseUserID(firebaseUserID, shouldMergeLocalAndRemoteStarsOnce: shouldMerge)
         settingsCoordinator.isSignedIn = true
+        
+        // Pop out of any settings the user was looking at if they signed in,
+        // since the settings tab is the only place we let them sign in manually.
+        if !isSigningInSilently {
+            settingsNavigationController.popToRootViewController(animated: true)
+        }
     }
     
     func didDisconnectSignIn() {
         firebaseStarsDataSource.setFirebaseUserID(nil, shouldMergeLocalAndRemoteStarsOnce: false)
         settingsCoordinator.isSignedIn = false
+        // Pop out of any settings the user was looking at if they get signed out.
+        settingsNavigationController.popToRootViewController(animated: true)
     }
 }
 

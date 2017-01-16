@@ -64,6 +64,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        GIDSignIn.sharedInstance().signOut()
+        GIDSignIn.sharedInstance().disconnect()
     }
 }

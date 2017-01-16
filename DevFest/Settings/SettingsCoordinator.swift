@@ -12,7 +12,6 @@ import UIKit
  Owns a settings view controller.
  */
 class SettingsCoordinator: SettingsDelegate {
-    private static let IsSignedInKey = "IsSignedIn"
     private let viewController: SettingsViewController
     
     var isSignedIn = false
