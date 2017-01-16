@@ -33,6 +33,11 @@ class AppCoordinator {
     private let multiSessionStarsDataSourceDelegate = MultiSessionStarsDataSourceDelegate()
     
     /**
+     The object to manage downloading and providing images for speakers.
+     */
+    private let imageRepository: ImageRepository
+    
+    /**
      We can't create this until we've `start`ed our `firebaseCoordinator`,
      since Firebase may otherwise not yet be ready.
      */
@@ -70,6 +75,15 @@ class AppCoordinator {
         settingsCoordinator = SettingsCoordinator(viewController: settingsViewController)
         
         self.tabBarController = tabBarController
+        
+        let urlSession = URLSession.shared
+        let cacheDirectory = { () -> URL in
+            let fileManager = FileManager.default
+            // TODO: Work out a recovery strategy for when this doesn't work
+            let directory = try! fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            return directory
+        }()
+        self.imageRepository = ImageRepository(urlSession: urlSession, cacheDirectory: cacheDirectory)
         
         firebaseDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
         sectionHeaderDateFormatter.dateFormat = "hh:mm a"
@@ -146,6 +160,8 @@ class AppCoordinator {
         mapViewController.title = NSLocalizedString("Map", comment: "tab title")
         // Rely on `settingsCoordinator` to set `settingsViewController`'s title.
         
+        
+        // Set data sources on our view controllers
         firebaseStarsDataSource = FirebaseStarsDataSource()
         firebaseStarsDataSource.sessionStarsDataSourceDelegate = multiSessionStarsDataSourceDelegate
         
@@ -182,6 +198,11 @@ class AppCoordinator {
             
             speakersViewController.speakerDataSource = speakerDataSource
         }
+        
+        
+        // Provide the image repository
+        sessionsViewController.imageRepository = imageRepository
+        speakersViewController.imageRepository = imageRepository
     }
 }
 

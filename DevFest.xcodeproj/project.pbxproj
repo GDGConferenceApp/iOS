@@ -18,6 +18,7 @@
 		DA1340CD1E22E81D006912B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */; };
 		DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14F8811DE9ED7A0092F899 /* MapViewController.swift */; };
 		DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */; };
+		DA192AE91E2D7692000DDD30 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA192AE81E2D7692000DDD30 /* ImageRepository.swift */; };
 		DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */; };
 		DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */; };
 		DA2F3B501DE6219E00B2F8D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2F3B4F1DE6219E00B2F8D2 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA14F8811DE9ED7A0092F899 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		DA192AE81E2D7692000DDD30 /* ImageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		DA2F3B431DE6219E00B2F8D2 /* DevFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2F3B461DE6219E00B2F8D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2F3B4D1DE6219E00B2F8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				DA2F3B781DE622C900B2F8D2 /* AppCoordinator.swift */,
 				DAB47D6C1E0C274D0000A127 /* DataSource.swift */,
 				DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */,
+				DA192AE81E2D7692000DDD30 /* ImageRepository.swift */,
 				DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */,
 				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
@@ -625,6 +628,7 @@
 				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
 				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,
 				DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */,
+				DA192AE91E2D7692000DDD30 /* ImageRepository.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
 				DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */,

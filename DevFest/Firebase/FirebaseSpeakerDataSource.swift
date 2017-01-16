@@ -89,6 +89,6 @@ extension SpeakerViewModel {
         let website = websiteString.flatMap { return URL(string: $0) }
         let imageURL = imageURLString.flatMap { return URL(string: $0) }
         
-        self.init(speakerID: id, name: name, bio: bio, company: company, imageURL: imageURL, image: nil, twitter: twitter, website: website)
+        self.init(speakerID: id, name: name, bio: bio, company: company, imageURL: imageURL, twitter: twitter, website: website)
     }
 }

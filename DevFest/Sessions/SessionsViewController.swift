@@ -21,6 +21,8 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     
     var speakerDataSource: SpeakerDataSource?
     
+    var imageRepository: ImageRepository?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFlowLayoutItemWidth()
@@ -45,6 +47,7 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
             }
             destination.viewModel = viewModel
             destination.speakers = speakers
+            destination.imageRepository = imageRepository
         default:
             break
         }

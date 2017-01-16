@@ -13,6 +13,8 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
     
     var speakerDataSource: SpeakerDataSource?
     
+    var imageRepository: ImageRepository?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFlowLayoutItemWidth()
@@ -33,6 +35,22 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
         let cell = collectionView.dequeueCell(for: indexPath) as SpeakerCell
         let viewModel = speakerDataSource!.viewModel(at: indexPath)
         cell.viewModel = viewModel
+        let image: UIImage?
+        if let imageRepository = imageRepository, let url = viewModel.imageURL {
+            let (maybeImage, _) = imageRepository.image(at: url, completion: { [weak collectionView] (maybeImage) in
+                guard let _ = maybeImage else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    collectionView?.reloadItems(at: [indexPath])
+                }
+            })
+            image = maybeImage ?? .speakerPlaceholder
+        } else {
+            image = .speakerPlaceholder
+        }
+        cell.image = image
         return cell
     }
 
@@ -49,10 +67,9 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
             }
             
             detailVC.viewModel = viewModel
-            break
+            detailVC.imageRepository = imageRepository
         default:
             NSLog("Unexpected segue: \(segue)")
-            break
         }
     }
 }

@@ -52,14 +52,21 @@ final class SpeakerTitleView: UIView {
             titleLabel.text = viewModel?.name
             subtitleLabel.text = viewModel?.company
             
-            if let image = viewModel?.image {
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    /**
+     The speaker's photo.
+     */
+    var image: UIImage? {
+        didSet {
+            if let image = image {
                 imageView.image = image
                 imageContainerView.isHidden = false
             } else {
                 imageContainerView.isHidden = true
             }
-            
-            invalidateIntrinsicContentSize()
         }
     }
     
@@ -107,11 +114,14 @@ final class SpeakerTitleView: UIView {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
+        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", bio: "Sample bio here.", company: "Organization, LLC", imageURL: nil, twitter: nil, website: nil)
+        
         // We can't use UIImage(named:) or image literals when previewing a view in IB,
         // so manually find the image in our bundle.
         let bundleForImage = Bundle(for: SpeakerTitleView.self)
-        let speakerImage = UIImage(named: "podium-icons8", in: bundleForImage, compatibleWith: nil)
-        viewModel = SpeakerViewModel(speakerID: "dummy", name: "Speaker Name", bio: "Sample bio here.", company: "Organization, LLC", imageURL: nil, image: speakerImage, twitter: nil, website: nil)
+        let placeholderImage = UIImage(named: "speaker-placeholder", in: bundleForImage, compatibleWith: nil)
+        image = placeholderImage
+        
         subviewsInit()
     }
     

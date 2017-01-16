@@ -39,6 +39,8 @@ class SessionDetailViewController: UIViewController {
             updateFromViewModel()
         }
     }
+    
+    var imageRepository: ImageRepository?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +89,19 @@ class SessionDetailViewController: UIViewController {
         
         speakersStackView.addArrangedSubview(speakersSectionLabel)
         
-        for speaker in speakers {
+        for speakerViewModel in speakers {
             let speakerView = SpeakerTitleView()
-            speakerView.viewModel = speaker
+            speakerView.viewModel = speakerViewModel
             speakersStackView.addArrangedSubview(speakerView)
+            
+            if let url = speakerViewModel.imageURL, let imageRepository = imageRepository {
+                let (image, _) = imageRepository.image(at: url, completion: { [weak speakerView] (maybeImage) in
+                    DispatchQueue.main.async {
+                        speakerView?.image = maybeImage ?? .speakerPlaceholder
+                    }
+                })
+                speakerView.image = image ?? .speakerPlaceholder
+            }
         }
     }
 

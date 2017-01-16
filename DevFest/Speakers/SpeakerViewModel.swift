@@ -16,7 +16,6 @@ struct SpeakerViewModel {
     // optionals
     let company: String?
     let imageURL: URL?
-    var image: UIImage?
     let twitter: String?
     let website: URL?
     
@@ -29,4 +28,8 @@ struct SpeakerViewModel {
         let completeURL = baseURL.appendingPathComponent(twitter)
         return completeURL
     }
+}
+
+extension UIImage {
+    static let speakerPlaceholder = UIImage(named: "speaker-placeholder")!
 }

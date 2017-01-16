@@ -36,10 +36,7 @@ class SpeakerDetailViewController: UIViewController {
     @IBOutlet var twitterButton: UIButton!
     @IBOutlet var websiteButton: UIButton!
     
-    /**
-     The URLSession to use when fetching speakers' images.
-     */
-    var imageURLSession: URLSession = URLSession.shared
+    var imageRepository: ImageRepository?
     
     var viewModel: SpeakerViewModel? {
         didSet {
@@ -58,7 +55,7 @@ class SpeakerDetailViewController: UIViewController {
         // even if we want the standard `layoutMargins`, to get a stack view to respect the margins.
         marginsRespectingStackView.isLayoutMarginsRelativeArrangement = true
         
-        imageView.image = UIImage(named: "speaker-placeholder")!
+        imageView.image = .speakerPlaceholder
         updateFromViewModel()
         
         dev_updateAppearance()
@@ -109,24 +106,6 @@ class SpeakerDetailViewController: UIViewController {
 
 private extension SpeakerDetailViewController {
     func updateFromViewModel() {
-        if let image = viewModel?.image {
-            imageView.image = image
-        } else if let imageURL = viewModel?.imageURL {
-            let task = imageURLSession.dataTask(with: imageURL) { [weak self] (data, response, error) in
-                guard let data = data else {
-                    return
-                }
-                
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.imageView.image = image
-                    }
-                }
-            }
-            
-            task.resume()
-        }
-        
         // Assume that all speakers have a name and a bio
         nameLabel.text = viewModel?.name
         bioTextView.text = viewModel?.bio
@@ -152,5 +131,26 @@ private extension SpeakerDetailViewController {
         } else {
             websiteButton.isHidden = true
         }
+        
+        updateImage()
+    }
+    
+    func updateImage() {
+        guard let imageRepository = imageRepository, let imageURL = viewModel?.imageURL else {
+            imageView.image = .speakerPlaceholder
+            return
+        }
+        
+        let (image, _) = imageRepository.image(at: imageURL) { [weak self] (maybeImage) in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.imageView.image = maybeImage ?? .speakerPlaceholder
+            }
+        }
+        
+        imageView.image = image ?? .speakerPlaceholder
     }
 }

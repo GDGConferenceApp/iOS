@@ -11,6 +11,15 @@ import UIKit
 class SpeakerCell: UICollectionViewCell {
     @IBOutlet var speakerTitleView: SpeakerTitleView!
     
+    var image: UIImage? {
+        get {
+            return speakerTitleView.image
+        }
+        set {
+            speakerTitleView.image = newValue
+        }
+    }
+    
     var viewModel: SpeakerViewModel? {
         get {
             return speakerTitleView.viewModel
