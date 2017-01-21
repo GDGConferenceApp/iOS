@@ -95,11 +95,13 @@ class SessionDetailViewController: UIViewController {
             speakersStackView.addArrangedSubview(speakerView)
             
             if let url = speakerViewModel.imageURL, let imageRepository = imageRepository {
-                let (image, _) = imageRepository.image(at: url, completion: { [weak speakerView] (maybeImage) in
+                let (image, faceRect, _) = imageRepository.image(at: url, completion: { [weak speakerView] (maybeImage, maybeFaceRect) in
                     DispatchQueue.main.async {
+                        speakerView?.faceRect = maybeFaceRect
                         speakerView?.image = maybeImage ?? .speakerPlaceholder
                     }
                 })
+                speakerView.faceRect = faceRect
                 speakerView.image = image ?? .speakerPlaceholder
             }
         }

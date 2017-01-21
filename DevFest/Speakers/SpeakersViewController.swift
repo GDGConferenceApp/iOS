@@ -36,8 +36,9 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
         let viewModel = speakerDataSource!.viewModel(at: indexPath)
         cell.viewModel = viewModel
         let image: UIImage?
+        let faceRect: CGRect?
         if let imageRepository = imageRepository, let url = viewModel.imageURL {
-            let (maybeImage, _) = imageRepository.image(at: url, completion: { [weak collectionView] (maybeImage) in
+            let (maybeImage, maybeFaceRect, _) = imageRepository.image(at: url, completion: { [weak collectionView] (maybeImage, _) in
                 guard let _ = maybeImage else {
                     return
                 }
@@ -46,10 +47,13 @@ class SpeakersViewController: UICollectionViewController, FlowLayoutContaining {
                     collectionView?.reloadItems(at: [indexPath])
                 }
             })
+            faceRect = maybeFaceRect
             image = maybeImage ?? .speakerPlaceholder
         } else {
+            faceRect = nil
             image = .speakerPlaceholder
         }
+        cell.faceRect = faceRect
         cell.image = image
         return cell
     }

@@ -12,24 +12,24 @@ import SafariServices
 /**
  Shows all of a speaker's information, that we have.
  */
-class SpeakerDetailViewController: UIViewController {
+class SpeakerDetailViewController: UIViewController, StretchingImageHeaderContainer, UIScrollViewDelegate {
     /**
      The scroll view that contains our stack view.
      */
     @IBOutlet var scrollView: UIScrollView!
     /**
-     The stack view that contains all of our content subviews, except for imageView.
+     The stack view that contains all of our content subviews, except for imageHeaderView.
      */
     @IBOutlet var stackView: UIStackView!
     /**
-     The stack view that contains all of our content subviews, except for imageView.
+     The stack view that contains all of our content subviews, except for imageHeaderView.
      */
     @IBOutlet var nonImageStackView: UIStackView!
     /**
      A stack view that makes its contents respect layout margins.
      */
     @IBOutlet var marginsRespectingStackView: UIStackView!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageHeaderView: ImageHeaderView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var companyLabel: UILabel!
     @IBOutlet var bioTextView: UITextView!
@@ -37,6 +37,8 @@ class SpeakerDetailViewController: UIViewController {
     @IBOutlet var websiteButton: UIButton!
     
     var imageRepository: ImageRepository?
+    
+    var photoAspect: CGFloat = 2
     
     var viewModel: SpeakerViewModel? {
         didSet {
@@ -55,8 +57,12 @@ class SpeakerDetailViewController: UIViewController {
         // even if we want the standard `layoutMargins`, to get a stack view to respect the margins.
         marginsRespectingStackView.isLayoutMarginsRelativeArrangement = true
         
-        imageView.image = .speakerPlaceholder
+        imageHeaderView.image = .speakerPlaceholder
         updateFromViewModel()
+        
+        // Always allow vertical bouncing, so people can see more of the speaker's photo.
+        scrollView.alwaysBounceVertical = true
+        updateHeaderSize()
         
         dev_updateAppearance()
         dev_registerForAppearanceUpdates()
@@ -75,6 +81,10 @@ class SpeakerDetailViewController: UIViewController {
         nameLabel.font = .dev_reusableItemTitleFont
         companyLabel.font = .dev_reusableItemSubtitleFont
         bioTextView.font = .dev_contentFont
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateHeaderImageTopConstraint(scrollView)
     }
     
     @IBAction func showTwitterProfile(_ sender: Any) {
@@ -137,20 +147,24 @@ private extension SpeakerDetailViewController {
     
     func updateImage() {
         guard let imageRepository = imageRepository, let imageURL = viewModel?.imageURL else {
-            imageView.image = .speakerPlaceholder
+            imageHeaderView.image = .speakerPlaceholder
             return
         }
         
-        let (image, _) = imageRepository.image(at: imageURL) { [weak self] (maybeImage) in
+        let (image, faceRect, _) = imageRepository.image(at: imageURL) { [weak self] (maybeImage, maybeFaceRect) in
             guard let strongSelf = self else {
                 return
             }
             
             DispatchQueue.main.async {
-                strongSelf.imageView.image = maybeImage ?? .speakerPlaceholder
+                strongSelf.imageHeaderView.faceRect = maybeFaceRect
+                strongSelf.imageHeaderView.image = maybeImage ?? .speakerPlaceholder
+                strongSelf.updateHeaderSize()
             }
         }
         
-        imageView.image = image ?? .speakerPlaceholder
+        imageHeaderView.faceRect = faceRect
+        imageHeaderView.image = image ?? .speakerPlaceholder
+        updateHeaderSize()
     }
 }

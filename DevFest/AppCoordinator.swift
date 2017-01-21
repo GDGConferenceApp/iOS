@@ -34,6 +34,8 @@ class AppCoordinator {
     
     private let multiSessionStarsDataSourceDelegate = MultiSessionStarsDataSourceDelegate()
     
+    private let faceDetector: ImageFaceDetector
+    
     /**
      The object to manage downloading and providing images for speakers.
      */
@@ -79,6 +81,8 @@ class AppCoordinator {
         
         self.tabBarController = tabBarController
         
+        self.faceDetector = ImageFaceDetector()
+        
         let urlSession = URLSession.shared
         let cacheDirectory = { () -> URL in
             let fileManager = FileManager.default
@@ -86,7 +90,7 @@ class AppCoordinator {
             let directory = try! fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             return directory
         }()
-        self.imageRepository = ImageRepository(urlSession: urlSession, cacheDirectory: cacheDirectory)
+        self.imageRepository = ImageRepository(urlSession: urlSession, cacheDirectory: cacheDirectory, faceDetector: self.faceDetector)
         
         firebaseDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
         sectionHeaderDateFormatter.dateFormat = "hh:mm a"
