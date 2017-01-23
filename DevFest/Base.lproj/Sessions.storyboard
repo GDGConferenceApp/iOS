@@ -15,7 +15,7 @@
         <scene sceneID="4Wd-CL-mf9">
             <objects>
                 <collectionViewController id="07Z-Wh-z82" customClass="SessionsViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jeC-6g-rdz">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="jeC-6g-rdz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -155,7 +155,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -181,12 +181,19 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-3G-vqa">
+                                                <rect key="frame" x="0.0" y="181.5" width="375" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="rate:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="yju-oP-fDe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="9La-lj-KFc" firstAttribute="top" secondItem="F23-lm-gfv" secondAttribute="top" id="49U-ZF-X7x"/>
-                                    <constraint firstAttribute="bottom" secondItem="9La-lj-KFc" secondAttribute="bottom" id="8cR-wF-kCI"/>
+                                    <constraint firstAttribute="bottom" secondItem="9La-lj-KFc" secondAttribute="bottom" constant="12" id="8cR-wF-kCI"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -206,6 +213,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="C1i-lW-c7K" id="g6s-vg-e6l"/>
+                        <outlet property="rateButton" destination="plX-3G-vqa" id="iNY-mp-SgI"/>
                         <outlet property="sessionTitleView" destination="3OL-DF-VYv" id="j5x-Ow-k6W"/>
                         <outlet property="speakersSectionLabel" destination="9Lw-Vs-NeA" id="4t7-oZ-9xc"/>
                         <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 /**
  Display the full details for a session.
@@ -16,6 +17,7 @@ class SessionDetailViewController: UIViewController {
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var speakersStackView: UIStackView!
     @IBOutlet var speakersSectionLabel: UILabel!
+    @IBOutlet var rateButton: UIButton!
     
     /// Most of the session details. The `speakerIDs` are not used.
     var viewModel: SessionViewModel? {
@@ -49,6 +51,9 @@ class SessionDetailViewController: UIViewController {
         // We don't want to show it by default, so remove it now.
         speakersSectionLabel.removeFromSuperview()
         
+        let rateTitle = NSLocalizedString("Rate this Session", comment: "Rating button on session details")
+        rateButton.setTitle(rateTitle, for: .normal)
+        
         updateFromViewModel()
         
         // We have to set both `isLayoutMarginsRelativeArrangement` and the `layoutMargins`,
@@ -69,6 +74,21 @@ class SessionDetailViewController: UIViewController {
         speakersStackView.layoutMargins = .dev_standardMargins
     }
     
+    @IBAction func rate(_ sender: Any) {
+        guard let id = viewModel?.sessionID else {
+            return
+        }
+        
+        let urlString = "https://devfest.mn/schedule/\(id)/feedback"
+        guard let url = URL(string: urlString) else {
+            NSLog("Couldn't make URL for rating session with ID: \(id)")
+            return
+        }
+        
+        let safari = SFSafariViewController(url: url)
+        showDetailViewController(safari, sender: sender)
+    }
+    
     private func updateFromViewModel() {
         guard let viewModel = viewModel else {
             NSLog("Tried to update displayed information from view model, but no view model set.")
@@ -76,7 +96,13 @@ class SessionDetailViewController: UIViewController {
         }
         
         sessionTitleView.viewModel = viewModel
-        descriptionTextView.text = viewModel.description
+        
+        if let description = viewModel.description, !description.isEmpty {
+            descriptionTextView.isHidden = false
+            descriptionTextView.text = description
+        } else {
+            descriptionTextView.isHidden = true
+        }
         
         let speakerSubviews = speakersStackView.arrangedSubviews
         for speakerView in speakerSubviews {
