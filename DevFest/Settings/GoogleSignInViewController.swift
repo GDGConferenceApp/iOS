@@ -18,11 +18,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
     
     var isSignedIn = false {
         didSet {
-            // If the user is already signed in, it makes no sense to try to auto sign in.
-            if isSignedIn {
-                shouldAutoSignIn = false
-            }
-            
             guard isViewLoaded else {
                 return
             }
@@ -31,7 +26,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
             signOutButton.isEnabled = isSignedIn
         }
     }
-    private var shouldAutoSignIn = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +39,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
         
         dev_updateAppearance()
         dev_registerForAppearanceUpdates()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if shouldAutoSignIn {
-            shouldAutoSignIn = false
-            // Signing in silently doesn't work from viewDidLoad, so try in viewDidAppear.
-            GIDSignIn.sharedInstance().signIn()
-        }
     }
     
     override func dev_updateAppearance() {
