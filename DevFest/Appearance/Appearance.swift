@@ -30,24 +30,17 @@ extension Float {
 }
 
 extension UIColor {
-    static var dev_tintColorInNavBar: UIColor {
-        return .white
-    }
+    @nonobjc static let dev_sessionHeaderBackgroundColor: UIColor = UIColor(red: 0xf5 / 255, green: 0xf5 / 255, blue: 0xf5 / 255, alpha: 1)
     
-    static var dev_sessionHeaderBackgroundColor: UIColor {
-        let color = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-        return color
-    }
+    @nonobjc static let dev_shadowColor: UIColor = .gray
+
+    @nonobjc static let dev_tabBarColor: UIColor = UIColor(red: 0xfa / 255, green: 0xfa / 255, blue: 0xfa / 255, alpha: 1)
     
-    static var dev_shadowColor: UIColor {
-        return .gray
-    }
+    @nonobjc static let dev_tintColorInNavBar: UIColor = .white
 }
 
 extension UIEdgeInsets {
-    static var dev_standardMargins: UIEdgeInsets {
-        return UIEdgeInsets(top: .dev_standardMargin, left: .dev_standardMargin, bottom: .dev_standardMargin, right: .dev_standardMargin)
-    }
+    static let dev_standardMargins: UIEdgeInsets = UIEdgeInsets(top: .dev_standardMargin, left: .dev_standardMargin, bottom: .dev_standardMargin, right: .dev_standardMargin)
 }
 
 // These must be `static var`s instead of `static let`s since they can change
