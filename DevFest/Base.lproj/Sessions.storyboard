@@ -51,11 +51,10 @@
                                             </subviews>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuR-zs-oP1">
-                                            <rect key="frame" x="0.0" y="0.0" width="6" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="6" height="96"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="6" id="LRG-Ah-0nd"/>
-                                                <constraint firstAttribute="height" constant="40" id="yQf-iz-DYu"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="track" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4f-sG-ztW">
@@ -77,6 +76,7 @@
                                     <constraint firstItem="P4f-sG-ztW" firstAttribute="top" secondItem="lDa-kF-u3c" secondAttribute="top" constant="2" id="JGU-ac-cjh"/>
                                     <constraint firstItem="kuR-zs-oP1" firstAttribute="leading" secondItem="lDa-kF-u3c" secondAttribute="leading" id="M3D-7t-qFN"/>
                                     <constraint firstItem="kuR-zs-oP1" firstAttribute="top" secondItem="lDa-kF-u3c" secondAttribute="top" id="PCY-ci-Rek"/>
+                                    <constraint firstAttribute="bottom" secondItem="kuR-zs-oP1" secondAttribute="bottom" id="VTK-3E-bNo"/>
                                     <constraint firstItem="DNJ-Me-If6" firstAttribute="top" secondItem="lDa-kF-u3c" secondAttribute="topMargin" constant="16" id="XoL-s1-Fhx"/>
                                     <constraint firstItem="DNJ-Me-If6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqz-oT-CdC" secondAttribute="trailing" constant="8" id="fgJ-Vf-N3m"/>
                                     <constraint firstItem="DNJ-Me-If6" firstAttribute="centerY" secondItem="TTT-e9-Z3d" secondAttribute="centerY" priority="999" id="jLI-fu-zZQ"/>

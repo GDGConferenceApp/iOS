@@ -30,6 +30,11 @@ extension Float {
 }
 
 extension UIColor {
+    static var dev_sessionHeaderBackgroundColor: UIColor {
+        let color = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        return color
+    }
+    
     static var dev_shadowColor: UIColor {
         return .gray
     }
@@ -65,5 +70,9 @@ extension UIFont {
     
     static var dev_sectionHeaderFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .title3)
+    }
+    
+    static var dev_sessionTimeHeaderFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .headline)
     }
 }

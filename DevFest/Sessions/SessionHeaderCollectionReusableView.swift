@@ -10,6 +10,18 @@ import UIKit
 
 class SessionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet var timeLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        dev_registerForAppearanceUpdates()
+        dev_updateAppearance()
+    }
+    
+    override func dev_updateAppearance() {
+        super.dev_updateAppearance()
+        backgroundColor = .dev_sessionHeaderBackgroundColor
+        timeLabel.font = .dev_sessionTimeHeaderFont
+    }
 }
 
 extension SessionHeaderCollectionReusableView: ReusableItem {
