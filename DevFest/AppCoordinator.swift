@@ -24,7 +24,6 @@ class AppCoordinator {
     private let sessionsViewController: SessionsViewController
     private let starredSessionsViewController: SessionsViewController
     private let speakersViewController: SpeakersViewController
-    private let mapViewController: MapViewController
     // Rely on the `settingsCoordinator` to manage the settings view controller.
     // We do need a reference to the settings view controller's nav controller though.
     fileprivate let settingsNavigationController: UINavigationController
@@ -73,10 +72,9 @@ class AppCoordinator {
         sessionsViewController = tabBarController.tabInNavigationController(atIndex: 0) as SessionsViewController
         starredSessionsViewController = tabBarController.tabInNavigationController(atIndex: 1) as SessionsViewController
         speakersViewController = tabBarController.tabInNavigationController(atIndex: 2) as SpeakersViewController
-        mapViewController = tabBarController.tab(atIndex: 3) as MapViewController
-        settingsNavigationController = tabBarController.tab(atIndex: 4) as UINavigationController
+        settingsNavigationController = tabBarController.tab(atIndex: 3) as UINavigationController
         
-        let settingsViewController = tabBarController.tabInNavigationController(atIndex: 4) as SettingsViewController
+        let settingsViewController = tabBarController.tabInNavigationController(atIndex: 3) as SettingsViewController
         settingsCoordinator = SettingsCoordinator(viewController: settingsViewController)
         
         self.tabBarController = tabBarController
@@ -165,7 +163,6 @@ class AppCoordinator {
         sessionsViewController.title = NSLocalizedString("Sessions", comment: "tab title")
         starredSessionsViewController.title = NSLocalizedString("Your Schedule", comment: "tab title")
         speakersViewController.title = NSLocalizedString("Speakers", comment: "tab title")
-        mapViewController.title = NSLocalizedString("Map", comment: "tab title")
         // Rely on `settingsCoordinator` to set `settingsViewController`'s title.
         
         

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +23,6 @@
                         <segue destination="YHR-sl-PBL" kind="relationship" relationship="viewControllers" id="Gvi-LZ-IE0"/>
                         <segue destination="g9H-Vn-GPL" kind="relationship" relationship="viewControllers" id="kDw-FP-wag"/>
                         <segue destination="d1j-lq-Xwv" kind="relationship" relationship="viewControllers" id="olW-OW-v1V"/>
-                        <segue destination="dQk-2b-xYZ" kind="relationship" relationship="viewControllers" id="z2l-d4-zgL"/>
                         <segue destination="wvO-5S-x47" kind="relationship" relationship="viewControllers" id="YTi-hg-mnp"/>
                     </connections>
                 </tabBarController>
@@ -66,46 +64,6 @@
             </objects>
             <point key="canvasLocation" x="694" y="292"/>
         </scene>
-        <!--Map-->
-        <scene sceneID="zW1-BM-nYP">
-            <objects>
-                <viewController id="dQk-2b-xYZ" customClass="MapViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sfz-VI-LYf"/>
-                        <viewControllerLayoutGuide type="bottom" id="TNb-Ub-DEZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HDH-B0-EXr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-H9-9rW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-Ni-zWO" customClass="MapOverlayButton" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="193" y="28" width="111" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="k0a-Ni-zWO" firstAttribute="trailing" secondItem="HDH-B0-EXr" secondAttribute="trailingMargin" id="3UW-Jf-5M4"/>
-                            <constraint firstAttribute="bottom" secondItem="Fpz-H9-9rW" secondAttribute="bottom" id="5Bl-SA-KVD"/>
-                            <constraint firstItem="k0a-Ni-zWO" firstAttribute="top" secondItem="Sfz-VI-LYf" secondAttribute="bottom" constant="8" id="7Qm-K6-YIu"/>
-                            <constraint firstAttribute="trailing" secondItem="Fpz-H9-9rW" secondAttribute="trailing" id="7VH-iL-4Nz"/>
-                            <constraint firstItem="Fpz-H9-9rW" firstAttribute="leading" secondItem="HDH-B0-EXr" secondAttribute="leading" id="VKS-ED-QUL"/>
-                            <constraint firstItem="Fpz-H9-9rW" firstAttribute="top" secondItem="HDH-B0-EXr" secondAttribute="top" id="bGL-RN-7r2"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map-icons8" selectedImage="map-filled-icons8" id="yGS-Sk-Qsr"/>
-                    <connections>
-                        <outlet property="mapView" destination="Fpz-H9-9rW" id="p5g-aK-dC7"/>
-                        <outlet property="openInMapsButton" destination="k0a-Ni-zWO" id="WqK-Nq-DWZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R9G-Ra-2R4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="691.875" y="1702.8169014084508"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="0ta-gr-Wtl">
             <objects>
@@ -121,7 +79,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPc-PP-gJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692" y="2408"/>
+            <point key="canvasLocation" x="694" y="1750"/>
         </scene>
         <!--Speakers-->
         <scene sceneID="ArW-Na-58f">
@@ -168,14 +126,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="You-Rj-5LA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="2407"/>
+            <point key="canvasLocation" x="1467" y="1749"/>
         </scene>
     </scenes>
     <resources>
         <image name="list-filled-icons8" width="25" height="25"/>
         <image name="list-icons8" width="25" height="25"/>
-        <image name="map-filled-icons8" width="25" height="25"/>
-        <image name="map-icons8" width="25" height="25"/>
         <image name="mic-filled-icons8" width="25" height="25"/>
         <image name="mic-icons8" width="25" height="25"/>
         <image name="settings-filled-icons8" width="25" height="25"/>
