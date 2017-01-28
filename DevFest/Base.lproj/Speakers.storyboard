@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wZ2-vO-ga2">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
             <objects>
                 <collectionViewController id="wZ2-vO-ga2" customClass="SpeakersViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h7p-mr-sbK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9BZ-og-Qt7">
@@ -27,7 +27,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpeakerCell" id="AAi-EU-1j4" customClass="SpeakerCell" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="28" y="0.0" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -80,26 +80,28 @@
                         <viewControllerLayoutGuide type="bottom" id="iov-AV-4mg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vzb-2A-aru">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL5-Rh-56z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJT-gW-Wl5">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r25-Dm-4lL" customClass="ImageHeaderView" customModule="DevFest" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwm-x8-dnu" customClass="FaceDisplayingImageView" customModule="DevFest" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="999" constant="180" id="1H4-kQ-yUF"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="240" id="1H4-kQ-yUF">
+                                                        <variation key="heightClass=regular" constant="280"/>
+                                                    </constraint>
                                                     <constraint firstAttribute="bottom" secondItem="bwm-x8-dnu" secondAttribute="bottom" id="Xc3-ZP-rvk"/>
                                                     <constraint firstAttribute="trailing" secondItem="bwm-x8-dnu" secondAttribute="trailing" id="Zoz-yi-Uto"/>
                                                     <constraint firstItem="bwm-x8-dnu" firstAttribute="top" secondItem="r25-Dm-4lL" secondAttribute="top" id="fDS-cC-Bgm"/>
@@ -112,19 +114,19 @@
                                                 </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2sQ-EC-c4v">
-                                                <rect key="frame" x="0.0" y="180" width="375" height="135"/>
+                                                <rect key="frame" x="0.0" y="240" width="320" height="134"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nBf-pS-NVC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL3-gh-jmz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1Y-hd-nby">
-                                                                <rect key="frame" x="0.0" y="21" width="375" height="21"/>
+                                                                <rect key="frame" x="0.0" y="20.5" width="320" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -132,20 +134,20 @@
                                                         </subviews>
                                                     </stackView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Bio goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x2Q-aT-zoc">
-                                                        <rect key="frame" x="0.0" y="42" width="375" height="33"/>
+                                                        <rect key="frame" x="0.0" y="41" width="320" height="33"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-XT-txw">
-                                                        <rect key="frame" x="0.0" y="75" width="375" height="30"/>
+                                                        <rect key="frame" x="0.0" y="74" width="320" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="showTwitterProfile:" destination="Qdv-xY-rRK" eventType="touchUpInside" id="pBV-Ol-vcA"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgF-Pv-g7l">
-                                                        <rect key="frame" x="0.0" y="105" width="375" height="30"/>
+                                                        <rect key="frame" x="0.0" y="104" width="320" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="showWebsite:" destination="Qdv-xY-rRK" eventType="touchUpInside" id="qgg-v7-eCY"/>
