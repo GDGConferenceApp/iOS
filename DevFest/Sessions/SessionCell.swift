@@ -36,9 +36,9 @@ class SessionCell: UICollectionViewCell {
             
             let image: UIImage
             if viewModel?.isStarred ?? false {
-                image = #imageLiteral(resourceName: "star-filled-icons8")
+                image = #imageLiteral(resourceName: "favorite-filled-icons8")
             } else {
-                image = #imageLiteral(resourceName: "star-icons8")
+                image = #imageLiteral(resourceName: "favorite-icons8")
             }
             starButton.setImage(image, for: .normal)
         }
