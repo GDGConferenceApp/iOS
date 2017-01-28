@@ -35,6 +35,7 @@
 		DA2F3B801DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B7F1DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift */; };
 		DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */; };
 		DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */; };
+		DA2FFAD21E3D449200E46787 /* PillButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FFAD11E3D449200E46787 /* PillButtonContainerView.swift */; };
 		DA4029A71E2BFE85005E1861 /* SpeakerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4029A61E2BFE85005E1861 /* SpeakerDetailViewController.swift */; };
 		DA4029A91E2C10F0005E1861 /* Sessions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029A81E2C10F0005E1861 /* Sessions.storyboard */; };
 		DA4029AC1E2C1111005E1861 /* Speakers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029AA1E2C1111005E1861 /* Speakers.storyboard */; };
@@ -43,6 +44,7 @@
 		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
 		DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */; };
+		DAA871DD1E3D50930000122D /* UIColor+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */; };
 		DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */; };
 		DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2281DEBA264006C97F1 /* Appearance.swift */; };
 		DAB0C22B1DEBD12A006C97F1 /* SessionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C22A1DEBD12A006C97F1 /* SessionTitleView.swift */; };
@@ -117,6 +119,7 @@
 		DA2F3B7F1DE630A200B2F8D2 /* SessionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DA2F3B821DE631DA00B2F8D2 /* SpeakersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewController.swift; sourceTree = "<group>"; };
 		DA2F3B841DE632D600B2F8D2 /* SpeakerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCell.swift; sourceTree = "<group>"; };
+		DA2FFAD11E3D449200E46787 /* PillButtonContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillButtonContainerView.swift; sourceTree = "<group>"; };
 		DA4029A61E2BFE85005E1861 /* SpeakerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewController.swift; sourceTree = "<group>"; };
 		DA4029A81E2C10F0005E1861 /* Sessions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sessions.storyboard; path = Base.lproj/Sessions.storyboard; sourceTree = "<group>"; };
 		DA4029AB1E2C1111005E1861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Speakers.storyboard; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
 		DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
+		DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+DevFest.swift"; sourceTree = "<group>"; };
 		DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		DAB0C2281DEBA264006C97F1 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		DAB0C22A1DEBD12A006C97F1 /* SessionTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTitleView.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */,
 				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
+				DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */,
 				DA6358371DEB50A100728D01 /* UIView+DevFest.swift */,
 				DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */,
 				DA4029A81E2C10F0005E1861 /* Sessions.storyboard */,
@@ -321,6 +326,7 @@
 			children = (
 				DAB0C2281DEBA264006C97F1 /* Appearance.swift */,
 				DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */,
+				DA2FFAD11E3D449200E46787 /* PillButtonContainerView.swift */,
 				DAB0C22C1DEBD3F7006C97F1 /* DateFormatter+DevFest.swift */,
 			);
 			path = Appearance;
@@ -634,6 +640,7 @@
 				DA2F3B7E1DE6249E00B2F8D2 /* SessionCell.swift in Sources */,
 				DA0D74321DEE3581005F71B3 /* SpeakerTitleView.swift in Sources */,
 				DAB47D6D1E0C274D0000A127 /* DataSource.swift in Sources */,
+				DAA871DD1E3D50930000122D /* UIColor+DevFest.swift in Sources */,
 				DAB47D6B1E0C27200000A127 /* SessionDataSource.swift in Sources */,
 				DA1AD5961E32EFC0003F4D37 /* StretchingImageHeaderContainer.swift in Sources */,
 				DA118EE81E0B18F700DA2D8E /* FirebaseSessionDataSource.swift in Sources */,
@@ -658,6 +665,7 @@
 				DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */,
 				DA29EC5F1E32D79A001D8FF4 /* ImageHeaderView.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */,
+				DA2FFAD21E3D449200E46787 /* PillButtonContainerView.swift in Sources */,
 				DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */,
 				DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */,
 				DAE039401DE63531009C859B /* ReusableItem.swift in Sources */,

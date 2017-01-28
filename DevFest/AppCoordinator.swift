@@ -29,6 +29,8 @@ class AppCoordinator {
     
     private let signInNotifier = GoogleSignInNotifier()
     
+    private let window: UIWindow
+    
     // View controllers
     private let tabBarController: UITabBarController
     private let sessionsViewController: SessionsViewController
@@ -81,7 +83,9 @@ class AppCoordinator {
         return GIDSignIn.sharedInstance().currentUser?.userID
     }
     
-    init(tabBarController: UITabBarController) {
+    init(window: UIWindow, tabBarController: UITabBarController) {
+        self.window = window
+        
         sessionsViewController = tabBarController.tabInNavigationController(atIndex: 0) as SessionsViewController
         starredSessionsViewController = tabBarController.tabInNavigationController(atIndex: 1) as SessionsViewController
         speakersViewController = tabBarController.tabInNavigationController(atIndex: 2) as SpeakersViewController
@@ -91,7 +95,7 @@ class AppCoordinator {
         settingsCoordinator = SettingsCoordinator(viewController: settingsViewController)
         
         self.tabBarController = tabBarController
-        self.tabColoringDelegate = TabBarControllerColoringDelegate(target: tabBarController, tabColors: AppCoordinator.TabTintColors)
+        self.tabColoringDelegate = TabBarControllerColoringDelegate(window: window, tabBarController: tabBarController, tabColors: AppCoordinator.TabTintColors)
         
         self.faceDetector = ImageFaceDetector()
         
@@ -298,20 +302,25 @@ private extension UITabBarController {
 }
 
 
+/**
+ Requires that all of `target`'s view controllers are UINavigationControllers.
+ */
 private class TabBarControllerColoringDelegate: NSObject, UITabBarControllerDelegate {
-    private let target: UITabBarController
+    private let window: UIWindow
+    private let tabBarController: UITabBarController
     private let colors: [UIColor]
     
-    init(target: UITabBarController, tabColors: [UIColor]) {
-        self.target = target
+    init(window: UIWindow, tabBarController: UITabBarController, tabColors: [UIColor]) {
+        self.window = window
+        self.tabBarController = tabBarController
         self.colors = tabColors
     }
     
     func setColors(forViewControllerAtIndex index: Int) {
         let color = colors[index % colors.count]
-        target.view.tintColor = color
+        window.tintColor = color
         
-        let navController = target.tab(atIndex: index) as UINavigationController
+        let navController = tabBarController.tab(atIndex: index) as UINavigationController
         navController.navigationBar.barTintColor = color
     }
     

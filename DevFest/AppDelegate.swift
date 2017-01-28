@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var tabController: UITabBarController!
     private lazy var appCoordinator: AppCoordinator = { () -> AppCoordinator in
-        return AppCoordinator(tabBarController: self.tabController)
+        return AppCoordinator(window: self.window!, tabBarController: self.tabController)
     }()
 
 
