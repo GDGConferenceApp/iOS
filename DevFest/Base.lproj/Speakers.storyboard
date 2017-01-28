@@ -87,7 +87,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJT-gW-Wl5">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r25-Dm-4lL" customClass="ImageHeaderView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
@@ -112,19 +112,19 @@
                                                 </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2sQ-EC-c4v">
-                                                <rect key="frame" x="0.0" y="180" width="375" height="134"/>
+                                                <rect key="frame" x="0.0" y="180" width="375" height="135"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nBf-pS-NVC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL3-gh-jmz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1Y-hd-nby">
-                                                                <rect key="frame" x="0.0" y="20.5" width="375" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="21" width="375" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -132,20 +132,20 @@
                                                         </subviews>
                                                     </stackView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Bio goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x2Q-aT-zoc">
-                                                        <rect key="frame" x="0.0" y="41" width="375" height="33"/>
+                                                        <rect key="frame" x="0.0" y="42" width="375" height="33"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-XT-txw">
-                                                        <rect key="frame" x="0.0" y="74" width="375" height="30"/>
+                                                        <rect key="frame" x="0.0" y="75" width="375" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="showTwitterProfile:" destination="Qdv-xY-rRK" eventType="touchUpInside" id="pBV-Ol-vcA"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgF-Pv-g7l">
-                                                        <rect key="frame" x="0.0" y="104" width="375" height="30"/>
+                                                        <rect key="frame" x="0.0" y="105" width="375" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="showWebsite:" destination="Qdv-xY-rRK" eventType="touchUpInside" id="qgg-v7-eCY"/>
