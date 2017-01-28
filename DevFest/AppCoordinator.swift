@@ -39,7 +39,7 @@ class AppCoordinator {
     fileprivate let settingsNavigationController: UINavigationController
     
     // The coloring delegate will set the colors that we want for our tab bar and its view controllers.
-    private let tabColoringDelegate = TabBarControllerColoringDelegate(tabColors: AppCoordinator.TabTintColors)
+    private let tabColoringDelegate: TabBarControllerColoringDelegate
     
     private let firebaseDateFormatter = DateFormatter()
     private let sectionHeaderDateFormatter = DateFormatter()
@@ -91,6 +91,7 @@ class AppCoordinator {
         settingsCoordinator = SettingsCoordinator(viewController: settingsViewController)
         
         self.tabBarController = tabBarController
+        self.tabColoringDelegate = TabBarControllerColoringDelegate(target: tabBarController, tabColors: AppCoordinator.TabTintColors)
         
         self.faceDetector = ImageFaceDetector()
         
@@ -114,6 +115,10 @@ class AppCoordinator {
         // Make sure the AppearanceNotifier singleton has been created by now.
         _ = AppearanceNotifier.shared
         
+        let navAppearance = UINavigationBar.appearance()
+        // Make items in navigation bars white
+        navAppearance.tintColor = .dev_tintColorInNavBar
+        navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dev_tintColorInNavBar]
         
         // Set up Google auth using the client ID that Firebase made when we created this app
         // in the Firebase console.
@@ -223,6 +228,8 @@ class AppCoordinator {
         // Provide the image repository
         sessionsViewController.imageRepository = imageRepository
         speakersViewController.imageRepository = imageRepository
+        
+        tabColoringDelegate.setColors(forViewControllerAtIndex: 0)
     }
 }
 
@@ -286,16 +293,24 @@ private extension UITabBarController {
 
 
 private class TabBarControllerColoringDelegate: NSObject, UITabBarControllerDelegate {
-    // Don't access this unless the app is running in the foreground.
-    private lazy var window: UIWindow = UIApplication.shared.keyWindow!
-    let colors: [UIColor]
+    private let target: UITabBarController
+    private let colors: [UIColor]
     
-    init(tabColors: [UIColor]) {
+    init(target: UITabBarController, tabColors: [UIColor]) {
+        self.target = target
         self.colors = tabColors
+    }
+    
+    func setColors(forViewControllerAtIndex index: Int) {
+        let color = colors[index % colors.count]
+        target.view.tintColor = color
+        
+        let navController = target.tab(atIndex: index) as UINavigationController
+        navController.navigationBar.barTintColor = color
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let viewControllerIndex = tabBarController.viewControllers?.index(of: viewController) ?? 0
-        window.tintColor = colors[viewControllerIndex % colors.count]
+        setColors(forViewControllerAtIndex: viewControllerIndex)
     }
 }

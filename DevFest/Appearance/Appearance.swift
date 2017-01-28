@@ -30,6 +30,10 @@ extension Float {
 }
 
 extension UIColor {
+    static var dev_tintColorInNavBar: UIColor {
+        return .white
+    }
+    
     static var dev_sessionHeaderBackgroundColor: UIColor {
         let color = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         return color
