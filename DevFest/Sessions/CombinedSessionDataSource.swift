@@ -116,7 +116,7 @@ class CombinedSessionDataSource: SessionDataSource, SessionStarsDataSource {
         }
         
         if let ourSection = ourSectionsToDataSourceSections[dataSourceSection] {
-            let foundIndexPath = IndexPath(item: starredSoFar, section: ourSection)
+            let foundIndexPath = IndexPath(item: starredSoFar - 1, section: ourSection)
             return foundIndexPath
         } else {
             return nil
