@@ -45,7 +45,7 @@ final class SpeakerTitleView: UIView {
     /**
      The spacing in the stack view that contains the image container and the title/subtitle stack view.
      */
-    fileprivate var imageTitleSpacing: CGFloat { return .dev_standardMargin }
+    fileprivate var imageTitleSpacing: CGFloat { return .dev_standardMargin * 2 }
     
     var viewModel: SpeakerViewModel? {
         didSet {
@@ -165,7 +165,7 @@ final class SpeakerTitleView: UIView {
 fileprivate extension SpeakerTitleView {
     func subviewsInit() {
         titleSubtitleStackView.axis = .vertical
-        horizontalStackView.alignment = .top
+        horizontalStackView.alignment = .center
         
         dev_addSubview(horizontalStackView)
         

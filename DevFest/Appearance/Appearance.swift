@@ -15,7 +15,7 @@ extension CGFloat {
     static var dev_standardMargin: CGFloat = 8
     
     static var dev_authorPhotoSideLength: CGFloat {
-        return .dev_standardMargin * 5
+        return .dev_standardMargin * 7
     }
     
     static var dev_shadowRadius: CGFloat = 5
