@@ -413,6 +413,7 @@
 				TargetAttributes = {
 					DA2F3B421DE6219E00B2F8D2 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = A7VP3P27VW;
 						ProvisioningStyle = Automatic;
 					};
 					DA2F3B581DE6219E00B2F8D2 = {
@@ -830,6 +831,7 @@
 			baseConfigurationReference = 44B7A161652000149F188A06 /* Pods-DevFest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest.DevFest;
@@ -843,6 +845,7 @@
 			baseConfigurationReference = 08C7D294C836693B626DDFDD /* Pods-DevFest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest.DevFest;
