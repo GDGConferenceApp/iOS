@@ -14,11 +14,11 @@ import UIKit
 extension CGFloat {
     static var dev_standardMargin: CGFloat = 8
     
-    static var dev_authorPhotoSideLength: CGFloat {
-        return .dev_standardMargin * 7
-    }
+    static let dev_authorPhotoSideLength: CGFloat = .dev_standardMargin * 7
     
-    static var dev_shadowRadius: CGFloat = 5
+    static let dev_pillButtonCornerRadius: CGFloat = .dev_standardMargin * 1.33
+
+    static let dev_shadowRadius: CGFloat = 5
 }
 
 extension CGSize {

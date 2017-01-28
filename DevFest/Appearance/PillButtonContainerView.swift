@@ -13,19 +13,20 @@ import UIKit
  */
 @IBDesignable
 class PillButtonContainerView: UIView {
+    private static let minimumWidth: CGFloat = 100
     @IBOutlet var button: UIButton!
     
     override var intrinsicContentSize: CGSize {
         guard let buttonSize = button?.intrinsicContentSize else {
-            return CGSize(width: 10, height: 10)
+            return CGSize(width: 10, height: PillButtonContainerView.minimumWidth)
         }
         
-        let verticalMargin = CGFloat.dev_standardMargin
-        let horizontalMargin = CGFloat.dev_standardMargin * 2
-        var size = buttonSize
-        size.height += verticalMargin * 2
-        size.width += horizontalMargin * 2
-        return size
+        var minWidthButtonSize = buttonSize
+        if minWidthButtonSize.width < PillButtonContainerView.minimumWidth {
+            minWidthButtonSize.width = PillButtonContainerView.minimumWidth
+        }
+        
+        return minWidthButtonSize
     }
     
     override func awakeFromNib() {
@@ -45,17 +46,23 @@ class PillButtonContainerView: UIView {
         let verticalMargin = CGFloat.dev_standardMargin
         let horizontalMargin = CGFloat.dev_standardMargin * 2
         button.contentEdgeInsets = UIEdgeInsetsMake(verticalMargin, horizontalMargin, verticalMargin, horizontalMargin)
+        if let _ = button.image(for: .normal) {
+            let buttonHorizontalMargin = CGFloat.dev_standardMargin / 2
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, -buttonHorizontalMargin, 0, buttonHorizontalMargin)
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, buttonHorizontalMargin, 0, -buttonHorizontalMargin)
+        } else {
+            button.imageEdgeInsets = .zero
+            button.titleEdgeInsets = .zero
+        }
         
         // It's convenient to have `tintColor` in a local variable so we can see it in the debugger more easily.
         let tintColor = self.tintColor
         button.backgroundColor = tintColor
         
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white, for: .highlighted)
-        button.setTitleColor(.white, for: .selected)
+        button.tintColor = .white
         
         let layer = button.layer
-        layer.cornerRadius = .dev_standardMargin
+        layer.cornerRadius = .dev_pillButtonCornerRadius
         layer.masksToBounds = true
     }
 }

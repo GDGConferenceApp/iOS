@@ -18,6 +18,12 @@ class SessionDetailViewController: UIViewController {
     @IBOutlet var speakersStackView: UIStackView!
     @IBOutlet var speakersSectionLabel: UILabel!
     @IBOutlet var rateButton: UIButton!
+    @IBOutlet var addToScheduleButton: UIButton!
+    @IBOutlet var addToScheduleContainer: UIView!
+    @IBOutlet var removeFromScheduleButton: UIButton!
+    @IBOutlet var removeFromScheduleContainer: UIView!
+    
+    weak var delegate: SessionDetailViewControllerDelegate?
     
     /// Most of the session details. The `speakerIDs` are not used.
     var viewModel: SessionViewModel? {
@@ -51,8 +57,12 @@ class SessionDetailViewController: UIViewController {
         // We don't want to show it by default, so remove it now.
         speakersSectionLabel.removeFromSuperview()
         
-        let rateTitle = NSLocalizedString("Rate this Session", comment: "Rating button on session details")
+        let rateTitle = NSLocalizedString("Rate Session", comment: "Rating button on session details")
         rateButton.setTitle(rateTitle, for: .normal)
+        let addTitle = NSLocalizedString("Add", comment: "Add button on session details")
+        addToScheduleButton.setTitle(addTitle, for: .normal)
+        let removeTitle = NSLocalizedString("Remove", comment: "Remove button on session details")
+        removeFromScheduleButton.setTitle(removeTitle, for: .normal)
         
         updateFromViewModel()
         
@@ -89,6 +99,20 @@ class SessionDetailViewController: UIViewController {
         showDetailViewController(safari, sender: sender)
     }
     
+    @IBAction func addToSchedule(_ sender: Any) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.addSessionToSchedule(for: viewModel, sender: self)
+    }
+    
+    @IBAction func removeFromSchedule(_ sender: Any) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.removeSessionFromSchedule(for: viewModel, sender: self)
+    }
+    
     private func updateFromViewModel() {
         guard let viewModel = viewModel else {
             NSLog("Tried to update displayed information from view model, but no view model set.")
@@ -104,6 +128,18 @@ class SessionDetailViewController: UIViewController {
             descriptionTextView.isHidden = true
         }
         
+        updateSpeakersFromViewModel()
+        
+        if viewModel.isStarred {
+            addToScheduleContainer.isHidden = true
+            removeFromScheduleContainer.isHidden = false
+        } else {
+            addToScheduleContainer.isHidden = false
+            removeFromScheduleContainer.isHidden = true
+        }
+    }
+    
+    func updateSpeakersFromViewModel() {
         let speakerSubviews = speakersStackView.arrangedSubviews
         for speakerView in speakerSubviews {
             speakersStackView.removeArrangedSubview(speakerView)
@@ -132,5 +168,14 @@ class SessionDetailViewController: UIViewController {
             }
         }
     }
+    
+    func updateAddRemoveButtonsFromViewModel() {
+        
+    }
 
+}
+
+protocol SessionDetailViewControllerDelegate: class {
+    func addSessionToSchedule(for viewModel: SessionViewModel, sender: SessionDetailViewController)
+    func removeSessionFromSchedule(for viewModel: SessionViewModel, sender: SessionDetailViewController)
 }

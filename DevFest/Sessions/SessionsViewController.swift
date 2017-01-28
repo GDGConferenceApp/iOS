@@ -23,6 +23,8 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
     
     var imageRepository: ImageRepository?
     
+    weak var currentDetailViewController: SessionDetailViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFlowLayoutItemWidth()
@@ -45,9 +47,12 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
             } else {
                 speakers = []
             }
+            
+            destination.delegate = self
+            destination.imageRepository = imageRepository
             destination.viewModel = viewModel
             destination.speakers = speakers
-            destination.imageRepository = imageRepository
+            currentDetailViewController = destination
         default:
             break
         }
@@ -99,6 +104,10 @@ class SessionsViewController: UICollectionViewController, FlowLayoutContaining {
         if let cell = collectionView?.cellForItem(at: sessionIndexPath) as? SessionCell {
             cell.viewModel = updatedViewModel
         }
+        
+        if let detailVC = currentDetailViewController, detailVC.viewModel?.sessionID == identifier {
+            detailVC.viewModel = updatedViewModel
+        }
     }
 }
 
@@ -113,5 +122,21 @@ extension SessionsViewController: SessionStarsDataSourceDelegate {
     func sessionStarsDidUpdate(dataSource: SessionStarsDataSource) {
         // TODO: animate updates
         collectionView?.reloadData()
+    }
+}
+
+extension SessionsViewController: SessionDetailViewControllerDelegate {
+    func addSessionToSchedule(for viewModel: SessionViewModel, sender: SessionDetailViewController) {
+        assert(!viewModel.isStarred, "Shouldn't be able to add a session if it is already starred.")
+        
+        let sessionID = viewModel.sessionID
+        dev_toggleStarred(forSessionID: sessionID)
+    }
+    
+    func removeSessionFromSchedule(for viewModel: SessionViewModel, sender: SessionDetailViewController) {
+        assert(viewModel.isStarred, "Shouldn't be able to remove a session if it is not yet starred.")
+        
+        let sessionID = viewModel.sessionID
+        dev_toggleStarred(forSessionID: sessionID)
     }
 }

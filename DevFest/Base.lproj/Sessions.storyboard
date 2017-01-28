@@ -15,7 +15,7 @@
         <scene sceneID="4Wd-CL-mf9">
             <objects>
                 <collectionViewController id="07Z-Wh-z82" customClass="SessionsViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jeC-6g-rdz">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="jeC-6g-rdz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,7 +34,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-oT-CdC">
-                                            <rect key="frame" x="12" y="27" width="59" height="42.5"/>
+                                            <rect key="frame" x="12" y="26.5" width="59" height="42.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="TTT-e9-Z3d">
                                                     <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
@@ -152,29 +152,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F23-lm-gfv">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F23-lm-gfv">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="232"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="multilineTitle" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-lW-c7K">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-lW-c7K">
                                                 <rect key="frame" x="0.0" y="128" width="320" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-hM-K31">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-hM-K31">
                                                 <rect key="frame" x="0.0" y="161" width="320" height="20.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Speakers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-Vs-NeA">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speakers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-Vs-NeA">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -182,27 +182,91 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BkQ-qy-zJ7" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="181.5" width="320" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNh-Vd-zBa" userLabel="Layout Helper View">
+                                                <rect key="frame" x="0.0" y="181.5" width="320" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-3G-vqa" userLabel="Rate Button">
-                                                        <rect key="frame" x="137" y="0.0" width="46" height="30"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <connections>
-                                                            <action selector="rate:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="yju-oP-fDe"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-PI-0dN">
+                                                        <rect key="frame" x="129.5" y="0.0" width="62" height="100"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkQ-qy-zJ7" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-3G-vqa" userLabel="Rate Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <connections>
+                                                                            <action selector="rate:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="yju-oP-fDe"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="top" secondItem="BkQ-qy-zJ7" secondAttribute="top" id="N7e-dK-gCl"/>
+                                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="centerY" secondItem="BkQ-qy-zJ7" secondAttribute="centerY" id="XfZ-5E-8kF"/>
+                                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="leading" secondItem="BkQ-qy-zJ7" secondAttribute="leading" id="fpZ-FT-2Vw"/>
+                                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="centerX" secondItem="BkQ-qy-zJ7" secondAttribute="centerX" id="nHN-ci-sc9"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="button" destination="plX-3G-vqa" id="dyd-gF-fBV"/>
+                                                                </connections>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-wl-Sv5" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
+                                                                <rect key="frame" x="26" y="0.0" width="10" height="100"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="078-dt-5If" userLabel="Add Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Button" image="favorite-icons8"/>
+                                                                        <connections>
+                                                                            <action selector="addToSchedule:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="STM-3k-1lz"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="078-dt-5If" firstAttribute="centerX" secondItem="MdE-wl-Sv5" secondAttribute="centerX" id="0nl-ay-N3M"/>
+                                                                    <constraint firstItem="078-dt-5If" firstAttribute="leading" secondItem="MdE-wl-Sv5" secondAttribute="leading" id="dWV-Um-Thu"/>
+                                                                    <constraint firstItem="078-dt-5If" firstAttribute="centerY" secondItem="MdE-wl-Sv5" secondAttribute="centerY" id="kF7-8Y-9eR"/>
+                                                                    <constraint firstItem="078-dt-5If" firstAttribute="top" secondItem="MdE-wl-Sv5" secondAttribute="top" id="vhT-8v-3ZT"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="button" destination="078-dt-5If" id="Vue-nr-JN7"/>
+                                                                </connections>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsZ-n4-0AJ" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
+                                                                <rect key="frame" x="52" y="0.0" width="10" height="100"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuG-gb-A6M" userLabel="Remove Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Button" image="favorite-filled-icons8"/>
+                                                                        <connections>
+                                                                            <action selector="removeFromSchedule:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="sbd-Dr-YuR"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="nuG-gb-A6M" firstAttribute="top" secondItem="AsZ-n4-0AJ" secondAttribute="top" id="BCH-k4-zfl"/>
+                                                                    <constraint firstItem="nuG-gb-A6M" firstAttribute="centerY" secondItem="AsZ-n4-0AJ" secondAttribute="centerY" id="Emi-th-egh"/>
+                                                                    <constraint firstItem="nuG-gb-A6M" firstAttribute="leading" secondItem="AsZ-n4-0AJ" secondAttribute="leading" id="Jzf-81-D6g"/>
+                                                                    <constraint firstItem="nuG-gb-A6M" firstAttribute="centerX" secondItem="AsZ-n4-0AJ" secondAttribute="centerX" id="fZj-w0-pEJ"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="button" destination="nuG-gb-A6M" id="vbM-hh-hYg"/>
+                                                                </connections>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BkQ-qy-zJ7" secondAttribute="top" id="N7e-dK-gCl"/>
-                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="centerY" secondItem="BkQ-qy-zJ7" secondAttribute="centerY" id="XfZ-5E-8kF"/>
-                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BkQ-qy-zJ7" secondAttribute="leading" id="fpZ-FT-2Vw"/>
-                                                    <constraint firstItem="plX-3G-vqa" firstAttribute="centerX" secondItem="BkQ-qy-zJ7" secondAttribute="centerX" id="nHN-ci-sc9"/>
+                                                    <constraint firstItem="eEI-PI-0dN" firstAttribute="centerY" secondItem="PNh-Vd-zBa" secondAttribute="centerY" id="8Of-xM-e9B"/>
+                                                    <constraint firstItem="eEI-PI-0dN" firstAttribute="top" secondItem="PNh-Vd-zBa" secondAttribute="top" id="Dgj-U9-sAK"/>
+                                                    <constraint firstItem="eEI-PI-0dN" firstAttribute="centerX" secondItem="PNh-Vd-zBa" secondAttribute="centerX" id="nox-PT-2Jr"/>
+                                                    <constraint firstItem="eEI-PI-0dN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PNh-Vd-zBa" secondAttribute="leading" id="yHP-vb-Jvb"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outlet property="button" destination="plX-3G-vqa" id="dyd-gF-fBV"/>
-                                                </connections>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -230,8 +294,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToScheduleButton" destination="078-dt-5If" id="ArR-kP-pAf"/>
+                        <outlet property="addToScheduleContainer" destination="MdE-wl-Sv5" id="tgB-An-YNB"/>
                         <outlet property="descriptionTextView" destination="C1i-lW-c7K" id="g6s-vg-e6l"/>
                         <outlet property="rateButton" destination="plX-3G-vqa" id="iNY-mp-SgI"/>
+                        <outlet property="removeFromScheduleButton" destination="nuG-gb-A6M" id="luU-07-HMu"/>
+                        <outlet property="removeFromScheduleContainer" destination="AsZ-n4-0AJ" id="9wU-tz-Nal"/>
                         <outlet property="sessionTitleView" destination="3OL-DF-VYv" id="j5x-Ow-k6W"/>
                         <outlet property="speakersSectionLabel" destination="9Lw-Vs-NeA" id="4t7-oZ-9xc"/>
                         <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>
@@ -243,6 +311,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorite-filled-icons8" width="25" height="25"/>
+        <image name="favorite-icons8" width="25" height="25"/>
         <image name="star-icons8" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
