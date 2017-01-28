@@ -14,6 +14,16 @@ import GoogleSignIn
  "Owns" the app in a way that the UIApplicationDelegate often does in other apps.
  */
 class AppCoordinator {
+    /**
+     Colors to use for each of our main tabs. These are the Google logo colors.
+     */
+    private static let TabTintColors: [UIColor] = [
+        UIColor(red: 0x42 / 255, green: 0x85 / 255, blue: 0xf4 / 255, alpha: 1),
+        UIColor(red: 0x34 / 255, green: 0xa8 / 255, blue: 0x53 / 255, alpha: 1),
+        UIColor(red: 0xfb / 255, green: 0xbc / 255, blue: 0x05 / 255, alpha: 1),
+        UIColor(red: 0xea / 255, green: 0x43 / 255, blue: 0x35 / 255, alpha: 1),
+        ]
+    
     fileprivate let firebaseCoordinator = FirebaseCoordinator()
     fileprivate let settingsCoordinator: SettingsCoordinator
     
@@ -27,6 +37,9 @@ class AppCoordinator {
     // Rely on the `settingsCoordinator` to manage the settings view controller.
     // We do need a reference to the settings view controller's nav controller though.
     fileprivate let settingsNavigationController: UINavigationController
+    
+    // The coloring delegate will set the colors that we want for our tab bar and its view controllers.
+    private let tabColoringDelegate = TabBarControllerColoringDelegate(tabColors: AppCoordinator.TabTintColors)
     
     private let firebaseDateFormatter = DateFormatter()
     private let sectionHeaderDateFormatter = DateFormatter()
@@ -158,6 +171,8 @@ class AppCoordinator {
         }
         
         
+        tabBarController.delegate = tabColoringDelegate
+        
         // Set titles for our view controllers in code to avoid having many localizable strings
         // in our storyboards.
         sessionsViewController.title = NSLocalizedString("Sessions", comment: "tab title")
@@ -266,5 +281,21 @@ private extension UITabBarController {
         let navController = viewControllers![index] as! UINavigationController
         let vc = navController.viewControllers[0] as! ViewController
         return vc
+    }
+}
+
+
+private class TabBarControllerColoringDelegate: NSObject, UITabBarControllerDelegate {
+    // Don't access this unless the app is running in the foreground.
+    private lazy var window: UIWindow = UIApplication.shared.keyWindow!
+    let colors: [UIColor]
+    
+    init(tabColors: [UIColor]) {
+        self.colors = tabColors
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let viewControllerIndex = tabBarController.viewControllers?.index(of: viewController) ?? 0
+        window.tintColor = colors[viewControllerIndex % colors.count]
     }
 }
