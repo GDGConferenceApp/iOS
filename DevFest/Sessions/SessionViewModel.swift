@@ -14,7 +14,7 @@ struct SessionViewModel {
     let description: String?
     
     var color: UIColor {
-        let defaultColor = UIColor.black
+        let defaultColor = UIColor(red: 0x11 / 255, green: 0x11 / 255, blue: 0x11 / 255, alpha: 1)
         guard let track = track else {
             return defaultColor
         }
@@ -23,17 +23,17 @@ struct SessionViewModel {
         case "all":
             return defaultColor
         case "android":
-            return .green
+            return UIColor(red: 0x54 / 255, green: 0x8b / 255, blue: 0x2f / 255, alpha: 1)
         case "cloud":
-            return .lightGray
+            return UIColor(red: 0xb4 / 255, green: 0xb4 / 255, blue: 0xb4 / 255, alpha: 1)
         case "design":
-            return .yellow
+            return UIColor(red: 0x00 / 255, green: 0xb8 / 255, blue: 0xdd / 255, alpha: 1)
         case "iot":
-            return .red
+            return UIColor(red: 0x95 / 255, green: 0x37 / 255, blue: 0xff / 255, alpha: 1)
         case "keynote":
-            return .blue
+            return UIColor(red: 0xf4 / 255, green: 0x43 / 255, blue: 0x36 / 255, alpha: 1)
         case "web":
-            return .purple
+            return UIColor(red: 0xff / 255, green: 0x8f / 255, blue: 0x00 / 255, alpha: 1)
         default:
             return defaultColor
         }
