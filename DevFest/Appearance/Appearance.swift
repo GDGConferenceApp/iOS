@@ -57,6 +57,12 @@ extension UIFont {
         return UIFont.preferredFont(forTextStyle: .body)
     }
     
+    static var dev_pillButtonTitleFont: UIFont {
+        let regularFont = UIFont.preferredFont(forTextStyle: .body)
+        let baseSize = regularFont.pointSize
+        return UIFont.systemFont(ofSize: baseSize - 2)
+    }
+    
     static var dev_reusableItemTitleFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .headline)
     }

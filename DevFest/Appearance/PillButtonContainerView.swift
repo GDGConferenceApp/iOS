@@ -43,6 +43,8 @@ class PillButtonContainerView: UIView {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
+        button.titleLabel?.font = .dev_pillButtonTitleFont
+        
         let verticalMargin = CGFloat.dev_standardMargin
         let horizontalMargin = CGFloat.dev_standardMargin * 2
         button.contentEdgeInsets = UIEdgeInsetsMake(verticalMargin, horizontalMargin, verticalMargin, horizontalMargin)

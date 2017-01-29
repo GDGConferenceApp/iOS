@@ -198,7 +198,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-3G-vqa" userLabel="Rate Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <connections>
                                                                             <action selector="rate:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="yju-oP-fDe"/>
@@ -221,7 +221,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="078-dt-5If" userLabel="Add Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <state key="normal" title="Button" image="favorite-icons8"/>
                                                                         <connections>
                                                                             <action selector="addToSchedule:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="STM-3k-1lz"/>
@@ -244,7 +244,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuG-gb-A6M" userLabel="Remove Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="100"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <state key="normal" title="Button" image="favorite-filled-icons8"/>
                                                                         <connections>
                                                                             <action selector="removeFromSchedule:" destination="Gbw-G4-ZX8" eventType="touchUpInside" id="sbd-Dr-YuR"/>
