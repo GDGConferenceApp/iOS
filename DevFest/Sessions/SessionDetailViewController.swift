@@ -18,10 +18,6 @@ class SessionDetailViewController: UIViewController {
     @IBOutlet var speakersStackView: UIStackView!
     @IBOutlet var speakersSectionLabel: UILabel!
     @IBOutlet var rateButton: UIButton!
-    @IBOutlet var addToScheduleButton: UIButton!
-    @IBOutlet var addToScheduleContainer: UIView!
-    @IBOutlet var removeFromScheduleButton: UIButton!
-    @IBOutlet var removeFromScheduleContainer: UIView!
     
     weak var delegate: SessionDetailViewControllerDelegate?
     
@@ -59,10 +55,6 @@ class SessionDetailViewController: UIViewController {
         
         let rateTitle = NSLocalizedString("Rate Session", comment: "Rating button on session details")
         rateButton.setTitle(rateTitle, for: .normal)
-        let addTitle = NSLocalizedString("Add", comment: "Add button on session details")
-        addToScheduleButton.setTitle(addTitle, for: .normal)
-        let removeTitle = NSLocalizedString("Remove", comment: "Remove button on session details")
-        removeFromScheduleButton.setTitle(removeTitle, for: .normal)
         
         updateFromViewModel()
         
@@ -84,6 +76,20 @@ class SessionDetailViewController: UIViewController {
         speakersStackView.layoutMargins = .dev_standardMargins
     }
     
+    override func dev_addSessionToSchedule() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.addSessionToSchedule(for: viewModel, sender: self)
+    }
+    
+    override func dev_removeSessionFromSchedule() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.removeSessionFromSchedule(for: viewModel, sender: self)
+    }
+    
     @IBAction func rate(_ sender: Any) {
         guard let id = viewModel?.sessionID else {
             return
@@ -97,20 +103,6 @@ class SessionDetailViewController: UIViewController {
         
         let safari = SFSafariViewController(url: url)
         showDetailViewController(safari, sender: sender)
-    }
-    
-    @IBAction func addToSchedule(_ sender: Any) {
-        guard let viewModel = viewModel else {
-            return
-        }
-        delegate?.addSessionToSchedule(for: viewModel, sender: self)
-    }
-    
-    @IBAction func removeFromSchedule(_ sender: Any) {
-        guard let viewModel = viewModel else {
-            return
-        }
-        delegate?.removeSessionFromSchedule(for: viewModel, sender: self)
     }
     
     private func updateFromViewModel() {
@@ -129,14 +121,6 @@ class SessionDetailViewController: UIViewController {
         }
         
         updateSpeakersFromViewModel()
-        
-        if viewModel.isStarred {
-            addToScheduleContainer.isHidden = true
-            removeFromScheduleContainer.isHidden = false
-        } else {
-            addToScheduleContainer.isHidden = false
-            removeFromScheduleContainer.isHidden = true
-        }
     }
     
     func updateSpeakersFromViewModel() {
@@ -167,10 +151,6 @@ class SessionDetailViewController: UIViewController {
                 speakerView.image = image ?? .speakerPlaceholder
             }
         }
-    }
-    
-    func updateAddRemoveButtonsFromViewModel() {
-        
     }
 
 }

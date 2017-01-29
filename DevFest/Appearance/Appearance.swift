@@ -12,7 +12,15 @@ import UIKit
 // All things appearance, e.g. colors, margins, sizes
 
 extension CGFloat {
-    static var dev_standardMargin: CGFloat = 8
+    /**
+     The usual margin to use when space between two items is needed.
+     */
+    static let dev_standardMargin: CGFloat = 8
+    
+    /**
+     A smaller margin to use for space between items.
+     */
+    static let dev_tightMargin: CGFloat = .dev_standardMargin / 2
     
     // Rounding is important for sizes meant to be used for views.
     static let dev_authorPhotoSideLength: CGFloat = (CGFloat.dev_standardMargin * 7).rounded()
@@ -20,6 +28,8 @@ extension CGFloat {
     static let dev_pillButtonCornerRadius: CGFloat = (CGFloat.dev_standardMargin * 1.33).rounded()
 
     static let dev_shadowRadius: CGFloat = 5
+    
+    static let dev_trackLabelHeight: CGFloat = 44
 }
 
 extension CGSize {
@@ -47,9 +57,6 @@ extension UIEdgeInsets {
 // These must be `static var`s instead of `static let`s since they can change
 // if the user changes their font settings device-wide.
 extension UIFont {
-    static var dev_categoryFont: UIFont {
-        return UIFont.preferredFont(forTextStyle: .footnote)
-    }
     
     /**
      Meant for use on body copy, i.e. longer text.
@@ -74,6 +81,22 @@ extension UIFont {
     
     static var dev_sectionHeaderFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .title3)
+    }
+    
+    static var dev_sessionCategoryFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .body)
+    }
+    
+    static var dev_sessionLocationFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .footnote)
+    }
+    
+    static var dev_sessionTitleFont: UIFont {
+        return .dev_reusableItemTitleFont
+    }
+    
+    static var dev_sessionTimeFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .footnote)
     }
     
     static var dev_sessionTimeHeaderFont: UIFont {

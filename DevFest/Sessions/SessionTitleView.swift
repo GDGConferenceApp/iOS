@@ -13,30 +13,34 @@ import UIKit
  */
 @IBDesignable
 class SessionTitleView: UIView {
-    private let colorView = UIView()
-    private let trackLabel = UILabel()
-    private let titleLabel = UILabel()
-    private let timeLabel = UILabel()
-    private let locationLabel = UILabel()
+    private let fullStackView = UIStackView()
     private let timeLocationStackView = UIStackView()
+    private let titleTimeLocationStackView = UIStackView()
+    private let withAddStackView = UIStackView()
     
-    // `var` so we can make this after `init`
-    private var categoryLeadingConstraint: NSLayoutConstraint?
-    private var categoryTopConstraint: NSLayoutConstraint?
-    private var titleTopConstraint: NSLayoutConstraint?
-    private var timeLocationTopConstraint: NSLayoutConstraint?
-    private var noTimeLocationTopConstraint: NSLayoutConstraint?
-    private var timeLocationBottomConstraint: NSLayoutConstraint?
+    private let locationLabel = UILabel()
+    private let timeLabel = UILabel()
+    private let timeLocationSpacingLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let trackLabel = UILabel()
+    
+    private let addRemoveButton = UIButton(type: .system)
+    
+    private var didSetupConstraints = false
+    private var isInInterfaceBuilder = false
+    
+    override var intrinsicContentSize: CGSize {
+        return fullStackView.intrinsicContentSize
+    }
     
     var viewModel: SessionViewModel? {
         didSet {
+            guard let _ = viewModel else {
+                assertionFailure("Setting a nil view model is probably wrong.")
+                return
+            }
+            
             updateFromViewModel()
-        }
-    }
-    
-    @IBInspectable var multilineTitle: Bool = false {
-        didSet {
-            titleLabel.numberOfLines = multilineTitle ? 0 : 1
         }
     }
     
@@ -50,70 +54,89 @@ class SessionTitleView: UIView {
         commonInit()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        addRemoveButton.updateInsetsForVerticalImageAndTitle()
+    }
+    
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
+        isInInterfaceBuilder = true
         dev_updateAppearance()
         
-        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", isStarred: true, track: "android", room: "auditorium", start: nil, end: nil, speakerIDs: [], tags: [])
+        viewModel = SessionViewModel(sessionID: "dummy", title: "Sample Session", description: "Sample Description", isStarred: true, track: "android", room: "auditorium", start: Date(timeIntervalSince1970: 1486216800), end: nil, speakerIDs: [], tags: [])
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        
+        guard !didSetupConstraints else {
+            return
+        }
+        didSetupConstraints = true
+        
+        fullStackView.dev_constrainToSuperEdges()
+        
+        let trackConstraints: [NSLayoutConstraint] = [
+            trackLabel.heightAnchor.constraint(equalToConstant: .dev_trackLabelHeight),
+            ]
+        NSLayoutConstraint.activate(trackConstraints)
     }
     
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
-        titleLabel.font = .dev_reusableItemTitleFont
-        locationLabel.font = .dev_reusableItemSubtitleFont
-        trackLabel.font = .dev_categoryFont
-        
-        categoryLeadingConstraint?.constant = .dev_standardMargin
-        categoryTopConstraint?.constant = floor(CGFloat.dev_standardMargin / 4)
-        titleTopConstraint?.constant = floor(CGFloat.dev_standardMargin / 2)
-        timeLocationTopConstraint?.constant = floor(CGFloat.dev_standardMargin / 2)
-        
-        updateFromViewModel()
+        let trackLayer = trackLabel.layer
+        trackLayer.cornerRadius = .dev_standardMargin / 2
+        trackLayer.masksToBounds = true
     }
     
     private func commonInit() {
-        timeLocationStackView.axis = .vertical
+        addRemoveButton.addTarget(self, action: #selector(toggleInSchedule), for: .touchUpInside)
+        
+        locationLabel.font = .dev_sessionLocationFont
+        
+        timeLabel.font = .dev_sessionTimeFont
+        
+        timeLocationSpacingLabel.text = "·"
+        timeLocationSpacingLabel.font = .dev_sessionTimeFont
+        // Don't participate in accessibility
+        timeLocationSpacingLabel.isAccessibilityElement = false
+        
+        titleLabel.font = .dev_sessionTitleFont
+        titleLabel.numberOfLines = 0
+        
+        trackLabel.textAlignment = .center
+        
+        titleTimeLocationStackView.axis = .vertical
+        titleTimeLocationStackView.distribution = .fillProportionally
+        titleTimeLocationStackView.addArrangedSubview(titleLabel)
+        titleTimeLocationStackView.addArrangedSubview(timeLocationStackView)
+        
+        timeLocationStackView.alignment = .leading
+        timeLocationStackView.axis = .horizontal
+        timeLocationStackView.distribution = .fillProportionally
+        timeLocationStackView.spacing = .dev_tightMargin
         timeLocationStackView.addArrangedSubview(timeLabel)
+        timeLocationStackView.addArrangedSubview(timeLocationSpacingLabel)
         timeLocationStackView.addArrangedSubview(locationLabel)
         
-        dev_addSubview(colorView)
-        dev_addSubview(trackLabel)
-        dev_addSubview(titleLabel)
-        dev_addSubview(timeLocationStackView)
+        withAddStackView.alignment = .center
+        withAddStackView.axis = .horizontal
+        withAddStackView.distribution = .equalSpacing
+        withAddStackView.addArrangedSubview(titleTimeLocationStackView)
+        withAddStackView.addArrangedSubview(addRemoveButton)
         
-        let colorViewConstraints: [NSLayoutConstraint] = [
-            colorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            colorView.topAnchor.constraint(equalTo: topAnchor),
-            colorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            colorView.widthAnchor.constraint(equalToConstant: 12),
-            ]
+        fullStackView.axis = .vertical
+        fullStackView.distribution = .fill
+        fullStackView.isLayoutMarginsRelativeArrangement = true
+        fullStackView.preservesSuperviewLayoutMargins = true
+        fullStackView.spacing = .dev_tightMargin
+        fullStackView.addArrangedSubview(withAddStackView)
+        fullStackView.addArrangedSubview(trackLabel)
+        dev_addSubview(fullStackView)
         
-        categoryLeadingConstraint = trackLabel.leadingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: .dev_standardMargin)
-        categoryTopConstraint = trackLabel.topAnchor.constraint(equalTo: topAnchor, constant: floor(CGFloat.dev_standardMargin / 4))
-        titleTopConstraint = titleLabel.topAnchor.constraint(equalTo: trackLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
-        timeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: floor(CGFloat.dev_standardMargin / 2))
-        timeLocationBottomConstraint = timeLocationStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
-        
-        let otherSideConstraints: [NSLayoutConstraint] = [
-            titleLabel.leadingAnchor.constraint(equalTo: trackLabel.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            timeLocationStackView.leadingAnchor.constraint(equalTo: trackLabel.leadingAnchor),
-            timeLocationStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-        ]
-
-        // not activated by default
-        noTimeLocationTopConstraint = timeLocationStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
-        
-        // activate all constraints except `noTimeLocationTopConstraint`
-        NSLayoutConstraint.activate(colorViewConstraints)
-        categoryLeadingConstraint?.isActive = true
-        categoryTopConstraint?.isActive = true
-        titleTopConstraint?.isActive = true
-        timeLocationTopConstraint?.isActive = true
-        timeLocationBottomConstraint?.isActive = true
-        NSLayoutConstraint.activate(otherSideConstraints)
-        
+        dev_registerForAppearanceUpdates()
         dev_updateAppearance()
     }
     
@@ -122,28 +145,114 @@ class SessionTitleView: UIView {
             return
         }
         
-        let categoryColor = viewModel.color
-        colorView.backgroundColor = categoryColor
-        trackLabel.textColor = categoryColor
-        
-        trackLabel.text = viewModel.track
-        titleLabel.text = viewModel.title
-        if let duration = viewModel.durationString(using: .dev_startAndEndFormatter) {
-            timeLabel.text = duration
-            timeLabel.isHidden = false
-        } else {
-            timeLabel.isHidden = true
+        defer {
+            invalidateIntrinsicContentSize()
         }
+        
+        let addRemoveImage: UIImage
+        let addRemoveTitle: String
+        if viewModel.isStarred {
+            if isInInterfaceBuilder {
+                let bundle = Bundle(for: SessionTitleView.self)
+                addRemoveImage = UIImage(named: "favorite-filled-icons8", in: bundle, compatibleWith: nil)!
+            } else {
+                addRemoveImage = #imageLiteral(resourceName: "favorite-filled-icons8")
+            }
+            let removeTitle = NSLocalizedString("Added", comment: "Remove from schedule button on session details")
+            addRemoveTitle = removeTitle
+        } else {
+            if isInInterfaceBuilder {
+                let bundle = Bundle(for: SessionTitleView.self)
+                addRemoveImage = UIImage(named: "favorite-icons8", in: bundle, compatibleWith: nil)!
+            } else {
+                addRemoveImage = #imageLiteral(resourceName: "favorite-icons8")
+            }
+            let addTitle = NSLocalizedString("Add", comment: "Add to schedule button on session details")
+            addRemoveTitle = addTitle
+        }
+        addRemoveButton.setImage(addRemoveImage, for: .normal)
+        addRemoveButton.setTitle(addRemoveTitle, for: .normal)
+        addRemoveButton.updateInsetsForVerticalImageAndTitle()
         
         if let location = viewModel.room {
             locationLabel.text = location
             locationLabel.isHidden = false
         } else {
             locationLabel.isHidden = true
+            // Hide the spacing label if either the time or location is not present
+            timeLocationSpacingLabel.isHidden = true
         }
         
+        titleLabel.text = viewModel.title
+        if let duration = viewModel.durationString(using: .dev_startAndEndFormatter) {
+            timeLabel.text = duration
+            timeLabel.isHidden = false
+        } else {
+            timeLabel.isHidden = true
+            // Hide the spacing label if either the time or location is not present
+            timeLocationSpacingLabel.isHidden = true
+        }
+        
+        let categoryColor = viewModel.color
+        trackLabel.backgroundColor = categoryColor
+        // Assume that category colors are relatively dark, so always use white text.
+        trackLabel.textColor = .white
+        trackLabel.text = viewModel.track
+        
+        
         let noTimeOrLocation = timeLabel.isHidden && locationLabel.isHidden
-        timeLocationTopConstraint?.isActive = !noTimeOrLocation
-        noTimeLocationTopConstraint?.isActive = noTimeOrLocation
+        timeLocationStackView.isHidden = noTimeOrLocation
+    }
+    
+    /**
+     Add or remove the session for `viewModel` from the user's schedule,
+     using the responder chain.
+     */
+    @objc private func toggleInSchedule() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        if viewModel.isStarred {
+            dev_removeSessionFromSchedule()
+        } else {
+            dev_addSessionToSchedule()
+        }
+    }
+}
+
+extension UIResponder {
+    func dev_addSessionToSchedule() {
+        next?.dev_addSessionToSchedule()
+    }
+    
+    func dev_removeSessionFromSchedule() {
+        next?.dev_removeSessionFromSchedule()
+    }
+}
+
+private extension UIButton {
+    /**
+     Vertically align our image view and title label.
+     
+     Based on http://stackoverflow.com/a/22621613/1610271
+     */
+    func updateInsetsForVerticalImageAndTitle(padding: CGFloat = .dev_tightMargin) {
+        guard let imageView = imageView, let titleLabel = titleLabel else {
+            return
+        }
+        
+        // Layout (if needed) so our imageView and titleLabel have their final sizes already.
+        layoutIfNeeded()
+        
+        let imageSize = imageView.frame.size
+        let titleSize = titleLabel.frame.size
+        
+        let largerHeight = max(imageSize.height, titleSize.height)
+        let totalHeight = imageSize.height + titleSize.height + padding
+        
+        imageEdgeInsets = UIEdgeInsetsMake(-(totalHeight - imageSize.height), 0, 0, -titleSize.width)
+        titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(totalHeight - titleSize.height), 0)
+        contentEdgeInsets = UIEdgeInsetsMake((totalHeight - largerHeight) / 2, 0, (totalHeight - largerHeight) / 2, 0)
     }
 }
