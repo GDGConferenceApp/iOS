@@ -1,0 +1,10 @@
+Attendee information for the conference DevFest MN: view sessions, view speakers, create your own schedule, and see information on the conference venue.
+
+Thanks to Patrick Fuentes and the other organizers of DevFest MN for making this app possible:
+https://devfest.mn/about
+
+A big thanks to the speakers:
+https://devfest.mn/speakers
+
+And, most importantly, a big thanks to you for attending. 
+You're a part of what's making the Twin Cities such an amazing place right now.

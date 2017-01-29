@@ -3,3 +3,9 @@
 
 # Xcode
 xcuserdata/
+
+# Fastlane
+fastlane/report.xml
+
+# Fastlane products directory
+build/

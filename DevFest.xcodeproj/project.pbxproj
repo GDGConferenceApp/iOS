@@ -98,6 +98,7 @@
 		DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		DA192AE81E2D7692000DDD30 /* ImageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		DA1AD5951E32EFC0003F4D37 /* StretchingImageHeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchingImageHeaderContainer.swift; sourceTree = "<group>"; };
+		DA23804C1E3E8DE600D558A6 /* DevFest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DevFest.entitlements; sourceTree = "<group>"; };
 		DA29EC5A1E32D79A001D8FF4 /* FaceDisplayingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDisplayingImageView.swift; sourceTree = "<group>"; };
 		DA29EC5B1E32D79A001D8FF4 /* ImageFaceDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFaceDetector.swift; sourceTree = "<group>"; };
 		DA29EC5C1E32D79A001D8FF4 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		DA2F3B451DE6219E00B2F8D2 /* DevFest */ = {
 			isa = PBXGroup;
 			children = (
+				DA23804C1E3E8DE600D558A6 /* DevFest.entitlements */,
 				DA44A39D1DEB548700186A16 /* Appearance */,
 				DA29EC591E32D779001D8FF4 /* Face Detection */,
 				DA118EE41E0B182A00DA2D8E /* Firebase */,
@@ -421,6 +423,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = A7VP3P27VW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					DA2F3B581DE6219E00B2F8D2 = {
 						CreatedOnToolsVersion = 8.1;
@@ -839,6 +846,7 @@
 			baseConfigurationReference = 44B7A161652000149F188A06 /* Pods-DevFest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DevFest/DevFest.entitlements;
 				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -854,6 +862,7 @@
 			baseConfigurationReference = 08C7D294C836693B626DDFDD /* Pods-DevFest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DevFest/DevFest.entitlements;
 				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
