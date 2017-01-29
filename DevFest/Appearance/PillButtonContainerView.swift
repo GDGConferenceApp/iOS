@@ -22,8 +22,8 @@ class PillButtonContainerView: UIView {
         }
         
         var minWidthButtonSize = buttonSize
-        if minWidthButtonSize.width < PillButtonContainerView.minimumWidth {
-            minWidthButtonSize.width = PillButtonContainerView.minimumWidth
+        if case let minWidth = PillButtonContainerView.minimumWidth, minWidthButtonSize.width < minWidth {
+            minWidthButtonSize.width = minWidth
         }
         
         return minWidthButtonSize
@@ -45,8 +45,8 @@ class PillButtonContainerView: UIView {
         
         button.titleLabel?.font = .dev_pillButtonTitleFont
         
-        let verticalMargin = CGFloat.dev_standardMargin
-        let horizontalMargin = CGFloat.dev_standardMargin * 2
+        let verticalMargin: CGFloat = .dev_standardMargin
+        let horizontalMargin: CGFloat = .dev_standardMargin * 2
         button.contentEdgeInsets = UIEdgeInsetsMake(verticalMargin, horizontalMargin, verticalMargin, horizontalMargin)
         if let _ = button.image(for: .normal) {
             let buttonHorizontalMargin = CGFloat.dev_standardMargin / 2
@@ -57,14 +57,42 @@ class PillButtonContainerView: UIView {
             button.titleEdgeInsets = .zero
         }
         
-        // It's convenient to have `tintColor` in a local variable so we can see it in the debugger more easily.
-        let tintColor = self.tintColor
-        button.backgroundColor = tintColor
+        let backgroundImage = makeButtonBackground().withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(backgroundImage, for: .normal)
+    }
+    
+    /**
+     Make a roundRect suitable for use as our button's background.
+     */
+    private func makeButtonBackground() -> UIImage {
+        let cornerRadius = CGFloat.dev_pillButtonCornerRadius
         
-        button.tintColor = .white
+        let lineThickness = 1 * contentScaleFactor
+        let strokeColor = UIColor.black
         
-        let layer = button.layer
-        layer.cornerRadius = .dev_pillButtonCornerRadius
-        layer.masksToBounds = true
+        // Add extra size between the corners that can be stretched as necessary.
+        let size = CGSize(width: cornerRadius * 2 + 1, height: cornerRadius * 2 + 1)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        let context = UIGraphicsGetCurrentContext()!
+        context.setStrokeColor(strokeColor.cgColor)
+        context.setLineWidth(lineThickness)
+        
+        let rect = CGRect(origin: .zero, size: size)
+        // Inset the rect by half of the line thickness so the path is entirely inside
+        // the size we gave. Skipping this step would mean half of our drawn path would be outside
+        // of the size we gave, resulting in a very ugly path.
+        let insetRect = rect.insetBy(dx: lineThickness / 2, dy: lineThickness / 2)
+        let roundedRect = UIBezierPath(roundedRect: insetRect, cornerRadius: cornerRadius)
+        let roundedRectPath = roundedRect.cgPath
+        
+        context.addPath(roundedRectPath)
+        context.strokePath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        let stretchableImage = image.resizableImage(withCapInsets: UIEdgeInsetsMake(cornerRadius, cornerRadius, cornerRadius, cornerRadius))
+        return stretchableImage
     }
 }

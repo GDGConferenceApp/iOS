@@ -14,9 +14,10 @@ import UIKit
 extension CGFloat {
     static var dev_standardMargin: CGFloat = 8
     
-    static let dev_authorPhotoSideLength: CGFloat = .dev_standardMargin * 7
+    // Rounding is important for sizes meant to be used for views.
+    static let dev_authorPhotoSideLength: CGFloat = (CGFloat.dev_standardMargin * 7).rounded()
     
-    static let dev_pillButtonCornerRadius: CGFloat = .dev_standardMargin * 1.33
+    static let dev_pillButtonCornerRadius: CGFloat = (CGFloat.dev_standardMargin * 1.33).rounded()
 
     static let dev_shadowRadius: CGFloat = 5
 }
