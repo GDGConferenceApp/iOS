@@ -58,7 +58,7 @@ final class SpeakerTitleView: UIView {
     
     var faceRect: CGRect? {
         didSet {
-            NSLog("\(String(describing: type(of: self))) has not yet implemented `faceRect`")
+            // ignore the faceRect for now
         }
     }
     
