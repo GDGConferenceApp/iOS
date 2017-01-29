@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>27347020178-0i26f7i2b88f4s3uhdj6k3upsk7fb7q8.apps.googleusercontent.com</string>
+	<string>27347020178-fp36mm6quq12ks5ol03jbou4qujpobia.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.27347020178-0i26f7i2b88f4s3uhdj6k3upsk7fb7q8</string>
+	<string>com.googleusercontent.apps.27347020178-fp36mm6quq12ks5ol03jbou4qujpobia</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDRHp4Zz3IFHX6mDcWStf0SxvEw4bj5rfc</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>mn.devfest.DevFest</string>
+	<string>mn.devfest</string>
 	<key>PROJECT_ID</key>
 	<string>firebase-devfestmn</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:27347020178:ios:2c65351620dd3035</string>
+	<string>1:27347020178:ios:69d976cae63a3ff7</string>
 	<key>DATABASE_URL</key>
 	<string>https://devfestmn.firebaseio.com</string>
 </dict>

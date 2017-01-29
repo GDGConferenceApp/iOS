@@ -842,7 +842,7 @@
 				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest.DevFest;
+				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -856,7 +856,7 @@
 				DEVELOPMENT_TEAM = A7VP3P27VW;
 				INFOPLIST_FILE = DevFest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest.DevFest;
+				PRODUCT_BUNDLE_IDENTIFIER = mn.devfest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
