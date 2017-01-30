@@ -60,6 +60,7 @@
 		DAE039421DE7451D009C859B /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE039411DE7451D009C859B /* SessionViewModel.swift */; };
 		DAE039441DE74B05009C859B /* SpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE039431DE74B05009C859B /* SpeakerViewModel.swift */; };
 		DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */; };
+		DAF42D8D1E3EFE1A00B87D1C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF42D8C1E3EFE1A00B87D1C /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		DAE039411DE7451D009C859B /* SessionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		DAE039431DE74B05009C859B /* SpeakerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerViewModel.swift; sourceTree = "<group>"; };
 		DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+DevFest.swift"; sourceTree = "<group>"; };
+		DAF42D8C1E3EFE1A00B87D1C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E8FD5882F63F51F7CACE41A8 /* Pods_DevFestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevFestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -330,6 +332,7 @@
 				DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */,
 				DA2FFAD11E3D449200E46787 /* PillButtonContainerView.swift */,
 				DAB0C22C1DEBD3F7006C97F1 /* DateFormatter+DevFest.swift */,
+				DAF42D8C1E3EFE1A00B87D1C /* Theme.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				DAC5E3E21E1AC99D009ADAE5 /* FirebaseSpeakerDataSource.swift in Sources */,
 				DA1340CD1E22E81D006912B4 /* SettingsViewController.swift in Sources */,
 				DAB0C22B1DEBD12A006C97F1 /* SessionTitleView.swift in Sources */,
+				DAF42D8D1E3EFE1A00B87D1C /* Theme.swift in Sources */,
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
 				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
 				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,

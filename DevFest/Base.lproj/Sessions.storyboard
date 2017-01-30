@@ -161,7 +161,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="283.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
@@ -250,6 +250,7 @@
                         <outlet property="sessionTitleView" destination="3OL-DF-VYv" id="j5x-Ow-k6W"/>
                         <outlet property="speakersSectionLabel" destination="9Lw-Vs-NeA" id="4t7-oZ-9xc"/>
                         <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>
+                        <outlet property="stackView" destination="9La-lj-KFc" id="ujG-5m-xez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPJ-pj-1yd" userLabel="First Responder" sceneMemberID="firstResponder"/>

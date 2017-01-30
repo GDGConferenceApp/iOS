@@ -129,8 +129,6 @@ class SessionTitleView: UIView {
         
         fullStackView.axis = .vertical
         fullStackView.distribution = .fill
-        fullStackView.isLayoutMarginsRelativeArrangement = true
-        fullStackView.preservesSuperviewLayoutMargins = true
         fullStackView.spacing = .dev_tightMargin
         fullStackView.addArrangedSubview(withAddStackView)
         fullStackView.addArrangedSubview(trackLabel)

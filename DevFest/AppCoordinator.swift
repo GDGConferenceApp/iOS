@@ -119,16 +119,7 @@ class AppCoordinator {
         // Make sure the AppearanceNotifier singleton has been created by now.
         _ = AppearanceNotifier.shared
         
-        
-        // Setup default appearances via appearance proxies
-        let navAppearance = UINavigationBar.appearance()
-        // Set our bar colors
-        navAppearance.tintColor = .dev_tintColorInNavBar
-        navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dev_tintColorInNavBar]
-        
-        let tabAppearance = UITabBar.appearance()
-        tabAppearance.barTintColor = .dev_tabBarColor
-        tabAppearance.isTranslucent = false
+        Theme.setupAppearanceProxies()
         
         // Set up Google auth using the client ID that Firebase made when we created this app
         // in the Firebase console.

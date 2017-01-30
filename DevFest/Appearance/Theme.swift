@@ -8,14 +8,17 @@
 
 import UIKit
 
-class Theme: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+struct Theme {
+    /// Setup default appearances via appearance proxies
+    static func setupAppearanceProxies() {
+        
+        let navAppearance = UINavigationBar.appearance()
+        // Set our bar colors
+        navAppearance.tintColor = .dev_tintColorInNavBar
+        navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dev_tintColorInNavBar]
+        
+        let tabAppearance = UITabBar.appearance()
+        tabAppearance.barTintColor = .dev_tabBarColor
+        tabAppearance.isTranslucent = false
     }
-    */
-
 }

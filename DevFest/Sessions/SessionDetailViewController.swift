@@ -13,6 +13,8 @@ import SafariServices
  Display the full details for a session.
  */
 class SessionDetailViewController: UIViewController {
+    // Our main stack view, with all of our content.
+    @IBOutlet var stackView: UIStackView!
     @IBOutlet var sessionTitleView: SessionTitleView!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var speakersStackView: UIStackView!
@@ -49,6 +51,12 @@ class SessionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.preservesSuperviewLayoutMargins = true
+        
+        descriptionTextView.textContainerInset = .zero
+        descriptionTextView.textContainer.lineFragmentPadding = 0
+        
         // The speakers section label is initially in our view hierarchy thanks to the storyboard.
         // We don't want to show it by default, so remove it now.
         speakersSectionLabel.removeFromSuperview()
@@ -71,6 +79,7 @@ class SessionDetailViewController: UIViewController {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
+        stackView.spacing = .dev_standardMargin
         descriptionTextView.font = .dev_contentFont
         speakersSectionLabel.font = .dev_sectionHeaderFont
         speakersStackView.layoutMargins = .dev_standardMargins
