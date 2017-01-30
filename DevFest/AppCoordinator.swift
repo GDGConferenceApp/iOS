@@ -191,6 +191,7 @@ class AppCoordinator {
         firebaseStarsDataSource = FirebaseStarsDataSource()
         firebaseStarsDataSource.sessionStarsDataSourceDelegate = multiSessionStarsDataSourceDelegate
         
+        let speakerDataSource = FirebaseSpeakerDataSource()
         
         // introduce new scopes to avoid similar-sounding variables being available to cause confusion later
         do {
@@ -201,8 +202,6 @@ class AppCoordinator {
             multiSessionStarsDataSourceDelegate.broadcastDelegates.append(sessionDataSource)
             
             sessionsViewController.dataSource = sessionDataSource
-            
-            let speakerDataSource = FirebaseSpeakerDataSource()
             sessionsViewController.speakerDataSource = speakerDataSource
         }
         
@@ -215,6 +214,7 @@ class AppCoordinator {
             multiSessionStarsDataSourceDelegate.broadcastDelegates.append(starredSessionsDataSource)
             
             starredSessionsViewController.dataSource = starredSessionsDataSource
+            starredSessionsViewController.speakerDataSource = speakerDataSource
         }
         
         
@@ -228,6 +228,7 @@ class AppCoordinator {
         
         // Provide the image repository
         sessionsViewController.imageRepository = imageRepository
+        starredSessionsViewController.imageRepository = imageRepository
         speakersViewController.imageRepository = imageRepository
         
         tabColoringDelegate.setColors(forViewControllerAtIndex: 0)
