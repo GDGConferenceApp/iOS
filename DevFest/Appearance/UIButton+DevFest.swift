@@ -33,6 +33,7 @@ extension UIButton {
         
         imageEdgeInsets = UIEdgeInsetsMake(-(totalHeight - imageSize.height), 0, 0, -titleSize.width)
         titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(totalHeight - titleSize.height), 0)
-        contentEdgeInsets = UIEdgeInsetsMake((totalHeight - largerHeight) / 2, 0, (totalHeight - largerHeight) / 2, 0)
+        // The -10 for each side is to cut down on extra side space. This is useful for the SessionTitleView.
+        contentEdgeInsets = UIEdgeInsetsMake((totalHeight - largerHeight) / 2, -10, (totalHeight - largerHeight) / 2, -10)
     }
 }
