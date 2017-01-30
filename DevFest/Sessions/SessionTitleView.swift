@@ -91,6 +91,15 @@ class SessionTitleView: UIView {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
+        trackLabel.font = .dev_sessionCategoryFont
+        locationLabel.font = .dev_sessionLocationFont
+        timeLabel.font = .dev_sessionTimeFont
+        titleLabel.font = .dev_sessionTitleFont
+        timeLocationSpacingLabel.font = .dev_sessionTimeFont
+        
+        timeLocationStackView.spacing = .dev_tightMargin
+        fullStackView.spacing = .dev_standardMargin
+        
         let trackLayer = trackLabel.layer
         trackLayer.cornerRadius = .dev_standardMargin / 2
         trackLayer.masksToBounds = true
@@ -121,18 +130,10 @@ class SessionTitleView: UIView {
         
         removeButton.isHidden = true
         
-        trackLabel.font = .dev_sessionCategoryFont
-        
-        locationLabel.font = .dev_sessionLocationFont
-        
-        timeLabel.font = .dev_sessionTimeFont
-        
         timeLocationSpacingLabel.text = "·"
-        timeLocationSpacingLabel.font = .dev_sessionTimeFont
-        // Don't participate in accessibility
+        // The spacing label shouldn't participate in accessibility
         timeLocationSpacingLabel.isAccessibilityElement = false
         
-        titleLabel.font = .dev_sessionTitleFont
         titleLabel.numberOfLines = 0
         
         trackLabel.textAlignment = .center
@@ -145,7 +146,6 @@ class SessionTitleView: UIView {
         timeLocationStackView.alignment = .leading
         timeLocationStackView.axis = .horizontal
         timeLocationStackView.distribution = .fillProportionally
-        timeLocationStackView.spacing = .dev_tightMargin
         timeLocationStackView.addArrangedSubview(timeLabel)
         timeLocationStackView.addArrangedSubview(timeLocationSpacingLabel)
         timeLocationStackView.addArrangedSubview(locationLabel)
@@ -159,7 +159,6 @@ class SessionTitleView: UIView {
         
         fullStackView.axis = .vertical
         fullStackView.distribution = .fill
-        fullStackView.spacing = .dev_standardMargin
         fullStackView.addArrangedSubview(withAddStackView)
         fullStackView.addArrangedSubview(trackLabel)
         dev_addSubview(fullStackView)
