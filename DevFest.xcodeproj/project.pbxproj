@@ -15,6 +15,7 @@
 		DA118EE31E0B159B00DA2D8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA118EE21E0B159B00DA2D8E /* GoogleService-Info.plist */; };
 		DA118EE61E0B185600DA2D8E /* FirebaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA118EE51E0B185600DA2D8E /* FirebaseCoordinator.swift */; };
 		DA118EE81E0B18F700DA2D8E /* FirebaseSessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA118EE71E0B18F700DA2D8E /* FirebaseSessionDataSource.swift */; };
+		DA12C6431E3FFE1C0020142B /* UIButton+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA12C6421E3FFE1C0020142B /* UIButton+DevFest.swift */; };
 		DA1340CD1E22E81D006912B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */; };
 		DA14F8821DE9ED7A0092F899 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14F8811DE9ED7A0092F899 /* MapViewController.swift */; };
 		DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */; };
@@ -94,6 +95,7 @@
 		DA118EE21E0B159B00DA2D8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA118EE51E0B185600DA2D8E /* FirebaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseCoordinator.swift; sourceTree = "<group>"; };
 		DA118EE71E0B18F700DA2D8E /* FirebaseSessionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseSessionDataSource.swift; sourceTree = "<group>"; };
+		DA12C6421E3FFE1C0020142B /* UIButton+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+DevFest.swift"; sourceTree = "<group>"; };
 		DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA14F8811DE9ED7A0092F899 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				DA2FFAD11E3D449200E46787 /* PillButtonContainerView.swift */,
 				DAB0C22C1DEBD3F7006C97F1 /* DateFormatter+DevFest.swift */,
 				DAF42D8C1E3EFE1A00B87D1C /* Theme.swift */,
+				DA12C6421E3FFE1C0020142B /* UIButton+DevFest.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,
 				DA2F3B851DE632D600B2F8D2 /* SpeakerCell.swift in Sources */,
 				DA192AE61E2D2D53000DDD30 /* SettingsCoordinator.swift in Sources */,
+				DA12C6431E3FFE1C0020142B /* UIButton+DevFest.swift in Sources */,
 				DA29EC5F1E32D79A001D8FF4 /* ImageHeaderView.swift in Sources */,
 				DAB0C2291DEBA264006C97F1 /* Appearance.swift in Sources */,
 				DA2FFAD21E3D449200E46787 /* PillButtonContainerView.swift in Sources */,

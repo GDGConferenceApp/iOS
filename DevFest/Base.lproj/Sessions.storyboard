@@ -16,7 +16,7 @@
         <scene sceneID="4Wd-CL-mf9">
             <objects>
                 <collectionViewController id="07Z-Wh-z82" customClass="SessionsViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jeC-6g-rdz">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="jeC-6g-rdz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,16 +35,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-oT-CdC">
-                                            <rect key="frame" x="12" y="27" width="59" height="43"/>
+                                            <rect key="frame" x="12" y="27.5" width="59" height="42.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="TTT-e9-Z3d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.92500000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="k5H-Qd-pQ9">
-                                                    <rect key="frame" x="0.0" y="25" width="59" height="18"/>
+                                                    <rect key="frame" x="0.0" y="24.5" width="59" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -160,8 +160,12 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F23-lm-gfv">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DO4-Rd-yev" userLabel="Speakers Section Background View">
+                                        <rect key="frame" x="40" y="163" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9La-lj-KFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="283.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3OL-DF-VYv" customClass="SessionTitleView" customModule="DevFest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
@@ -226,7 +230,11 @@
                                     <constraint firstItem="9La-lj-KFc" firstAttribute="leading" secondItem="F23-lm-gfv" secondAttribute="leading" id="1VV-sJ-Zdi"/>
                                     <constraint firstItem="9La-lj-KFc" firstAttribute="top" secondItem="F23-lm-gfv" secondAttribute="top" id="49U-ZF-X7x"/>
                                     <constraint firstAttribute="bottom" secondItem="9La-lj-KFc" secondAttribute="bottom" constant="12" id="8cR-wF-kCI"/>
+                                    <constraint firstItem="DO4-Rd-yev" firstAttribute="top" secondItem="ngM-hM-K31" secondAttribute="top" id="HRg-yY-3Hs"/>
                                     <constraint firstAttribute="trailing" secondItem="9La-lj-KFc" secondAttribute="trailing" id="RKk-RD-6fD"/>
+                                    <constraint firstItem="DO4-Rd-yev" firstAttribute="bottom" secondItem="ngM-hM-K31" secondAttribute="bottom" id="V5y-8I-sF4"/>
+                                    <constraint firstItem="DO4-Rd-yev" firstAttribute="trailing" secondItem="9La-lj-KFc" secondAttribute="trailing" id="avW-zO-i1j"/>
+                                    <constraint firstItem="DO4-Rd-yev" firstAttribute="leading" secondItem="9La-lj-KFc" secondAttribute="leading" id="zCp-67-krK"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -247,7 +255,9 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="C1i-lW-c7K" id="g6s-vg-e6l"/>
                         <outlet property="rateButton" destination="plX-3G-vqa" id="iNY-mp-SgI"/>
+                        <outlet property="scrollView" destination="F23-lm-gfv" id="mW9-ph-H7P"/>
                         <outlet property="sessionTitleView" destination="3OL-DF-VYv" id="j5x-Ow-k6W"/>
+                        <outlet property="speakersSectionBackgroundView" destination="DO4-Rd-yev" id="LPe-j5-XSq"/>
                         <outlet property="speakersSectionLabel" destination="9Lw-Vs-NeA" id="4t7-oZ-9xc"/>
                         <outlet property="speakersStackView" destination="ngM-hM-K31" id="pKG-Zd-JOI"/>
                         <outlet property="stackView" destination="9La-lj-KFc" id="ujG-5m-xez"/>

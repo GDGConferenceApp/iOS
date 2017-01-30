@@ -13,6 +13,21 @@ import UIKit
 
 extension CGFloat {
     /**
+     The horizontal margin to use for content-y views.
+     */
+    static let dev_contentHorizontalMargin: CGFloat = .dev_standardMargin * 2
+    
+    /**
+     The vertical margin to use in between content-y views.
+     */
+    static let dev_contentInsideVerticalMargin: CGFloat = .dev_standardMargin * 2
+    
+    /**
+     The vertical margin to use on the outside edges of content-y views.
+     */
+    static let dev_contentOutsideVerticalMargin: CGFloat = .dev_standardMargin * 3
+    
+    /**
      The usual margin to use when space between two items is needed.
      */
     static let dev_standardMargin: CGFloat = 8
@@ -29,7 +44,12 @@ extension CGFloat {
 
     static let dev_shadowRadius: CGFloat = 5
     
-    static let dev_trackLabelHeight: CGFloat = 44
+    static var dev_trackLabelHeight: CGFloat {
+        // Base the height of the track label, plus its extra margin, on the label's font size.
+        let font = UIFont.dev_sessionCategoryFont
+        let fontSize = font.pointSize
+        return fontSize + .dev_standardMargin * 2
+    }
 }
 
 extension CGSize {
@@ -48,6 +68,8 @@ extension UIColor {
     @nonobjc static let dev_tabBarColor: UIColor = UIColor(red: 0xfa / 255, green: 0xfa / 255, blue: 0xfa / 255, alpha: 1)
     
     @nonobjc static let dev_tintColorInNavBar: UIColor = .white
+    
+    @nonobjc static let dev_sessionSpeakersBackgroundColor: UIColor = UIColor(red: 0xef / 255, green: 0xef / 255, blue: 0xf4 / 255, alpha: 1)
 }
 
 extension UIEdgeInsets {
@@ -62,7 +84,9 @@ extension UIFont {
      Meant for use on body copy, i.e. longer text.
      */
     static var dev_contentFont: UIFont {
-        return UIFont.preferredFont(forTextStyle: .body)
+        let baseFont = UIFont.preferredFont(forTextStyle: .body)
+        let font = baseFont.withSize(baseFont.pointSize - 2)
+        return font
     }
     
     static var dev_pillButtonTitleFont: UIFont {
@@ -84,10 +108,16 @@ extension UIFont {
     }
     
     static var dev_sessionCategoryFont: UIFont {
-        return UIFont.preferredFont(forTextStyle: .body)
+        let baseFont = UIFont.preferredFont(forTextStyle: .footnote)
+        let categoryFont = UIFont.boldSystemFont(ofSize: baseFont.pointSize)
+        return categoryFont
     }
     
     static var dev_sessionLocationFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .footnote)
+    }
+    
+    static var dev_sessionSpeakersTitleFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .footnote)
     }
     

@@ -13,12 +13,27 @@ import SafariServices
  Display the full details for a session.
  */
 class SessionDetailViewController: UIViewController {
+    @IBOutlet var scrollView: UIScrollView!
+    
     // Our main stack view, with all of our content.
     @IBOutlet var stackView: UIStackView!
+    
+    // The view with the session title, time, etc
     @IBOutlet var sessionTitleView: SessionTitleView!
+    
+    // The text view with the session's description.
     @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet var speakersStackView: UIStackView!
+    
+    // A view behind the speakers list, to give it a different colored background.
+    @IBOutlet var speakersSectionBackgroundView: UIView!
+    
+    // The title label in the speakers section.
     @IBOutlet var speakersSectionLabel: UILabel!
+    
+    // Contains the actual list of speaker views
+    @IBOutlet var speakersStackView: UIStackView!
+    
+    // Rate the session.
     @IBOutlet var rateButton: UIButton!
     
     weak var delegate: SessionDetailViewControllerDelegate?
@@ -51,6 +66,8 @@ class SessionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.preservesSuperviewLayoutMargins = true
+        
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.preservesSuperviewLayoutMargins = true
         
@@ -63,26 +80,30 @@ class SessionDetailViewController: UIViewController {
         
         let rateTitle = NSLocalizedString("Rate Session", comment: "Rating button on session details")
         rateButton.setTitle(rateTitle, for: .normal)
+
+        speakersSectionLabel.text = NSLocalizedString("SPEAKERS", comment: "Speakers section delineator in the session detail view")
         
-        updateFromViewModel()
-        
-        // We have to set both `isLayoutMarginsRelativeArrangement` and the `layoutMargins`,
-        // even if we want the standard `layoutMargins`, to get a stack view to respect the margins.
         speakersStackView.isLayoutMarginsRelativeArrangement = true
         
         dev_updateAppearance()
         dev_registerForAppearanceUpdates()
         
-        speakersSectionLabel.text = NSLocalizedString("Speakers:", comment: "Speakers section delineator in the session detail view")
+        updateFromViewModel()
     }
     
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
-        stackView.spacing = .dev_standardMargin
+        // Setting top and bottom margins on the view doesn't seem to do anything, so set those
+        // on our `stackView` instead.
+        view.layoutMargins = UIEdgeInsetsMake(0, .dev_contentHorizontalMargin, 0, .dev_contentHorizontalMargin)
+        
+        stackView.layoutMargins = UIEdgeInsetsMake(.dev_contentOutsideVerticalMargin, 0, .dev_contentOutsideVerticalMargin, 0)
+        stackView.spacing = .dev_contentHorizontalMargin
         descriptionTextView.font = .dev_contentFont
-        speakersSectionLabel.font = .dev_sectionHeaderFont
-        speakersStackView.layoutMargins = .dev_standardMargins
+        speakersSectionBackgroundView.backgroundColor = .dev_sessionSpeakersBackgroundColor
+        speakersSectionLabel.font = .dev_sessionSpeakersTitleFont
+        speakersStackView.layoutMargins = UIEdgeInsetsMake(.dev_contentInsideVerticalMargin, 0, .dev_contentInsideVerticalMargin, 0)
     }
     
     override func dev_addSessionToSchedule() {
