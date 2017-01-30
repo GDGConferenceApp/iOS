@@ -39,10 +39,6 @@ final class SpeakerTitleView: UIView {
     fileprivate var addedConstraints: [NSLayoutConstraint] = []
     
     /**
-     The spacing in the stack view that contains the title and subtitle labels.
-     */
-    fileprivate var titleSubtitleSpacing: CGFloat { return .dev_standardMargin / 2 }
-    /**
      The spacing in the stack view that contains the image container and the title/subtitle stack view.
      */
     fileprivate var imageTitleSpacing: CGFloat { return .dev_standardMargin * 2 }
@@ -137,8 +133,8 @@ final class SpeakerTitleView: UIView {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
-        titleLabel.font = .dev_reusableItemTitleFont
-        subtitleLabel.font = .dev_reusableItemSubtitleFont
+        titleLabel.font = .dev_speakerNameFont
+        subtitleLabel.font = .dev_speakerCompanyFont
         
         let imageLayer = imageView.layer
         imageLayer.cornerRadius = .dev_authorPhotoSideLength / 2
@@ -153,8 +149,6 @@ final class SpeakerTitleView: UIView {
         imageContainerLayer.shadowPath = CGPath(roundedRect: CGRect(origin: .zero, size: shadowSize), cornerWidth: .dev_authorPhotoSideLength / 2, cornerHeight: .dev_authorPhotoSideLength / 2, transform: nil)
         
         imageContainerViewWidthConstraint?.constant = .dev_authorPhotoSideLength
-        layoutMargins.left = .dev_standardMargin * 1.5
-        titleSubtitleStackView.spacing = titleSubtitleSpacing
         horizontalStackView.spacing = imageTitleSpacing
         
         // Assume that something influencing our size has changed if `dev_updateAppearance` is called.

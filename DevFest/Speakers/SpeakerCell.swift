@@ -37,6 +37,20 @@ class SpeakerCell: UICollectionViewCell {
             speakerTitleView.viewModel = newValue
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        dev_registerForAppearanceUpdates()
+        dev_updateAppearance()
+    }
+    
+    override func dev_updateAppearance() {
+        super.dev_updateAppearance()
+        
+        // Add side margins so our `speakerTitleView` is inset a bit
+        contentView.layoutMargins = UIEdgeInsetsMake(0, .dev_standardMargin, 0, .dev_standardMargin)
+    }
 }
 
 extension SpeakerCell: ReusableItem {

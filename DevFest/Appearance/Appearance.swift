@@ -96,7 +96,7 @@ extension UIFont {
     }
     
     static var dev_reusableItemTitleFont: UIFont {
-        return UIFont.preferredFont(forTextStyle: .headline)
+        return UIFont.preferredFont(forTextStyle: .body)
     }
     
     static var dev_reusableItemSubtitleFont: UIFont {
@@ -131,5 +131,13 @@ extension UIFont {
     
     static var dev_sessionTimeHeaderFont: UIFont {
         return UIFont.preferredFont(forTextStyle: .headline)
+    }
+    
+    static var dev_speakerNameFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .headline)
+    }
+    
+    static var dev_speakerCompanyFont: UIFont {
+        return UIFont.preferredFont(forTextStyle: .footnote)
     }
 }
