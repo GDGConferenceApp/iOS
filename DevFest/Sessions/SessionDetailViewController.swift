@@ -157,6 +157,7 @@ class SessionDetailViewController: UIViewController {
         let speakerSubviews = speakersStackView.arrangedSubviews
         for speakerView in speakerSubviews {
             speakersStackView.removeArrangedSubview(speakerView)
+            speakerView.removeFromSuperview()
         }
         
         guard let speakers = self.speakers, !speakers.isEmpty else {
