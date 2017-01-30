@@ -24,7 +24,11 @@ class SessionTitleView: UIView {
     private let titleLabel = UILabel()
     private let trackLabel = UILabel()
     
-    private let addRemoveButton = UIButton(type: .system)
+    // Use a separate button for adding and removing from our schedule,
+    // since `UIButton.updateInsetsForVerticalImageAndTitle` doesn't work
+    // the way we want if the button's title or image has just changed.
+    private let addButton = UIButton(type: .system)
+    private let removeButton = UIButton(type: .system)
     
     private var didSetupConstraints = false
     private var isInInterfaceBuilder = false
@@ -56,7 +60,8 @@ class SessionTitleView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        addRemoveButton.updateInsetsForVerticalImageAndTitle()
+        addButton.updateInsetsForVerticalImageAndTitle()
+        removeButton.updateInsetsForVerticalImageAndTitle()
     }
     
     override func prepareForInterfaceBuilder() {
@@ -92,7 +97,29 @@ class SessionTitleView: UIView {
     }
     
     private func commonInit() {
-        addRemoveButton.addTarget(self, action: #selector(toggleInSchedule), for: .touchUpInside)
+        let addImage: UIImage
+        let removeImage: UIImage
+        if isInInterfaceBuilder {
+            let bundle = Bundle(for: SessionTitleView.self)
+            addImage = UIImage(named: "favorite-icons8", in: bundle, compatibleWith: nil)!
+            removeImage = UIImage(named: "favorite-filled-icons8", in: bundle, compatibleWith: nil)!
+        } else {
+            addImage = #imageLiteral(resourceName: "favorite-icons8")
+            removeImage = #imageLiteral(resourceName: "favorite-filled-icons8")
+        }
+        addButton.setImage(addImage, for: .normal)
+        removeButton.setImage(removeImage, for: .normal)
+        
+        let addTitle = NSLocalizedString("Add", comment: "Add to schedule button on session details")
+        addButton.setTitle(addTitle, for: .normal)
+        
+        let removeTitle = NSLocalizedString("Added", comment: "Remove from schedule button on session details")
+        removeButton.setTitle(removeTitle, for: .normal)
+        
+        addButton.addTarget(self, action: #selector(toggleInSchedule(_:)), for: .touchUpInside)
+        removeButton.addTarget(self, action: #selector(toggleInSchedule(_:)), for: .touchUpInside)
+        
+        removeButton.isHidden = true
         
         locationLabel.font = .dev_sessionLocationFont
         
@@ -125,7 +152,8 @@ class SessionTitleView: UIView {
         withAddStackView.axis = .horizontal
         withAddStackView.distribution = .equalSpacing
         withAddStackView.addArrangedSubview(titleTimeLocationStackView)
-        withAddStackView.addArrangedSubview(addRemoveButton)
+        withAddStackView.addArrangedSubview(addButton)
+        withAddStackView.addArrangedSubview(removeButton)
         
         fullStackView.axis = .vertical
         fullStackView.distribution = .fill
@@ -147,30 +175,15 @@ class SessionTitleView: UIView {
             invalidateIntrinsicContentSize()
         }
         
-        let addRemoveImage: UIImage
-        let addRemoveTitle: String
         if viewModel.isStarred {
-            if isInInterfaceBuilder {
-                let bundle = Bundle(for: SessionTitleView.self)
-                addRemoveImage = UIImage(named: "favorite-filled-icons8", in: bundle, compatibleWith: nil)!
-            } else {
-                addRemoveImage = #imageLiteral(resourceName: "favorite-filled-icons8")
-            }
-            let removeTitle = NSLocalizedString("Added", comment: "Remove from schedule button on session details")
-            addRemoveTitle = removeTitle
+            addButton.isHidden = true
+            removeButton.isHidden = false
         } else {
-            if isInInterfaceBuilder {
-                let bundle = Bundle(for: SessionTitleView.self)
-                addRemoveImage = UIImage(named: "favorite-icons8", in: bundle, compatibleWith: nil)!
-            } else {
-                addRemoveImage = #imageLiteral(resourceName: "favorite-icons8")
-            }
-            let addTitle = NSLocalizedString("Add", comment: "Add to schedule button on session details")
-            addRemoveTitle = addTitle
+            addButton.isHidden = false
+            removeButton.isHidden = true
         }
-        addRemoveButton.setImage(addRemoveImage, for: .normal)
-        addRemoveButton.setTitle(addRemoveTitle, for: .normal)
-        addRemoveButton.updateInsetsForVerticalImageAndTitle()
+        addButton.updateInsetsForVerticalImageAndTitle()
+        removeButton.updateInsetsForVerticalImageAndTitle()
         
         if let location = viewModel.room {
             locationLabel.text = location
@@ -206,9 +219,15 @@ class SessionTitleView: UIView {
      Add or remove the session for `viewModel` from the user's schedule,
      using the responder chain.
      */
-    @objc private func toggleInSchedule() {
+    @objc private func toggleInSchedule(_ sender: Any) {
         guard let viewModel = viewModel else {
             return
+        }
+        
+        if sender as? UIButton === addButton {
+            assert(viewModel.isStarred == false)
+        } else if sender as? UIButton === removeButton {
+            assert(viewModel.isStarred == true)
         }
         
         if viewModel.isStarred {
@@ -234,6 +253,9 @@ private extension UIButton {
      Vertically align our image view and title label.
      
      Based on http://stackoverflow.com/a/22621613/1610271
+     
+     - note: This method is not safe to use in the same runloop that our `title` and/or `image` is changed in,
+        as it will then use the old values when doing its calculations instead of the new values.
      */
     func updateInsetsForVerticalImageAndTitle(padding: CGFloat = .dev_tightMargin) {
         guard let imageView = imageView, let titleLabel = titleLabel else {
