@@ -1,10 +1,12 @@
 Attendee information for the conference DevFest MN: view sessions, view speakers, create your own schedule, and see information on the conference venue.
 
-Special thanks to Briana Como, Patrick Fuentes, and the organizers of DevFest MN for making this app possible:
+Special thanks to Briana Como for much-needed design input, and Patrick Fuentes for all of the technical informaiton required to make the app work. 
+
+Thanks also to the organizers of DevFest MN:
 https://devfest.mn/about
 
-A big thanks to the speakers:
+And to the speakers:
 https://devfest.mn/speakers
 
-And, most importantly, a big thanks to you for attending. 
+And, most importantly, a big thanks to the attendees. 
 You're a part of what's making the Twin Cities such an amazing place right now.
