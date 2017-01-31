@@ -23,7 +23,7 @@ class SettingsCoordinator: SettingsDelegate {
     }
     
     func start() {
-        viewController.title = NSLocalizedString("Settings", comment: "tab title")
+        viewController.title = NSLocalizedString("Info", comment: "tab title")
     }
     
     func prepareGoogleSignInViewController(_ viewController: GoogleSignInViewController) {
