@@ -17,18 +17,21 @@ class SpeakerDetailViewController: UIViewController, StretchingImageHeaderContai
      The scroll view that contains our stack view.
      */
     @IBOutlet var scrollView: UIScrollView!
+    
     /**
      The stack view that contains all of our content subviews, except for imageHeaderView.
      */
     @IBOutlet var stackView: UIStackView!
+    
     /**
      The stack view that contains all of our content subviews, except for imageHeaderView.
      */
     @IBOutlet var nonImageStackView: UIStackView!
+    
     /**
-     A stack view that makes its contents respect layout margins.
+     Contains the speaker's name and company.
      */
-    @IBOutlet var marginsRespectingStackView: UIStackView!
+    @IBOutlet var nameAndCompanyStackView: UIStackView!
     @IBOutlet var imageHeaderView: ImageHeaderView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var companyLabel: UILabel!
@@ -53,33 +56,38 @@ class SpeakerDetailViewController: UIViewController, StretchingImageHeaderContai
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // We have to set both `isLayoutMarginsRelativeArrangement` and the `layoutMargins`,
-        // even if we want the standard `layoutMargins`, to get a stack view to respect the margins.
-        marginsRespectingStackView.isLayoutMarginsRelativeArrangement = true
-        
         imageHeaderView.image = .speakerPlaceholder
-        updateFromViewModel()
+        
+        nonImageStackView.isLayoutMarginsRelativeArrangement = true
         
         // Always allow vertical bouncing, so people can see more of the speaker's photo.
         scrollView.alwaysBounceVertical = true
+        
+        bioTextView.textContainer.lineFragmentPadding = 0
+        bioTextView.textContainerInset = .zero
+        
+        updateFromViewModel()
         updateHeaderSize()
         
-        dev_updateAppearance()
         dev_registerForAppearanceUpdates()
+        dev_updateAppearance()
     }
     
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
-        stackView.spacing = .dev_standardMargin
+        stackView.spacing = .dev_contentInsideVerticalMargin
         
-        nonImageStackView.spacing = .dev_standardMargin
+        // Set layout margins on this stack view so our bio text view is inset from the sides
+        // of our view, and the bottom-most view in the stack view isn't right up against
+        // the bottom of our view.
+        nonImageStackView.layoutMargins = UIEdgeInsetsMake(0, .dev_contentHorizontalMargin, .dev_contentOutsideVerticalMargin, .dev_contentHorizontalMargin)
+        nonImageStackView.spacing = .dev_contentInsideVerticalMargin
+
+        nameAndCompanyStackView.spacing = .dev_tightMargin
         
-        marginsRespectingStackView.layoutMargins = .dev_standardMargins
-        marginsRespectingStackView.spacing = .dev_standardMargin
-        
-        nameLabel.font = .dev_reusableItemTitleFont
-        companyLabel.font = .dev_reusableItemSubtitleFont
+        nameLabel.font = .dev_speakerNameFont
+        companyLabel.font = .dev_speakerCompanyFont
         bioTextView.font = .dev_contentFont
     }
     

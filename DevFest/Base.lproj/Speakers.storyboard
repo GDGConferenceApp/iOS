@@ -16,7 +16,7 @@
         <scene sceneID="JzN-SD-HdB">
             <objects>
                 <collectionViewController id="wZ2-vO-ga2" customClass="SpeakersViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h7p-mr-sbK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="h7p-mr-sbK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +35,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lf-Qn-D1L" customClass="SpeakerTitleView" customModule="DevFest" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="4" width="228.5" height="72"/>
+                                            <rect key="frame" x="8" y="8" width="204.5" height="64"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
@@ -116,17 +116,17 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2sQ-EC-c4v">
                                                 <rect key="frame" x="0.0" y="240" width="320" height="134"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nBf-pS-NVC">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nBf-pS-NVC">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL3-gh-jmz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                                                                <rect key="frame" x="97.5" y="0.0" width="125.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1Y-hd-nby">
-                                                                <rect key="frame" x="0.0" y="20.5" width="320" height="20.5"/>
+                                                                <rect key="frame" x="83.5" y="20.5" width="153.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -187,7 +187,7 @@
                         <outlet property="bioTextView" destination="x2Q-aT-zoc" id="Wvi-tJ-l0O"/>
                         <outlet property="companyLabel" destination="p1Y-hd-nby" id="f77-jB-eJK"/>
                         <outlet property="imageHeaderView" destination="r25-Dm-4lL" id="NfG-dY-AxY"/>
-                        <outlet property="marginsRespectingStackView" destination="nBf-pS-NVC" id="Ady-TW-sFI"/>
+                        <outlet property="nameAndCompanyStackView" destination="nBf-pS-NVC" id="Kvj-tc-KzM"/>
                         <outlet property="nameLabel" destination="pL3-gh-jmz" id="RLx-UR-BBN"/>
                         <outlet property="nonImageStackView" destination="2sQ-EC-c4v" id="Y0m-d0-TbG"/>
                         <outlet property="scrollView" destination="KL5-Rh-56z" id="Zou-sB-LVw"/>
