@@ -25,11 +25,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFy-pF-hrQ" id="TnT-U4-bxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sync Your Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftK-Yx-nAh">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -45,11 +45,11 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IzA-lt-CFo" id="QPv-50-BLL">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Find the Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iE7-SH-pMo">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iqi-1G-svm">
-                                <rect key="frame" x="16" y="64" width="343" height="145"/>
+                                <rect key="frame" x="16" y="64" width="343" height="149"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google to sync your agenda with the DevFestMN web site." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i03-Q8-dee">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
@@ -102,13 +102,28 @@
                                         <rect key="frame" x="171.5" y="53" width="0.0" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-7Q-Qs9">
-                                        <rect key="frame" x="141.5" y="115" width="60" height="30"/>
-                                        <state key="normal" title="Sign Out"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-5A-8kV" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
+                                        <rect key="frame" x="121.5" y="115" width="100" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-7Q-Qs9">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                                <state key="normal" title="Sign Out"/>
+                                                <connections>
+                                                    <action selector="signOut:" destination="9Rg-iE-zyK" eventType="touchUpInside" id="H9U-pe-euD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Dif-7Q-Qs9" secondAttribute="trailing" id="6dx-V3-Stc"/>
+                                            <constraint firstItem="Dif-7Q-Qs9" firstAttribute="top" secondItem="fhN-5A-8kV" secondAttribute="top" id="E4D-mR-6CB"/>
+                                            <constraint firstItem="Dif-7Q-Qs9" firstAttribute="leading" secondItem="fhN-5A-8kV" secondAttribute="leading" id="QIO-8F-blq"/>
+                                            <constraint firstAttribute="bottom" secondItem="Dif-7Q-Qs9" secondAttribute="bottom" id="oQh-Q8-LS4"/>
+                                        </constraints>
                                         <connections>
-                                            <action selector="signOut:" destination="9Rg-iE-zyK" eventType="touchUpInside" id="H9U-pe-euD"/>
+                                            <outlet property="button" destination="Dif-7Q-Qs9" id="HEI-aS-n6r"/>
                                         </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -120,6 +135,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="i03-Q8-dee" id="7wL-5u-1WV"/>
                         <outlet property="signInButton" destination="tLa-vg-UdK" id="Wca-io-XkC"/>
                         <outlet property="signOutButton" destination="Dif-7Q-Qs9" id="GfP-ac-2jO"/>
                         <outlet property="topConstraint" destination="eH0-YE-QcK" id="DiS-3e-NsG"/>

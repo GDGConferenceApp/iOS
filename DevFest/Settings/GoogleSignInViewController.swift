@@ -13,6 +13,7 @@ import GoogleSignIn
 class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
     // The top constraint of our top-most subview
     @IBOutlet var topConstraint: NSLayoutConstraint!
+    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var signInButton: GIDSignInButton!
     @IBOutlet var signOutButton: UIButton!
     
@@ -31,6 +32,8 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
         super.viewDidLoad()
         
         title = NSLocalizedString("Sign In", comment: "Google sign in view controller title")
+        descriptionLabel.text = NSLocalizedString("Sign in with Google to sync your agenda with the DevFestMN web site.", comment: "Describe why one would sign in with Google.")
+        signOutButton.setTitle(NSLocalizedString("Sign Out", comment: "Sign out button for the Google sign in view"), for: .normal)
         
         signInButton.isEnabled = !isSignedIn
         signOutButton.isEnabled = isSignedIn
@@ -44,7 +47,8 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate {
     override func dev_updateAppearance() {
         super.dev_updateAppearance()
         
-        topConstraint.constant = .dev_standardMargin
+        topConstraint.constant = .dev_contentOutsideVerticalMargin
+        descriptionLabel.font = .dev_contentFont
     }
     
     @IBAction func signOut(_ sender: Any) {
