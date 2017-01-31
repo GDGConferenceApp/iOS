@@ -21,19 +21,19 @@ struct SessionViewModel {
         
         switch track.localizedLowercase {
         case "all":
-            return defaultColor
+            return UIColor(red: 0x65 / 255, green: 0x6f / 255, blue: 0x78 / 255, alpha: 1)
         case "android":
-            return UIColor(red: 0x54 / 255, green: 0x8b / 255, blue: 0x2f / 255, alpha: 1)
+            return UIColor(red: 0x7b / 255, green: 0xc0 / 255, blue: 0x43 / 255, alpha: 1)
         case "cloud":
-            return UIColor(red: 0xb4 / 255, green: 0xb4 / 255, blue: 0xb4 / 255, alpha: 1)
+            return UIColor(red: 0xee / 255, green: 0x40 / 255, blue: 0x35 / 255, alpha: 1)
         case "design":
-            return UIColor(red: 0x00 / 255, green: 0xb8 / 255, blue: 0xdd / 255, alpha: 1)
+            return UIColor(red: 0xf3 / 255, green: 0x77 / 255, blue: 0x36 / 255, alpha: 1)
         case "iot":
-            return UIColor(red: 0x95 / 255, green: 0x37 / 255, blue: 0xff / 255, alpha: 1)
+            return UIColor(red: 0x63 / 255, green: 0x80 / 255, blue: 0xea / 255, alpha: 1)
         case "keynote":
-            return UIColor(red: 0xf4 / 255, green: 0x43 / 255, blue: 0x36 / 255, alpha: 1)
+            return UIColor(red: 0x19 / 255, green: 0xa9 / 255, blue: 0xe5 / 255, alpha: 1)
         case "web":
-            return UIColor(red: 0xff / 255, green: 0x8f / 255, blue: 0x00 / 255, alpha: 1)
+            return UIColor(red: 0xff / 255, green: 0xbf / 255, blue: 0x00 / 255, alpha: 1)
         default:
             return defaultColor
         }
