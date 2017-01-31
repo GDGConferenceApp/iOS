@@ -14,13 +14,10 @@ import UIKit
 @IBDesignable
 class SessionTitleView: UIView {
     private let fullStackView = UIStackView()
-    private let timeLocationStackView = UIStackView()
     private let titleTimeLocationStackView = UIStackView()
     private let withAddStackView = UIStackView()
     
-    private let locationLabel = UILabel()
-    private let timeLabel = UILabel()
-    private let timeLocationSpacingLabel = UILabel()
+    private let timeAndLocationLabel = UILabel()
     private let titleLabel = UILabel()
     private let trackLabel = UILabel()
     
@@ -92,12 +89,9 @@ class SessionTitleView: UIView {
         super.dev_updateAppearance()
         
         trackLabel.font = .dev_sessionCategoryFont
-        locationLabel.font = .dev_sessionLocationFont
-        timeLabel.font = .dev_sessionTimeFont
+        timeAndLocationLabel.font = .dev_sessionLocationFont
         titleLabel.font = .dev_sessionTitleFont
-        timeLocationSpacingLabel.font = .dev_sessionTimeFont
-        
-        timeLocationStackView.spacing = .dev_tightMargin
+        titleTimeLocationStackView.spacing = .dev_tightMargin
         fullStackView.spacing = .dev_standardMargin
         
         let trackLayer = trackLabel.layer
@@ -130,10 +124,7 @@ class SessionTitleView: UIView {
         
         removeButton.isHidden = true
         
-        timeLocationSpacingLabel.text = "·"
-        // The spacing label shouldn't participate in accessibility
-        timeLocationSpacingLabel.isAccessibilityElement = false
-        
+        timeAndLocationLabel.numberOfLines = 0
         titleLabel.numberOfLines = 0
         
         trackLabel.textAlignment = .center
@@ -141,14 +132,7 @@ class SessionTitleView: UIView {
         titleTimeLocationStackView.axis = .vertical
         titleTimeLocationStackView.distribution = .fillProportionally
         titleTimeLocationStackView.addArrangedSubview(titleLabel)
-        titleTimeLocationStackView.addArrangedSubview(timeLocationStackView)
-        
-        timeLocationStackView.alignment = .leading
-        timeLocationStackView.axis = .horizontal
-        timeLocationStackView.distribution = .fillProportionally
-        timeLocationStackView.addArrangedSubview(timeLabel)
-        timeLocationStackView.addArrangedSubview(timeLocationSpacingLabel)
-        timeLocationStackView.addArrangedSubview(locationLabel)
+        titleTimeLocationStackView.addArrangedSubview(timeAndLocationLabel)
         
         withAddStackView.alignment = .center
         withAddStackView.axis = .horizontal
@@ -186,34 +170,46 @@ class SessionTitleView: UIView {
         addButton.updateInsetsForVerticalImageAndTitle()
         removeButton.updateInsetsForVerticalImageAndTitle()
         
-        if let location = viewModel.room {
-            locationLabel.text = location
-            locationLabel.isHidden = false
-        } else {
-            locationLabel.isHidden = true
-            // Hide the spacing label if either the time or location is not present
-            timeLocationSpacingLabel.isHidden = true
+        // Use a `do` block to limit the scope of some variables
+        do {
+            let haveTime: Bool
+            let haveLocation: Bool
+            let timeAndLocation: String?
+            let accessibilityLabel: String?
+            defer {
+                if let timeAndLocation = timeAndLocation {
+                    timeAndLocationLabel.isHidden = false
+                    timeAndLocationLabel.text = timeAndLocation
+                } else {
+                    timeAndLocationLabel.isHidden = true
+                }
+                
+                timeAndLocationLabel.accessibilityLabel = accessibilityLabel
+            }
+            
+            switch (viewModel.room, viewModel.durationString(using: .dev_startAndEndFormatter)) {
+            case let (room?, duration?):
+                timeAndLocation = String.init(format: NSLocalizedString("%@ · %@", comment: "Format string for a session's time and location"), duration, room)
+                accessibilityLabel = NSLocalizedString("Time: \(duration). In room: \(room).", comment: "Accessible version of a session's time and location")
+            case let (room?, nil):
+                timeAndLocation = room
+                accessibilityLabel = NSLocalizedString("In room: \(room)", comment: "Accessible version of a session's location")
+            case let (nil, duration?):
+                timeAndLocation = duration
+                accessibilityLabel = NSLocalizedString("Time: \(duration)", comment: "Accessible version of a session's time")
+            case (nil, nil):
+                timeAndLocation = nil
+                accessibilityLabel = nil
+            }
         }
         
         titleLabel.text = viewModel.title
-        if let duration = viewModel.durationString(using: .dev_startAndEndFormatter) {
-            timeLabel.text = duration
-            timeLabel.isHidden = false
-        } else {
-            timeLabel.isHidden = true
-            // Hide the spacing label if either the time or location is not present
-            timeLocationSpacingLabel.isHidden = true
-        }
         
         let categoryColor = viewModel.color
         trackLabel.backgroundColor = categoryColor
         // Assume that category colors are relatively dark, so always use white text.
         trackLabel.textColor = .white
         trackLabel.text = viewModel.track
-        
-        
-        let noTimeOrLocation = timeLabel.isHidden && locationLabel.isHidden
-        timeLocationStackView.isHidden = noTimeOrLocation
     }
     
     /**
