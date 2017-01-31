@@ -10,6 +10,8 @@ import UIKit
 
 /**
  A view that contains a button and gives that button a pill-like appearance.
+ 
+ If instantiating via IB, add a button and set it to the `button` outlet yourself.
  */
 @IBDesignable
 class PillButtonContainerView: UIView {
@@ -29,8 +31,27 @@ class PillButtonContainerView: UIView {
         return minWidthButtonSize
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        button = UIButton(type: .system)
+        dev_addSubview(button)
+        button.dev_constrainToSuperEdges()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        dev_registerForAppearanceUpdates()
+        dev_updateAppearance()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
         dev_registerForAppearanceUpdates()
         dev_updateAppearance()
     }
