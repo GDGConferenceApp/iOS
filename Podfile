@@ -12,15 +12,4 @@ target 'DevFest' do
   pod "Firebase/Auth"
   pod "Firebase/Database"
   pod "GoogleSignIn"
-
-  target 'DevFestTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'DevFestUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

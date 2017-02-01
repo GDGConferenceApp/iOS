@@ -1,6 +1,0 @@
-framework module Pods_DevFestUITests {
-  umbrella header "Pods-DevFestUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

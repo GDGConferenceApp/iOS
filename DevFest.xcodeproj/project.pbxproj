@@ -38,8 +38,10 @@
 		DA4029AC1E2C1111005E1861 /* Speakers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029AA1E2C1111005E1861 /* Speakers.storyboard */; };
 		DA4029AF1E2C1179005E1861 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4029AD1E2C1179005E1861 /* Settings.storyboard */; };
 		DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */; };
+		DA45799F1E417B1400B26D62 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45799E1E417B1400B26D62 /* SnapshotHelper.swift */; };
 		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
+		DA677E8F1E417C2F00466B98 /* DevFestScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA677E8E1E417C2F00466B98 /* DevFestScreenshots.swift */; };
 		DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */; };
 		DAA871DD1E3D50930000122D /* UIColor+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */; };
 		DAB0C2271DEB8D4C006C97F1 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */; };
@@ -58,6 +60,16 @@
 		DAE039441DE74B05009C859B /* SpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE039431DE74B05009C859B /* SpeakerViewModel.swift */; };
 		DAEA8E361E0DADB2007BA0A8 /* Dictionary+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA8E351E0DADB2007BA0A8 /* Dictionary+DevFest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DA4579991E417AAD00B26D62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA2F3B3B1DE6219E00B2F8D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA2F3B421DE6219E00B2F8D2;
+			remoteInfo = DevFest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		08C7D294C836693B626DDFDD /* Pods-DevFest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevFest.release.xcconfig"; path = "Pods/Target Support Files/Pods-DevFest/Pods-DevFest.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,8 +113,12 @@
 		DA4029AB1E2C1111005E1861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Speakers.storyboard; sourceTree = "<group>"; };
 		DA4029AE1E2C1179005E1861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceNotifier.swift; sourceTree = "<group>"; };
+		DA4579941E417AAD00B26D62 /* DevFest Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DevFest Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4579981E417AAD00B26D62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA45799E1E417B1400B26D62 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
+		DA677E8E1E417C2F00466B98 /* DevFestScreenshots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevFestScreenshots.swift; sourceTree = "<group>"; };
 		DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+DevFest.swift"; sourceTree = "<group>"; };
 		DAB0C2261DEB8D4C006C97F1 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +145,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				254E2DBEE76B4419B31FDF2E /* Pods_DevFest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA4579911E417AAD00B26D62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2F3B451DE6219E00B2F8D2 /* DevFest */,
+				DA4579951E417AAD00B26D62 /* DevFest Screenshots */,
 				DA2F3B441DE6219E00B2F8D2 /* Products */,
 				9A6835CFC7B783A3AD715FB1 /* Pods */,
 				E4FE44C2071E25522234390B /* Frameworks */,
@@ -194,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2F3B431DE6219E00B2F8D2 /* DevFest.app */,
+				DA4579941E417AAD00B26D62 /* DevFest Screenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +297,16 @@
 			path = Appearance;
 			sourceTree = "<group>";
 		};
+		DA4579951E417AAD00B26D62 /* DevFest Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				DA677E8E1E417C2F00466B98 /* DevFestScreenshots.swift */,
+				DA45799E1E417B1400B26D62 /* SnapshotHelper.swift */,
+				DA4579981E417AAD00B26D62 /* Info.plist */,
+			);
+			path = "DevFest Screenshots";
+			sourceTree = "<group>";
+		};
 		E4FE44C2071E25522234390B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,13 +340,31 @@
 			productReference = DA2F3B431DE6219E00B2F8D2 /* DevFest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DA4579931E417AAD00B26D62 /* DevFest Screenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA45799B1E417AAD00B26D62 /* Build configuration list for PBXNativeTarget "DevFest Screenshots" */;
+			buildPhases = (
+				DA4579901E417AAD00B26D62 /* Sources */,
+				DA4579911E417AAD00B26D62 /* Frameworks */,
+				DA4579921E417AAD00B26D62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA45799A1E417AAD00B26D62 /* PBXTargetDependency */,
+			);
+			name = "DevFest Screenshots";
+			productName = "DevFest Screenshots";
+			productReference = DA4579941E417AAD00B26D62 /* DevFest Screenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DA2F3B3B1DE6219E00B2F8D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = GDGConferenceApp;
 				TargetAttributes = {
@@ -324,6 +377,11 @@
 								enabled = 1;
 							};
 						};
+					};
+					DA4579931E417AAD00B26D62 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DA2F3B421DE6219E00B2F8D2;
 					};
 				};
 			};
@@ -341,6 +399,7 @@
 			projectRoot = "";
 			targets = (
 				DA2F3B421DE6219E00B2F8D2 /* DevFest */,
+				DA4579931E417AAD00B26D62 /* DevFest Screenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -357,6 +416,13 @@
 				DA2F3B4E1DE6219E00B2F8D2 /* Main.storyboard in Resources */,
 				DA4029A91E2C10F0005E1861 /* Sessions.storyboard in Resources */,
 				DA4029AF1E2C1179005E1861 /* Settings.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA4579921E417AAD00B26D62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +526,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA4579901E417AAD00B26D62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA677E8F1E417C2F00466B98 /* DevFestScreenshots.swift in Sources */,
+				DA45799F1E417B1400B26D62 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA45799A1E417AAD00B26D62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA2F3B421DE6219E00B2F8D2 /* DevFest */;
+			targetProxy = DA4579991E417AAD00B26D62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DA2F3B4C1DE6219E00B2F8D2 /* Main.storyboard */ = {
@@ -625,6 +708,30 @@
 			};
 			name = Release;
 		};
+		DA45799C1E417AAD00B26D62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "DevFest Screenshots/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brendonjustin.DevFest-Screenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DevFest;
+			};
+			name = Debug;
+		};
+		DA45799D1E417AAD00B26D62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "DevFest Screenshots/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brendonjustin.DevFest-Screenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DevFest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -642,6 +749,15 @@
 			buildConfigurations = (
 				DA2F3B6E1DE6219E00B2F8D2 /* Debug */,
 				DA2F3B6F1DE6219E00B2F8D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA45799B1E417AAD00B26D62 /* Build configuration list for PBXNativeTarget "DevFest Screenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA45799C1E417AAD00B26D62 /* Debug */,
+				DA45799D1E417AAD00B26D62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
