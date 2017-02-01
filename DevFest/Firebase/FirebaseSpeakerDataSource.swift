@@ -41,7 +41,10 @@ class FirebaseSpeakerDataSource: SpeakerDataSource {
                 }
             }
             
-            strongSelf.speakers = newSpeakers
+            let sortedSpeakers = newSpeakers.sorted(by: { (vmOne, vmTwo) -> Bool in
+                return vmOne.speakerID < vmTwo.speakerID
+            })
+            strongSelf.speakers = sortedSpeakers
             strongSelf.speakerDataSourceDelegate?.speakerDataSourceDidUpdate()
         }
     }

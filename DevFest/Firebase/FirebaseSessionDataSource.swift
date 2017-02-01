@@ -58,7 +58,10 @@ class FirebaseSessionDataSource: SessionDataSource {
                 }
             }
             
-            strongSelf.sessions = newSessions
+            let sortedSessions = newSessions.sorted(by: { (vmOne, vmTwo) -> Bool in
+                return vmOne.sessionID < vmTwo.sessionID
+            })
+            strongSelf.sessions = sortedSessions
             strongSelf.sessionDataSourceDelegate?.sessionDataSourceDidUpdate()
         }
     }
