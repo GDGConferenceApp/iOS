@@ -9,7 +9,22 @@
 import CoreGraphics
 import UIKit
 
-// All things appearance, e.g. colors, margins, sizes
+struct Appearance {
+    /// Setup default appearances via appearance proxies
+    static func setupAppearanceProxies() {
+        
+        let navAppearance = UINavigationBar.appearance()
+        // Set our bar colors
+        navAppearance.tintColor = .dev_tintColorInNavBar
+        navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dev_tintColorInNavBar]
+        
+        let tabAppearance = UITabBar.appearance()
+        tabAppearance.barTintColor = .dev_tabBarColor
+        tabAppearance.isTranslucent = false
+    }
+}
+
+// All other things appearance, e.g. colors, margins, sizes
 
 extension CGFloat {
     /**
@@ -69,7 +84,7 @@ extension UIColor {
     
     @nonobjc static let dev_tintColorInNavBar: UIColor = .white
     
-    @nonobjc static let dev_sessionSpeakersBackgroundColor: UIColor = UIColor(red: 0xef / 255, green: 0xef / 255, blue: 0xf4 / 255, alpha: 1)
+    @nonobjc static let dev_sessionSpeakersBackgroundColor: UIColor = .dev_sessionHeaderBackgroundColor
 }
 
 extension UIEdgeInsets {
