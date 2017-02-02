@@ -41,15 +41,35 @@
                                             <segue destination="9Rg-iE-zyK" kind="show" id="wbb-4V-IGG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="iE7-SH-pMo" style="IBUITableViewCellStyleDefault" id="IzA-lt-CFo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="RGN-QC-gDm" style="IBUITableViewCellStyleDefault" id="tA4-Xm-1y2">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IzA-lt-CFo" id="QPv-50-BLL">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tA4-Xm-1y2" id="5KM-s8-q0K">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Find the Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iE7-SH-pMo">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Venue Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RGN-QC-gDm">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hYC-2k-dcv" kind="show" id="Nhf-2x-gr5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="iE7-SH-pMo" style="IBUITableViewCellStyleDefault" id="IzA-lt-CFo">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IzA-lt-CFo" id="QPv-50-BLL">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Get Directions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iE7-SH-pMo">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -90,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iqi-1G-svm">
-                                <rect key="frame" x="16" y="64" width="343" height="149"/>
+                                <rect key="frame" x="16" y="64" width="343" height="165"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google to sync your agenda with the DevFestMN web site." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i03-Q8-dee">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
@@ -103,10 +123,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-5A-8kV" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
-                                        <rect key="frame" x="121.5" y="115" width="100" height="34"/>
+                                        <rect key="frame" x="121.5" y="115" width="100" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-7Q-Qs9">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                                 <state key="normal" title="Sign Out"/>
                                                 <connections>
                                                     <action selector="signOut:" destination="9Rg-iE-zyK" eventType="touchUpInside" id="H9U-pe-euD"/>
@@ -160,7 +180,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nYz-vs-m9z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4J-Wy-cE4" customClass="MapOverlayButton" customModule="DevFest" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4J-Wy-cE4" customClass="MapOverlayButton" customModule="DevFest" customModuleProvider="target">
                                 <rect key="frame" x="248" y="72" width="111" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -184,6 +204,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcc-E1-Ccc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2388" y="2822.3388305847079"/>
+        </scene>
+        <!--Venue Map View Controller-->
+        <scene sceneID="gze-EL-ePt">
+            <objects>
+                <viewController id="hYC-2k-dcv" customClass="VenueMapViewController" customModule="DevFest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="edT-Ij-9eL"/>
+                        <viewControllerLayoutGuide type="bottom" id="KoM-Vg-Vyf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zly-Yf-xu8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hbk-lN-4FG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3250" y="2407"/>
         </scene>
     </scenes>
     <resources>

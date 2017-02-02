@@ -40,6 +40,8 @@
 		DA44A3A11DEB555D00186A16 /* AppearanceNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA44A3A01DEB555D00186A16 /* AppearanceNotifier.swift */; };
 		DA45799F1E417B1400B26D62 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45799E1E417B1400B26D62 /* SnapshotHelper.swift */; };
 		DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */; };
+		DA5A99B21E42C37200C7012C /* VenueMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A99B11E42C37200C7012C /* VenueMapViewController.swift */; };
+		DA5A99BC1E42C82700C7012C /* schultze-hall-map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DA5A99BB1E42C82700C7012C /* schultze-hall-map.pdf */; };
 		DA6358381DEB50A100728D01 /* UIView+DevFest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6358371DEB50A100728D01 /* UIView+DevFest.swift */; };
 		DA677E8F1E417C2F00466B98 /* DevFestScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA677E8E1E417C2F00466B98 /* DevFestScreenshots.swift */; };
 		DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */; };
@@ -117,6 +119,8 @@
 		DA4579981E417AAD00B26D62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA45799E1E417B1400B26D62 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayButton.swift; sourceTree = "<group>"; };
+		DA5A99B11E42C37200C7012C /* VenueMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueMapViewController.swift; sourceTree = "<group>"; };
+		DA5A99BB1E42C82700C7012C /* schultze-hall-map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "schultze-hall-map.pdf"; sourceTree = "<group>"; };
 		DA6358371DEB50A100728D01 /* UIView+DevFest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DevFest.swift"; sourceTree = "<group>"; };
 		DA677E8E1E417C2F00466B98 /* DevFestScreenshots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevFestScreenshots.swift; sourceTree = "<group>"; };
 		DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
@@ -186,8 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				DA7CB2431E2AC89900F26FF1 /* GoogleSignInViewController.swift */,
+				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DA192AE51E2D2D53000DDD30 /* SettingsCoordinator.swift */,
 				DA1340CC1E22E81D006912B4 /* SettingsViewController.swift */,
+				DA5A99B11E42C37200C7012C /* VenueMapViewController.swift */,
+				DA5A99BB1E42C82700C7012C /* schultze-hall-map.pdf */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -240,7 +247,6 @@
 				DA0D742F1DEE13F0005F71B3 /* FlowLayoutContaining.swift */,
 				DA192AE81E2D7692000DDD30 /* ImageRepository.swift */,
 				DA4902371DF4DC49006D6291 /* MapOverlayButton.swift */,
-				DA14F8811DE9ED7A0092F899 /* MapViewController.swift */,
 				DAE0393F1DE63531009C859B /* ReusableItem.swift */,
 				DAA871DC1E3D50930000122D /* UIColor+DevFest.swift */,
 				DA6358371DEB50A100728D01 /* UIView+DevFest.swift */,
@@ -409,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5A99BC1E42C82700C7012C /* schultze-hall-map.pdf in Resources */,
 				DA4029AC1E2C1111005E1861 /* Speakers.storyboard in Resources */,
 				DA2F3B531DE6219E00B2F8D2 /* LaunchScreen.storyboard in Resources */,
 				DA118EE31E0B159B00DA2D8E /* GoogleService-Info.plist in Resources */,
@@ -511,6 +518,7 @@
 				DA2F3B831DE631DA00B2F8D2 /* SpeakersViewController.swift in Sources */,
 				DA4902381DF4DC49006D6291 /* MapOverlayButton.swift in Sources */,
 				DA0D74301DEE13F0005F71B3 /* FlowLayoutContaining.swift in Sources */,
+				DA5A99B21E42C37200C7012C /* VenueMapViewController.swift in Sources */,
 				DA7CB2441E2AC89900F26FF1 /* GoogleSignInViewController.swift in Sources */,
 				DA192AE91E2D7692000DDD30 /* ImageRepository.swift in Sources */,
 				DA2F3B471DE6219E00B2F8D2 /* AppDelegate.swift in Sources */,

@@ -16,14 +16,24 @@ class SettingsCoordinator: SettingsDelegate {
     
     var isSignedIn = false
     
+    private var mapFileURL: URL? {
+        didSet {
+            viewController.mapFileURL = mapFileURL
+        }
+    }
+    
     init(viewController: SettingsViewController) {
         self.viewController = viewController
+        
+        let bundle = Bundle.main
+        mapFileURL = bundle.url(forResource: "schultze-hall-map", withExtension: "pdf")!
         
         viewController.delegate = self
     }
     
     func start() {
         viewController.title = NSLocalizedString("Info", comment: "tab title")
+        viewController.mapFileURL = mapFileURL
     }
     
     func prepareGoogleSignInViewController(_ viewController: GoogleSignInViewController) {
