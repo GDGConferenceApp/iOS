@@ -81,7 +81,7 @@ private extension MapOverlayButton {
         dev_addSubview(button)
         button.dev_constrainToSuperEdges()
         
-        button.setTitle(NSLocalizedString("Open in Maps", comment: "Show the conference location in the Maps app"), for: .normal)
+        button.setTitle(NSLocalizedString("Re-center", comment: "Re-center the map on the conference venue"), for: .normal)
         
         button.addTarget(self, action: #selector(runAction), for: .touchUpInside)
     }

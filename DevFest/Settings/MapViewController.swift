@@ -12,7 +12,7 @@ import MapKit
 
 class MapViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
-    @IBOutlet var openInMapsButton: MapOverlayButton!
+    @IBOutlet var centerButton: MapOverlayButton!
     
     lazy var venueName: String = "University of St. Thomas"
     lazy var mapRegion: MKCoordinateRegion = {
@@ -28,6 +28,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = NSLocalizedString("Directions", comment: "Map view controller title")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Maps", comment: "Open venue address in Maps app"), style: .plain, target: self, action: #selector(openInMaps))
+        
         mapView.setRegion(mapRegion, animated: false)
         
         CLGeocoder().geocodeAddressString("University of St. Thomas, 1000 Lasalle Ave, Minneapolis, MN 55403, United States") { (placemarks, error) in
@@ -35,7 +38,7 @@ class MapViewController: UIViewController {
                 // Fall back on manually placing an annotation using absolute coordinates.
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: 44.97430, longitude: -93.277595)
-                annotation.title = "University of St. Thomas"
+                annotation.title = self.venueName
                 self.mapView.addAnnotation(annotation)
                 return
             }
@@ -44,19 +47,22 @@ class MapViewController: UIViewController {
             self.mapView.addAnnotation(mkPlacemark)
         }
         
-        openInMapsButton.action = { [unowned self] in
-            let region = self.mapRegion
-            
-            let options = [
-                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
-                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)
-            ]
-            
-            let placemark = MKPlacemark(coordinate: region.center, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = "\(self.venueName)"
-            mapItem.openInMaps(launchOptions: options)
+        centerButton.action = { [unowned self] in
+            self.mapView.setRegion(self.mapRegion, animated: true)
         }
     }
 
+    @objc private func openInMaps() {
+        let region = self.mapRegion
+        
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)
+        ]
+        
+        let placemark = MKPlacemark(coordinate: region.center, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = self.venueName
+        mapItem.openInMaps(launchOptions: options)
+    }
 }

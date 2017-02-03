@@ -25,11 +25,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFy-pF-hrQ" id="TnT-U4-bxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sync Your Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftK-Yx-nAh">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iqi-1G-svm">
-                                <rect key="frame" x="16" y="64" width="343" height="165"/>
+                                <rect key="frame" x="16" y="64" width="343" height="149"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google to sync your agenda with the DevFestMN web site." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i03-Q8-dee">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
@@ -123,10 +123,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-5A-8kV" customClass="PillButtonContainerView" customModule="DevFest" customModuleProvider="target">
-                                        <rect key="frame" x="121.5" y="115" width="100" height="50"/>
+                                        <rect key="frame" x="121.5" y="115" width="100" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-7Q-Qs9">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
                                                 <state key="normal" title="Sign Out"/>
                                                 <connections>
                                                     <action selector="signOut:" destination="9Rg-iE-zyK" eventType="touchUpInside" id="H9U-pe-euD"/>
@@ -180,8 +180,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nYz-vs-m9z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4J-Wy-cE4" customClass="MapOverlayButton" customModule="DevFest" customModuleProvider="target">
-                                <rect key="frame" x="248" y="72" width="111" height="34"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4J-Wy-cE4" customClass="MapOverlayButton" customModule="DevFest" customModuleProvider="target">
+                                <rect key="frame" x="274" y="572" width="85" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -189,16 +189,16 @@
                         <constraints>
                             <constraint firstItem="nYz-vs-m9z" firstAttribute="top" secondItem="Via-kY-V5Y" secondAttribute="top" id="OCh-Tt-JY9"/>
                             <constraint firstItem="m4J-Wy-cE4" firstAttribute="trailing" secondItem="Via-kY-V5Y" secondAttribute="trailingMargin" id="SX8-2c-HGF"/>
-                            <constraint firstItem="m4J-Wy-cE4" firstAttribute="top" secondItem="7Kx-fC-eeV" secondAttribute="bottom" constant="8" id="VGU-Gr-5iH"/>
                             <constraint firstAttribute="trailing" secondItem="nYz-vs-m9z" secondAttribute="trailing" id="VGk-ck-7Zi"/>
                             <constraint firstAttribute="bottom" secondItem="nYz-vs-m9z" secondAttribute="bottom" id="aEg-kf-5am"/>
+                            <constraint firstItem="UXB-Iw-xSB" firstAttribute="top" secondItem="m4J-Wy-cE4" secondAttribute="bottom" constant="16" id="jDW-zr-UPF"/>
                             <constraint firstItem="nYz-vs-m9z" firstAttribute="leading" secondItem="Via-kY-V5Y" secondAttribute="leading" id="lno-Dc-wvn"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map-icons8" selectedImage="map-filled-icons8" id="TgW-n4-1JQ"/>
                     <connections>
+                        <outlet property="centerButton" destination="m4J-Wy-cE4" id="CcN-FJ-Lhn"/>
                         <outlet property="mapView" destination="nYz-vs-m9z" id="3P7-9O-9ho"/>
-                        <outlet property="openInMapsButton" destination="m4J-Wy-cE4" id="NSC-uY-SEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcc-E1-Ccc" userLabel="First Responder" sceneMemberID="firstResponder"/>
