@@ -16,8 +16,8 @@ class MapViewController: UIViewController {
     
     lazy var venueName: String = "University of St. Thomas"
     lazy var mapRegion: MKCoordinateRegion = {
-        let swCorner = CLLocationCoordinate2D(latitude: 44.97395, longitude: -93.2783)
-        let neCorner = CLLocationCoordinate2D(latitude: 44.974725, longitude: -93.27668)
+        let swCorner = CLLocationCoordinate2D(latitude: 44.9739, longitude: -93.279)
+        let neCorner = CLLocationCoordinate2D(latitude: 44.97484, longitude: -93.2755)
         
         let center = CLLocationCoordinate2D(latitude: (swCorner.latitude + neCorner.latitude) / 2, longitude: (swCorner.longitude + neCorner.longitude) / 2)
         let span = MKCoordinateSpan(latitudeDelta: abs(neCorner.latitude - swCorner.latitude), longitudeDelta: abs(neCorner.longitude - swCorner.longitude))
