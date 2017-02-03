@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import MapKit
 
 class MapViewController: UIViewController {
@@ -29,10 +30,19 @@ class MapViewController: UIViewController {
         
         mapView.setRegion(mapRegion, animated: false)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.97430, longitude: -93.277595)
-        annotation.title = "University of St. Thomas"
-        mapView.addAnnotation(annotation)
+        CLGeocoder().geocodeAddressString("University of St. Thomas, 1000 Lasalle Ave, Minneapolis, MN 55403, United States") { (placemarks, error) in
+            guard let placemark = placemarks?.first else {
+                // Fall back on manually placing an annotation using absolute coordinates.
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: 44.97430, longitude: -93.277595)
+                annotation.title = "University of St. Thomas"
+                self.mapView.addAnnotation(annotation)
+                return
+            }
+            
+            let mkPlacemark = MKPlacemark(placemark: placemark)
+            self.mapView.addAnnotation(mkPlacemark)
+        }
         
         openInMapsButton.action = { [unowned self] in
             let region = self.mapRegion
