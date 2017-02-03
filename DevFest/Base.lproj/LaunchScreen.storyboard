@@ -94,35 +94,34 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4VX-ly-DXS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="NZA-0Y-Hdw" kind="relationship" relationship="rootViewController" id="5fT-jB-gZT"/>
+                        <segue destination="fmg-cp-0qT" kind="relationship" relationship="rootViewController" id="d31-sp-FEW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8k-ne-yLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-44" y="-241"/>
         </scene>
-        <!--Sessions-->
-        <scene sceneID="6sY-bl-2NO">
+        <!--View Controller-->
+        <scene sceneID="msy-U1-410">
             <objects>
-                <viewController id="NZA-0Y-Hdw" sceneMemberID="viewController">
+                <viewController id="fmg-cp-0qT" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jtu-KT-LV6"/>
-                        <viewControllerLayoutGuide type="bottom" id="Vok-Ts-I6e"/>
+                        <viewControllerLayoutGuide type="top" id="gze-wv-rdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="rII-rc-OhE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d9e-0u-Krp">
+                    <view key="view" contentMode="scaleToFill" id="Ktv-4D-Km4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sessions" id="a82-Vd-nju"/>
+                    <navigationItem key="navigationItem" id="d7e-iw-qal"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dib-Km-dh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbM-BN-IqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="705" y="-242"/>
         </scene>
