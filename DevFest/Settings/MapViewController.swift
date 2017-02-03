@@ -29,6 +29,11 @@ class MapViewController: UIViewController {
         
         mapView.setRegion(mapRegion, animated: false)
         
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.97430, longitude: -93.277595)
+        annotation.title = "University of St. Thomas"
+        mapView.addAnnotation(annotation)
+        
         openInMapsButton.action = { [unowned self] in
             let region = self.mapRegion
             
